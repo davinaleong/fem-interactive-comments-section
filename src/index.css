@@ -13,29 +13,21 @@
 */
 
 /** Root **/
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap");
 
 :root {
-  --clr-primary-400: hsl(246, 80%, 60%);
+  --clr-primary-300: hsl(239, 57%, 85%);
+  --clr-primary-400: hsl(238, 40%, 52%);
 
-  --clr-orange-400: hsl(15, 100%, 70%);
+  --clr-red-300: hsl(357, 100%, 86%);
+  --clr-red-400: hsl(358, 79%, 66%);
 
-  --clr-cyan-400: hsl(195, 74%, 62%);
+  --clr-neutral-400: hsl(211, 10%, 45%);
+  --clr-neutral-900: hsl(212, 24%, 26%);
 
-  --clr-red-400: hsl(348, 100%, 68%);
-
-  --clr-green-400: hsl(145, 58%, 55%);
-
-  --clr-purple-400: hsl(264, 64%, 52%);
-
-  --clr-yellow-400: hsl(43, 84%, 65%);
-
-  --clr-neutral-100: hsl(0, 100%, 100%);
-  --clr-neutral-200: hsl(236, 100%, 87%);
-  --clr-neutral-400: hsl(235, 45%, 61%);
-  --clr-neutral-700: hsl(236, 41%, 34%);
-  --clr-neutral-800: hsl(235, 46%, 20%);
-  --clr-neutral-900: hsl(226, 43%, 10%);
+  --clr-grey-100: hsl(0, 0%, 100%);
+  --clr-grey-200: hsl(228, 33%, 97%);
+  --clr-grey-300: hsl(223, 19%, 93%);
 
   --ff-primary: "Rubik", Arial, sans-serif;
   --ff-body: var(--ff-primary);
@@ -152,85 +144,61 @@ main {
 }
 
 /** Utility - Colours **/
+.text-primary-300 {
+  color: var(--clr-primary-300);
+}
 .text-primary-400 {
   color: var(--clr-primary-400);
 }
-.text-orange-400 {
-  color: var(--clr-orange-400);
-}
-.text-cyan-400 {
-  color: var(--clr-cyan-400);
+.text-red-300 {
+  color: var(--clr-red-300);
 }
 .text-red-400 {
   color: var(--clr-red-400);
 }
-.text-green-400 {
-  color: var(--clr-green-400);
-}
-.text-purple-400 {
-  color: var(--clr-purple-400);
-}
-.text-yellow-400 {
-  color: var(--clr-yellow-400);
-}
-.text-neutral-100 {
-  color: var(--clr-neutral-100);
-}
-.text-neutral-200 {
-  color: var(--clr-neutral-200);
-}
 .text-neutral-400 {
   color: var(--clr-neutral-400);
-}
-.text-neutral-700 {
-  color: var(--clr-neutral-700);
-}
-.text-neutral-800 {
-  color: var(--clr-neutral-800);
 }
 .text-neutral-900 {
   color: var(--clr-neutral-900);
 }
+.text-grey-100 {
+  color: var(--clr-grey-100);
+}
+.text-grey-200 {
+  color: var(--clr-grey-200);
+}
+.text-grey-300 {
+  color: var(--clr-grey-300);
+}
 
 /** Utility - Background Colours **/
+.bg-primary-300 {
+  background-color: var(--clr-primary-300);
+}
 .bg-primary-400 {
   background-color: var(--clr-primary-400);
 }
-.bg-orange-400 {
-  background-color: var(--clr-orange-400);
-}
-.bg-cyan-400 {
-  background-color: var(--clr-cyan-400);
+.bg-red-300 {
+  background-color: var(--clr-red-300);
 }
 .bg-red-400 {
   background-color: var(--clr-red-400);
 }
-.bg-green-400 {
-  background-color: var(--clr-green-400);
-}
-.bg-purple-400 {
-  background-color: var(--clr-purple-400);
-}
-.bg-yellow-400 {
-  background-color: var(--clr-yellow-400);
-}
-.bg-neutral-100 {
-  background-color: var(--clr-neutral-100);
-}
-.bg-neutral-200 {
-  background-color: var(--clr-neutral-200);
-}
 .bg-neutral-400 {
   background-color: var(--clr-neutral-400);
 }
-.bg-neutral-700 {
-  background-color: var(--clr-neutral-700);
-}
-.bg-neutral-800 {
-  background-color: var(--clr-neutral-800);
-}
 .bg-neutral-900 {
   background-color: var(--clr-neutral-900);
+}
+.bg-grey-100 {
+  background-color: var(--clr-grey-100);
+}
+.bg-grey-200 {
+  background-color: var(--clr-grey-200);
+}
+.bg-grey-300 {
+  background-color: var(--clr-grey-300);
 }
 
 /** Utility - Font Families **/
