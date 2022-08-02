@@ -79,6 +79,9 @@ body {
   font-size: var(--fs-base);
   font-family: var(--ff-body);
   font-weight: var(--fw-regular);
+}
+
+.body {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 2em;
