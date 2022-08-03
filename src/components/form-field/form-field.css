@@ -1,0 +1,9 @@
+.form-field {
+  border: none;
+  padding: var(--size-400);
+  border-radius: var(--size-200);
+}
+
+.form-field:where(:focus-visible) {
+  outline: 2px solid var(--clr-primary-400);
+}
