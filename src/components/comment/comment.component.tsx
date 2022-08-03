@@ -4,6 +4,7 @@ import "./comment.css";
 import CounterInputComponent from "./../counter-input/counter-input.component";
 import CommentInfoComponent from "../comment-info/comment-info.component";
 import ButtonGridComponent from "../button-grid/button-grid.component";
+import ContentInputComponent from "../content-input/content-input.component";
 
 type AppProps = {
   isCurrentUser: boolean;
@@ -55,12 +56,11 @@ class CommentComponent extends React.Component {
           />
         </div>
         <div className="comment-content-cell">
-          <p className="comment-content">
-            <span className="text-mention">@amyrobson</span> Impressive! Though
-            it seems the drag feature could be improved. But overall it looks
-            incredible. You've nailed the design and the responsiveness at
-            various breakpoints works really well.
-          </p>
+          <ContentInputComponent
+            username="juliusomo"
+            content="Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well."
+            edit={false}
+          />
         </div>
       </div>
     );

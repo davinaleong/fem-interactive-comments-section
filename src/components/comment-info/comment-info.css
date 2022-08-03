@@ -26,12 +26,3 @@
 .info-created-at {
   color: var(--clr-neutral-400);
 }
-
-.comment-content {
-  color: var(--clr-neutral-400);
-}
-
-.text-mention {
-  color: var(--clr-primary-400);
-  font-weight: var(--fw-medium);
-}

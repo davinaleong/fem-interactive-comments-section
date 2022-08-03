@@ -10,13 +10,15 @@ class FormFieldComponent extends React.Component {
   constructor(props: any) {
     super(props);
 
+    const { text } = this.props;
+
     this.state = {
-      text: "",
+      text: text,
     };
   }
 
   changeHandler = (e) => {
-    this.setState({text: e.target.value});
+    this.setState({ text: e.target.value });
     this.props.changeHandler(e);
   };
 
