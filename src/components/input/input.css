@@ -1,0 +1,8 @@
+.input-grid {
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--size-400);
+  padding: var(--size-400);
+  background-color: var(--clr-grey-100);
+  border-radius: var(--size-200);
+}

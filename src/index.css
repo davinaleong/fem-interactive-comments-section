@@ -94,7 +94,7 @@ main {
 }
 
 .container {
-  --max-width: 1110px;
+  --max-width: 51em;
   --horizontal-padding: var(--container-padding);
 
   width: min(var(--max-width), 100% - (var(--horizontal-padding) * 2));
