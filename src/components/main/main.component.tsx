@@ -1,6 +1,6 @@
 import React from "react";
-import InputComponent from "../input/input.component";
-import "./comments.css";
+import CommentInputComponent from "../comment-input/comment-input.component";
+import "./main.css";
 
 type AppProps = {
   data: any;
@@ -27,12 +27,12 @@ class CommentsComponent extends React.Component {
     const { comments, commentId, comment } = this.state;
 
     return (
-      <div className="comments-grid | container">
-        <InputComponent
+      <main className="comments-grid | container">
+        <CommentInputComponent
           currentUser={currentUser}
           commentsHandler={this.commentsHandler}
         />
-      </div>
+      </main>
     );
   };
 }

@@ -1,5 +1,6 @@
 import React from "react";
-import "./input.css";
+import "./comment-input.css";
+
 import CurrentUserAvatar from "./../../assets/images/avatars/image-juliusomo.webp";
 import AvatarComponent from "../avatar/avatar.component";
 import ButtonComponent from "../button/button.component";
@@ -9,7 +10,7 @@ type AppProps = {
   commentsHandler: any;
 };
 
-class InputComponent extends React.Component {
+class CommentInputComponent extends React.Component {
   constructor(props: any) {
     super(props);
 
@@ -51,4 +52,4 @@ class InputComponent extends React.Component {
   };
 }
 
-export default InputComponent;
+export default CommentInputComponent;
