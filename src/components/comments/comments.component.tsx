@@ -1,4 +1,5 @@
 import React from "react";
+import CommentComponent from "../comment/comment.component";
 import "./comments.css";
 
 type AppProps = {
@@ -17,7 +18,11 @@ class CommentsComponet extends React.Component {
   }
 
   render = () => {
-    return <div>Comments Component</div>;
+    return (
+      <div className="comments-flex">
+        <CommentComponent />
+      </div>
+    );
   };
 }
 

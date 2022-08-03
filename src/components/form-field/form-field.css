@@ -1,5 +1,6 @@
 .form-field {
   border: none;
+  outline: thin solid var(--clr-grey-300);
   padding: var(--size-400);
   border-radius: var(--size-200);
 }

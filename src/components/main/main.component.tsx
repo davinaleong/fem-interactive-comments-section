@@ -30,7 +30,10 @@ class MainComponent extends React.Component {
     return (
       <main className="comments-grid | container">
         <CommentsComponent comments={comments} />
-        <CommentInputComponent commentsHandler={this.commentsHandler} />
+        <CommentInputComponent
+          currentUser={currentUser}
+          commentsHandler={this.commentsHandler}
+        />
       </main>
     );
   };
