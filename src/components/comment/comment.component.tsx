@@ -47,7 +47,12 @@ class CommentComponent extends React.Component {
           />
         </div>
         <div className="comment-button-cell button-grid">
-          <ButtonGridComponent isCurrentUser={false} />
+          <ButtonGridComponent
+            isCurrentUser={false}
+            replyHandler={this.replyHandler}
+            deleteHandler={this.deleteHandler}
+            editHandler={this.editHandler}
+          />
         </div>
         <div className="comment-content-cell">
           <p className="comment-content">
