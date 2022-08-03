@@ -25,3 +25,9 @@
 .info-created-at {
   color: var(--clr-neutral-400);
 }
+
+.button-grid {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}

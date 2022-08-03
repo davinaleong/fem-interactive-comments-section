@@ -1,14 +1,16 @@
 .btn {
+  display: inline-flex;
+  gap: var(--size-200);
   padding: var(--size-200) var(--size-500);
-  text-transform: uppercase;
   border: none;
   border-radius: var(--size-200);
-  transition: all 0.3s ease-in-out;
+  align-items: center;
 }
 
 .btn-primary {
   color: var(--clr-grey-100);
   background-color: var(--clr-primary-400);
+  text-transform: uppercase;
 }
 
 .btn-primary:where(:hover, :focus, :focus-visible) {
@@ -26,6 +28,48 @@
 
 .btn-counter path {
   fill: var(--clr-primary-300);
+}
+
+.btn.btn-link-primary {
+  padding: var(--size-200) var(--size-300);
+}
+
+.btn-link-primary {
+  background-color: transparent;
+  color: var(--clr-primary-400);
+}
+
+.btn-link-primary:where(:hover, :focus, :focus-visible) {
+  color: var(--clr-primary-300);
+}
+
+.btn-link-primary path {
+  fill: var(--clr-primary-400);
+}
+
+.btn-link-primary:where(:hover, :focus, :focus-visible) path {
+  fill: var(--clr-primary-300);
+}
+
+.btn.btn-link-red {
+  padding: var(--size-200) var(--size-300);
+}
+
+.btn-link-red {
+  background-color: transparent;
+  color: var(--clr-red-400);
+}
+
+.btn-link-red:where(:hover, :focus, :focus-visible) {
+  color: var(--clr-red-300);
+}
+
+.btn-link-red path {
+  fill: var(--clr-red-400);
+}
+
+.btn-link-red:where(:hover, :focus, :focus-visible) path {
+  fill: var(--clr-red-300);
 }
 
 .btn-counter:where(:hover, :focus, :focus-visible) {

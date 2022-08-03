@@ -20,7 +20,7 @@ class CommentsComponet extends React.Component {
   render = () => {
     return (
       <div className="comments-flex">
-        <CommentComponent />
+        <CommentComponent isCurrentUser={true} />
       </div>
     );
   };
