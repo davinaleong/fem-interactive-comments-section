@@ -3,11 +3,7 @@
   text-transform: uppercase;
   border: none;
   border-radius: var(--size-200);
-  transition: background-color 0.3s ease-in-out;
-}
-
-.btn:where(:hover, :focus, :focus-visible) {
-  background-color: var(--clr-primary-300);
+  transition: all 0.3s ease-in-out;
 }
 
 .btn-primary {
@@ -17,4 +13,25 @@
 
 .btn-primary:where(:hover, :focus, :focus-visible) {
   background-color: var(--clr-primary-300);
+}
+
+.btn.btn-counter {
+  padding: var(--size-200) var(--size-300);
+}
+
+.btn-counter {
+  width: 100%;
+  background-color: transparent;
+}
+
+.btn-counter path {
+  fill: var(--clr-primary-300);
+}
+
+.btn-counter:where(:hover, :focus, :focus-visible) {
+  fill: var(--clr-primary-400);
+}
+
+.btn-counter:where(:hover, :focus, :focus-visible) path {
+  fill: var(--clr-primary-400);
 }

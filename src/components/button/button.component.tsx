@@ -2,8 +2,9 @@ import React from "react";
 import "./button.css";
 
 type AppProps = {
-  label: string;
   type: string;
+  ariaLabel: string;
+  children: any;
   clickHandler: any;
 };
 
@@ -17,14 +18,16 @@ class ButtonComponent extends React.Component {
   };
 
   render() {
-    const { label, type } = this.props;
+    const { children, type, ariaLabel } = this.props;
+
     return (
       <button
         className={`btn ${type}`}
         type="button"
+        aria-label={ariaLabel}
         onClick={this.clickHandler}
       >
-        {label}
+        {children}
       </button>
     );
   }

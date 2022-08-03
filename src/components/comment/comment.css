@@ -26,8 +26,3 @@
 .comment-content-cell {
   grid-area: comment-content-cell;
 }
-
-.counter-field {
-    border-radius: var(--size-200);
-    overflow: hidden;
-}

@@ -42,11 +42,9 @@ class CommentInputComponent extends React.Component {
           changeHandler={this.commentHandler}
         />
         <div className="button-column button-grid">
-          <ButtonComponent
-            label="Send"
-            type="btn-primary"
-            clickHandler={this.sendHandler}
-          />
+          <ButtonComponent type="btn-primary" clickHandler={this.sendHandler}>
+            Send
+          </ButtonComponent>
         </div>
       </div>
     );
