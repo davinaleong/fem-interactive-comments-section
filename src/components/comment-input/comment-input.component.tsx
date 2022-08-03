@@ -30,11 +30,12 @@ class CommentInputComponent extends React.Component {
   };
 
   render = () => {
+    const { currentUser } = this.props;
     const { comment } = this.state;
     return (
       <div className="input-grid">
         <div className="image-column image-grid">
-          <AvatarComponent src={CurrentUserAvatar} alt="Current User Avatar" />
+          <AvatarComponent username={currentUser.username} />
         </div>
         <FormFieldComponent
           text={comment}
