@@ -35,17 +35,17 @@ class CounterInputComponent extends React.Component {
         <ButtonComponent
           type="btn-counter"
           ariaLabel="Decrease Score"
-          clickHandler={this.scoreDecreaseHandler}
+          clickHandler={this.scoreIncreaseHandler}
         >
-          <MinusIcon />
+          <PlusIcon />
         </ButtonComponent>
         <div className="counter-score">12</div>
         <ButtonComponent
           type="btn-counter"
           ariaLabel="Decrease Score"
-          clickHandler={this.scoreIncreaseHandler}
+          clickHandler={this.scoreDecreaseHandler}
         >
-          <PlusIcon />
+          <MinusIcon />
         </ButtonComponent>
       </div>
     );

@@ -3,10 +3,7 @@ import "./comment.css";
 
 import CounterInputComponent from "./../counter-input/counter-input.component";
 import CommentInfoComponent from "../comment-info/comment-info.component";
-import ButtonComponent from "../button/button.component";
-import ReplyIcon from "../../icons/reply.icon";
-import EditIcon from "../../icons/edit.icon";
-import DeleteIcon from "../../icons/delete.icon";
+import ButtonGridComponent from "../button-grid/button-grid.component";
 
 type AppProps = {
   isCurrentUser: boolean;
@@ -35,35 +32,6 @@ class CommentComponent extends React.Component {
     console.log(`Edit Button Clicked`);
   };
 
-  renderButtons = (isCurrentUser: boolean = false) => {
-    let buttons = (
-      <ButtonComponent type="btn-link-primary" clickHandler={this.replyHandler}>
-        <ReplyIcon /> Reply
-      </ButtonComponent>
-    );
-
-    if (isCurrentUser) {
-      buttons = (
-        <>
-          <ButtonComponent
-            type="btn-link-red"
-            clickHandler={this.deleteHandler}
-          >
-            <DeleteIcon /> Delete
-          </ButtonComponent>
-          <ButtonComponent
-            type="btn-link-primary"
-            clickHandler={this.editHandler}
-          >
-            <EditIcon /> Edit
-          </ButtonComponent>
-        </>
-      );
-    }
-
-    return buttons;
-  };
-
   render = () => {
     const { isCurrentUser } = this.props;
     return (
@@ -79,9 +47,16 @@ class CommentComponent extends React.Component {
           />
         </div>
         <div className="comment-button-cell button-grid">
-          {this.renderButtons(isCurrentUser)}
+          <ButtonGridComponent isCurrentUser={false} />
         </div>
-        <div className="comment-content-cell">Content</div>
+        <div className="comment-content-cell">
+          <p className="comment-content">
+            <span className="text-mention">@amyrobson</span> Impressive! Though
+            it seems the drag feature could be improved. But overall it looks
+            incredible. You've nailed the design and the responsiveness at
+            various breakpoints works really well.
+          </p>
+        </div>
       </div>
     );
   };

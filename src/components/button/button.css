@@ -4,6 +4,7 @@
   padding: var(--size-200) var(--size-500);
   border: none;
   border-radius: var(--size-200);
+  justify-content: center;
   align-items: center;
 }
 
@@ -24,6 +25,7 @@
 .btn-counter {
   width: 100%;
   background-color: transparent;
+  min-height: 2.5em;
 }
 
 .btn-counter path {

@@ -19,6 +19,7 @@
 }
 
 .info-username {
+  color: var(--clr-neutral-900);
   font-weight: var(--fw-medium);
 }
 
@@ -26,8 +27,11 @@
   color: var(--clr-neutral-400);
 }
 
-.button-grid {
-  display: flex;
-  justify-content: end;
-  align-items: center;
+.comment-content {
+  color: var(--clr-neutral-400);
+}
+
+.text-mention {
+  color: var(--clr-primary-400);
+  font-weight: var(--fw-medium);
 }
