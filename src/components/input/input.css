@@ -1,5 +1,6 @@
 .input-grid {
   display: grid;
+  grid-template-columns: 4em auto 6em;
   grid-auto-flow: column;
   gap: var(--size-400);
   padding: var(--size-400);
