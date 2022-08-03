@@ -1,4 +1,5 @@
 import React from "react";
+import CommentsComponent from "../comments/comments.component";
 import CommentInputComponent from "../comment-input/comment-input.component";
 import "./main.css";
 
@@ -6,7 +7,7 @@ type AppProps = {
   data: any;
 };
 
-class CommentsComponent extends React.Component {
+class MainComponent extends React.Component {
   constructor(props: any) {
     super(props);
 
@@ -28,13 +29,11 @@ class CommentsComponent extends React.Component {
 
     return (
       <main className="comments-grid | container">
-        <CommentInputComponent
-          currentUser={currentUser}
-          commentsHandler={this.commentsHandler}
-        />
+        <CommentsComponent comments={comments} />
+        <CommentInputComponent commentsHandler={this.commentsHandler} />
       </main>
     );
   };
 }
 
-export default CommentsComponent;
+export default MainComponent;
