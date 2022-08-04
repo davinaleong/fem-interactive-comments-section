@@ -7,6 +7,7 @@ import ReplyIcon from "../../icons/reply.icon";
 import Avatar from "../avatar/avatar";
 import Button from "../button/button";
 import Counter from "../counter/counter";
+import Modal from "../modal/modal";
 
 type AppProps = {
   data: any;
@@ -19,7 +20,7 @@ export default class MainComponent extends React.Component {
     const { data } = this.props;
     const { comments } = data;
     this.state = {
-      showDeleteModal: false,
+      showModal: false,
       comments: comments,
     };
   }
@@ -64,48 +65,18 @@ export default class MainComponent extends React.Component {
     console.log(event.target.value);
   };
 
-  renderModal = (showDeleteModal: boolean) => {
-    if (!showDeleteModal) {
-      return;
-    }
-
-    return (
-      <div className="modal">
-        <div className="modal-grid">
-          <div className="modal-header">Delete comment</div>
-          <div className="modal-content">
-            <p>
-              Are you sure you want to delete this comment? This will remove the
-              comment and can't be undone.
-            </p>
-          </div>
-          <button
-            className="btn btn-neutral"
-            type="button"
-            onClick={this.modalCancelClickHandler}
-          >
-            No, Cancel
-          </button>
-          <button
-            className="btn btn-danger"
-            type="button"
-            onClick={this.modalYesClickHandler}
-          >
-            Yes, Delete
-          </button>
-        </div>
-      </div>
-    );
-  };
-
   render = () => {
     const { data } = this.props;
     const { currentUser } = data;
-    const { showDeleteModal, comments, commentId, comment } = this.state;
+    const { showModal, comments, commentId, comment } = this.state;
 
     return (
       <main className="main-grid | container">
-        {this.renderModal(showDeleteModal)}
+        <Modal
+          showModal={this.state.showModal}
+          modalCancelClickHandler={this.modalCancelClickHandler}
+          modalYesClickHandler={this.modalYesClickHandler}
+        />
         <div className="comments-flex">
           <div className="comment-flex">
             <div className="content-grid">
