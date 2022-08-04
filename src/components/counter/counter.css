@@ -1,0 +1,41 @@
+.counter-flex {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-200);
+  background-color: var(--clr-grey-200);
+  border-radius: var(--size-200);
+  overflow: hidden;
+  width: auto;
+  height: 2.5em;
+}
+
+.counter-flex > * {
+  width: auto;
+  height: 100%;
+}
+
+@media (min-width: 48em) {
+  .counter-flex {
+    display: inline-flex;
+    flex-direction: column;
+    width: 2.5em;
+    height: auto;
+  }
+
+  .counter-flex > * {
+    width: 100%;
+    height: auto;
+  }
+
+  .counter-flex .btn-icon {
+    min-height: 2em;
+  }
+}
+
+.counter-label {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--clr-primary-400);
+  font-weight: var(--fw-medium);
+}

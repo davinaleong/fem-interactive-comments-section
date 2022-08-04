@@ -9,6 +9,7 @@ import MinusIcon from "../../icons/minus.icon";
 import PlusIcon from "../../icons/plus.icon";
 import ReplyIcon from "../../icons/reply.icon";
 import Button from "../button/button";
+import Counter from "../counter/counter";
 import "./main.css";
 
 type AppProps = {
@@ -137,23 +138,11 @@ export default class MainComponent extends React.Component {
           <div className="comment-flex">
             <div className="content-grid">
               <div className="counter-cell">
-                <div className="counter-flex">
-                  <button
-                    className="btn btn-icon"
-                    type="button"
-                    onClick={this.increaseScoreClickHandler}
-                  >
-                    <PlusIcon />
-                  </button>
-                  <div className="counter-label">12</div>
-                  <button
-                    className="btn btn-icon"
-                    type="button"
-                    onClick={this.decreaseScoreClickHandler}
-                  >
-                    <MinusIcon />
-                  </button>
-                </div>
+                <Counter
+                  score="3"
+                  increaseScoreClickHandler={this.increaseScoreClickHandler}
+                  decreaseScoreClickHandler={this.decreaseScoreClickHandler}
+                />
               </div>
               <div className="info-cell">
                 <div className="info-flex">
@@ -164,13 +153,12 @@ export default class MainComponent extends React.Component {
                 </div>
               </div>
               <div className="buttons-cell buttons-flex">
-                <button
-                  className="btn btn-link btn-link-primary"
-                  type="button"
-                  onClick={this.toggleReplyClickHandler}
+                <Button
+                  type="btn-link btn-link-primary"
+                  clickHandler={this.toggleReplyClickHandler}
                 >
                   <ReplyIcon /> Reply
-                </button>
+                </Button>
               </div>
               <div className="content-cell">
                 <p>
@@ -211,23 +199,11 @@ export default class MainComponent extends React.Component {
               <div className="comment-flex">
                 <div className="content-grid">
                   <div className="counter-cell">
-                    <div className="counter-flex">
-                      <button
-                        className="btn btn-icon"
-                        type="button"
-                        onClick={this.increaseScoreClickHandler}
-                      >
-                        <PlusIcon />
-                      </button>
-                      <div className="counter-label">12</div>
-                      <button
-                        className="btn btn-icon"
-                        type="button"
-                        onClick={this.decreaseScoreClickHandler}
-                      >
-                        <MinusIcon />
-                      </button>
-                    </div>
+                    <Counter
+                      score="3"
+                      increaseScoreClickHandler={this.increaseScoreClickHandler}
+                      decreaseScoreClickHandler={this.decreaseScoreClickHandler}
+                    />
                   </div>
                   <div className="info-cell">
                     <div className="info-flex">
@@ -238,13 +214,12 @@ export default class MainComponent extends React.Component {
                     </div>
                   </div>
                   <div className="buttons-cell buttons-flex">
-                    <button
-                      className="btn btn-link btn-link-primary"
-                      type="button"
-                      onClick={this.toggleReplyClickHandler}
+                    <Button
+                      type="btn-link btn-link-primary"
+                      clickHandler={this.toggleReplyClickHandler}
                     >
                       <ReplyIcon /> Reply
-                    </button>
+                    </Button>
                   </div>
                   <div className="content-cell">
                     <p>
@@ -286,23 +261,11 @@ export default class MainComponent extends React.Component {
               <div className="comment-flex">
                 <div className="content-grid">
                   <div className="counter-cell">
-                    <div className="counter-flex">
-                      <button
-                        className="btn btn-icon"
-                        type="button"
-                        onClick={this.increaseScoreClickHandler}
-                      >
-                        <PlusIcon />
-                      </button>
-                      <div className="counter-label">12</div>
-                      <button
-                        className="btn btn-icon"
-                        type="button"
-                        onClick={this.decreaseScoreClickHandler}
-                      >
-                        <MinusIcon />
-                      </button>
-                    </div>
+                    <Counter
+                      score="3"
+                      increaseScoreClickHandler={this.increaseScoreClickHandler}
+                      decreaseScoreClickHandler={this.decreaseScoreClickHandler}
+                    />
                   </div>
                   <div className="info-cell">
                     <div className="info-flex">
@@ -313,20 +276,18 @@ export default class MainComponent extends React.Component {
                     </div>
                   </div>
                   <div className="buttons-cell buttons-flex">
-                    <button
-                      className="btn btn-link btn-link-danger"
-                      type="button"
-                      onClick={this.toggleDeleteClickHandler}
+                    <Button
+                      type="btn-link btn-link-danger"
+                      clickHandler={this.toggleDeleteClickHandler}
                     >
                       <DeleteIcon /> Delete
-                    </button>
-                    <button
-                      className="btn btn-link btn-link-primary"
-                      type="button"
-                      onClick={this.toggleEditClickHandler}
+                    </Button>
+                    <Button
+                      type="btn-link btn-link-primary"
+                      clickHandler={this.toggleEditClickHandler}
                     >
                       <EditIcon /> Edit
-                    </button>
+                    </Button>
                   </div>
                   <div className="content-cell">
                     <p>
@@ -349,22 +310,12 @@ export default class MainComponent extends React.Component {
               </div>
               <div className="comment-flex">
                 <div className="content-grid" data-edit>
-                  <div className="counter-flex">
-                    <button
-                      className="btn btn-icon"
-                      type="button"
-                      onClick={this.increaseScoreClickHandler}
-                    >
-                      <PlusIcon />
-                    </button>
-                    <div className="counter-label">12</div>
-                    <button
-                      className="btn btn-icon"
-                      type="button"
-                      onClick={this.decreaseScoreClickHandler}
-                    >
-                      <MinusIcon />
-                    </button>
+                  <div className="counter-cell">
+                    <Counter
+                      score="3"
+                      increaseScoreClickHandler={this.increaseScoreClickHandler}
+                      decreaseScoreClickHandler={this.decreaseScoreClickHandler}
+                    />
                   </div>
                   <div className="info-cell">
                     <div className="info-flex">
@@ -375,20 +326,18 @@ export default class MainComponent extends React.Component {
                     </div>
                   </div>
                   <div className="buttons-cell buttons-flex">
-                    <button
-                      className="btn btn-link btn-link-danger"
-                      type="button"
-                      onClick={this.toggleDeleteClickHandler}
+                    <Button
+                      type="btn-link btn-link-danger"
+                      clickHandler={this.toggleDeleteClickHandler}
                     >
                       <DeleteIcon /> Delete
-                    </button>
-                    <button
-                      className="btn btn-link btn-link-primary"
-                      type="button"
-                      onClick={this.toggleEditClickHandler}
+                    </Button>
+                    <Button
+                      type="btn-link btn-link-primary"
+                      clickHandler={this.toggleEditClickHandler}
                     >
                       <EditIcon /> Edit
-                    </button>
+                    </Button>
                   </div>
                   <div className="content-cell">
                     <textarea
