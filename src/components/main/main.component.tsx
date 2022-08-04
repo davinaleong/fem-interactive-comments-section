@@ -14,7 +14,7 @@ type AppProps = {
   data: any;
 };
 
-class MainComponent extends React.Component {
+export default class MainComponent extends React.Component {
   constructor(props: any) {
     super(props);
 
@@ -44,6 +44,14 @@ class MainComponent extends React.Component {
 
   updateContentClickHandler = (event: any) => {
     console.log(`Update Content`);
+  };
+
+  increaseScoreClickHandler = (event: any) => {
+    console.log(`Increase Score`);
+  };
+
+  decreaseScoreClickHandler = (event: any) => {
+    console.log(`Decrease Score`);
   };
 
   modalCancelClickHandler = (event: any) => {
@@ -129,11 +137,19 @@ class MainComponent extends React.Component {
             <div className="content-grid">
               <div className="counter-cell">
                 <div className="counter-flex">
-                  <button className="btn btn-icon" type="button">
+                  <button
+                    className="btn btn-icon"
+                    type="button"
+                    onClick={this.increaseScoreClickHandler}
+                  >
                     <PlusIcon />
                   </button>
                   <div className="counter-label">12</div>
-                  <button className="btn btn-icon" type="button">
+                  <button
+                    className="btn btn-icon"
+                    type="button"
+                    onClick={this.decreaseScoreClickHandler}
+                  >
                     <MinusIcon />
                   </button>
                 </div>
@@ -196,11 +212,19 @@ class MainComponent extends React.Component {
                 <div className="content-grid">
                   <div className="counter-cell">
                     <div className="counter-flex">
-                      <button className="btn btn-icon" type="button">
+                      <button
+                        className="btn btn-icon"
+                        type="button"
+                        onClick={this.increaseScoreClickHandler}
+                      >
                         <PlusIcon />
                       </button>
                       <div className="counter-label">12</div>
-                      <button className="btn btn-icon" type="button">
+                      <button
+                        className="btn btn-icon"
+                        type="button"
+                        onClick={this.decreaseScoreClickHandler}
+                      >
                         <MinusIcon />
                       </button>
                     </div>
@@ -264,11 +288,19 @@ class MainComponent extends React.Component {
                 <div className="content-grid">
                   <div className="counter-cell">
                     <div className="counter-flex">
-                      <button className="btn btn-icon" type="button">
+                      <button
+                        className="btn btn-icon"
+                        type="button"
+                        onClick={this.increaseScoreClickHandler}
+                      >
                         <PlusIcon />
                       </button>
                       <div className="counter-label">12</div>
-                      <button className="btn btn-icon" type="button">
+                      <button
+                        className="btn btn-icon"
+                        type="button"
+                        onClick={this.decreaseScoreClickHandler}
+                      >
                         <MinusIcon />
                       </button>
                     </div>
@@ -318,16 +350,22 @@ class MainComponent extends React.Component {
               </div>
               <div className="comment-flex">
                 <div className="content-grid" data-edit>
-                  <div className="counter-cell">
-                    <div className="counter-flex">
-                      <button className="btn btn-icon" type="button">
-                        <PlusIcon />
-                      </button>
-                      <div className="counter-label">12</div>
-                      <button className="btn btn-icon" type="button">
-                        <MinusIcon />
-                      </button>
-                    </div>
+                  <div className="counter-flex">
+                    <button
+                      className="btn btn-icon"
+                      type="button"
+                      onClick={this.increaseScoreClickHandler}
+                    >
+                      <PlusIcon />
+                    </button>
+                    <div className="counter-label">12</div>
+                    <button
+                      className="btn btn-icon"
+                      type="button"
+                      onClick={this.decreaseScoreClickHandler}
+                    >
+                      <MinusIcon />
+                    </button>
                   </div>
                   <div className="info-cell">
                     <div className="info-flex">
@@ -395,5 +433,3 @@ class MainComponent extends React.Component {
     );
   };
 }
-
-export default MainComponent;

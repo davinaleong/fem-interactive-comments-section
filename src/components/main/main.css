@@ -320,7 +320,7 @@
 
 @media (min-width: 48em) {
   .replies-flex {
-    --spacer: var(--size-400);
+    --spacer: var(--size-600);
   }
 }
 
