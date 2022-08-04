@@ -1,0 +1,4 @@
+.comments-grid {
+  display: grid;
+  gap: var(--size-400);
+}
