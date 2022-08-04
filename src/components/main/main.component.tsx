@@ -26,16 +26,36 @@ class MainComponent extends React.Component {
     };
   }
 
-  createContentButtonHandler = (event: any) => {
+  createContentClickHandler = (event: any) => {
     console.log(`Create Content`);
   };
 
-  modalCancelButtonHandler = (event: any) => {
+  toggleReplyClickHandler = (event: any) => {
+    console.log(`Toggle Reply Input`);
+  };
+
+  toggleEditClickHandler = (event: any) => {
+    console.log(`Toggle Edit Content`);
+  };
+
+  toggleDeleteClickHandler = (event: any) => {
+    console.log(`Toggle Delete Modal`);
+  };
+
+  updateContentClickHandler = (event: any) => {
+    console.log(`Update Content`);
+  };
+
+  modalCancelClickHandler = (event: any) => {
     console.log(`Cancel Delete Comment`);
   };
 
-  modalYesButtonHandler = (event: any) => {
+  modalYesClickHandler = (event: any) => {
     console.log(`Confirm Delete Comment`);
+  };
+
+  contentInputHandler = (event: any) => {
+    console.log(event.target.value);
   };
 
   renderAvatar = (username: string) => {
@@ -80,14 +100,14 @@ class MainComponent extends React.Component {
           <button
             className="btn btn-neutral"
             type="button"
-            onClick={this.modalCancelButtonHandler}
+            onClick={this.modalCancelClickHandler}
           >
             No, Cancel
           </button>
           <button
             className="btn btn-danger"
             type="button"
-            onClick={this.modalYesButtonHandler}
+            onClick={this.modalYesClickHandler}
           >
             Yes, Delete
           </button>
@@ -127,7 +147,11 @@ class MainComponent extends React.Component {
                 </div>
               </div>
               <div className="buttons-cell buttons-flex">
-                <button className="btn btn-link btn-link-primary" type="button">
+                <button
+                  className="btn btn-link btn-link-primary"
+                  type="button"
+                  onClick={this.toggleReplyClickHandler}
+                >
                   <ReplyIcon /> Reply
                 </button>
               </div>
@@ -140,19 +164,28 @@ class MainComponent extends React.Component {
                 </p>
               </div>
               <div className="update-cell">
-                <button className="btn btn-primary" type="button">
+                <button
+                  className="btn btn-primary"
+                  type="button"
+                  onClick={this.updateContentClickHandler}
+                >
                   Update
                 </button>
               </div>
             </div>
             <div className="input-grid">
               {this.renderAvatar(currentUser.username)}
-              <textarea className="form-field" name="text" rows="4"></textarea>
+              <textarea
+                className="form-field"
+                name="text"
+                rows="4"
+                onInput={this.contentInputHandler}
+              ></textarea>
               <div className="input-cell">
                 <button
                   className="btn btn-primary"
                   type="button"
-                  onClick={this.createContentButtonHandler}
+                  onClick={this.createContentClickHandler}
                 >
                   Reply
                 </button>
@@ -184,6 +217,7 @@ class MainComponent extends React.Component {
                     <button
                       className="btn btn-link btn-link-primary"
                       type="button"
+                      onClick={this.toggleReplyClickHandler}
                     >
                       <ReplyIcon /> Reply
                     </button>
@@ -197,21 +231,29 @@ class MainComponent extends React.Component {
                     </p>
                   </div>
                   <div className="update-cell">
-                    <button className="btn btn-primary" type="button">
+                    <button
+                      className="btn btn-primary"
+                      type="button"
+                      onClick={this.updateContentClickHandler}
+                    >
                       Update
                     </button>
                   </div>
                 </div>
                 <div className="input-grid">
                   {this.renderAvatar(currentUser.username)}
-                  <textarea className="form-field" name="text" rows="4">
-                    @juliusomo
-                  </textarea>
+                  <textarea
+                    className="form-field"
+                    name="text"
+                    rows="4"
+                    value="@juliusomo"
+                    onInput={this.contentInputHandler}
+                  ></textarea>
                   <div className="input-cell">
                     <button
                       className="btn btn-primary"
                       type="button"
-                      onClick={this.createContentButtonHandler}
+                      onClick={this.createContentClickHandler}
                     >
                       Reply
                     </button>
@@ -243,12 +285,14 @@ class MainComponent extends React.Component {
                     <button
                       className="btn btn-link btn-link-danger"
                       type="button"
+                      onClick={this.toggleDeleteClickHandler}
                     >
                       <DeleteIcon /> Delete
                     </button>
                     <button
                       className="btn btn-link btn-link-primary"
                       type="button"
+                      onClick={this.toggleEditClickHandler}
                     >
                       <EditIcon /> Edit
                     </button>
@@ -262,7 +306,11 @@ class MainComponent extends React.Component {
                     </p>
                   </div>
                   <div className="update-cell">
-                    <button className="btn btn-primary" type="button">
+                    <button
+                      className="btn btn-primary"
+                      type="button"
+                      onClick={this.updateContentClickHandler}
+                    >
                       Update
                     </button>
                   </div>
@@ -293,12 +341,14 @@ class MainComponent extends React.Component {
                     <button
                       className="btn btn-link btn-link-danger"
                       type="button"
+                      onClick={this.toggleDeleteClickHandler}
                     >
                       <DeleteIcon /> Delete
                     </button>
                     <button
                       className="btn btn-link btn-link-primary"
                       type="button"
+                      onClick={this.toggleEditClickHandler}
                     >
                       <EditIcon /> Edit
                     </button>
@@ -311,10 +361,15 @@ class MainComponent extends React.Component {
                       could be improved. But overall it looks incredible. You've
                       nailed the design and the responsiveness at various
                       breakpoints works really well."
+                      onInput={this.contentInputHandler}
                     ></textarea>
                   </div>
                   <div className="update-cell">
-                    <button className="btn btn-primary" type="button">
+                    <button
+                      className="btn btn-primary"
+                      type="button"
+                      onClick={this.updateContentClickHandler}
+                    >
                       Update
                     </button>
                   </div>
@@ -330,7 +385,7 @@ class MainComponent extends React.Component {
             <button
               className="btn btn-primary"
               type="button"
-              onClick={this.createContentButtonHandler}
+              onClick={this.createContentClickHandler}
             >
               Send
             </button>
