@@ -4,6 +4,9 @@ import JuliusomoAvatar from "../../avatars/juliusomo.avatar";
 import MaxblagunAvatar from "../../avatars/maxblagun.avatar";
 import RamsesmironAvatar from "../../avatars/ramsesmiron.avatar";
 import DeleteIcon from "../../icons/delete.icon";
+import EditIcon from "../../icons/edit.icon";
+import MinusIcon from "../../icons/minus.icon";
+import PlusIcon from "../../icons/plus.icon";
 import ReplyIcon from "../../icons/reply.icon";
 import "./main.css";
 
@@ -56,7 +59,17 @@ class MainComponent extends React.Component {
         <div className="comments-flex">
           <div className="comment-flex">
             <div className="content-grid">
-              <div className="counter-cell">Counter</div>
+              <div className="counter-cell">
+                <div className="counter-flex">
+                  <button className="btn btn-icon" type="button">
+                    <PlusIcon />
+                  </button>
+                  <div className="counter-label">12</div>
+                  <button className="btn btn-icon" type="button">
+                    <MinusIcon />
+                  </button>
+                </div>
+              </div>
               <div className="info-cell">
                 <div className="info-flex">
                   {this.renderAvatar(`amyrobson`)}
@@ -66,9 +79,6 @@ class MainComponent extends React.Component {
                 </div>
               </div>
               <div className="buttons-cell buttons-flex">
-                <button className="btn btn-link btn-link-danger" type="button">
-                  <DeleteIcon /> Delete
-                </button>
                 <button className="btn btn-link btn-link-primary" type="button">
                   <ReplyIcon /> Reply
                 </button>
@@ -100,8 +110,22 @@ class MainComponent extends React.Component {
           <div className="comment-flex">
             <div className="content-grid" data-edit>
               <div className="counter-cell">Counter</div>
-              <div className="info-cell">Info</div>
-              <div className="buttons-cell">Buttons</div>
+              <div className="info-cell">
+                <div className="info-flex">
+                  {this.renderAvatar(`amyrobson`)}
+                  <div className="info-username">amyrobson</div>
+                  <div className="badge badge-primary">You</div>
+                  <div className="info-created-at">1 month ago</div>
+                </div>
+              </div>
+              <div className="buttons-cell buttons-flex">
+                <button className="btn btn-link btn-link-danger" type="button">
+                  <DeleteIcon /> Delete
+                </button>
+                <button className="btn btn-link btn-link-primary" type="button">
+                  <EditIcon /> Edit
+                </button>
+              </div>
               <div className="content-cell">Content</div>
               <div className="update-cell">
                 <button className="btn btn-primary" type="button">

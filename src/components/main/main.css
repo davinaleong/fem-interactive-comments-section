@@ -1,6 +1,6 @@
-* {
+/* * {
   outline: thin solid red;
-}
+} */
 
 .main-grid {
   display: grid;
@@ -50,6 +50,18 @@
 .btn-link-danger:where(:hover, :focus, :focus-visible) {
   color: var(--clr-red-300);
   fill: var(--clr-red-300);
+}
+
+.btn-icon {
+  color: var(--clr-primary-300);
+  fill: var(--clr-primary-300);
+  background-color: transparent;
+  padding: var(--size-200);
+}
+
+.btn-icon:where(:hover, :focus, :focus-visible) {
+  color: var(--clr-primary-400);
+  fill: var(--clr-primary-400);
 }
 
 .form-field {
@@ -137,7 +149,9 @@
 }
 
 .content-grid[data-edit] .update-cell {
-  display: block;
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }
 
 .info-flex {
@@ -173,4 +187,26 @@
   gap: var(--size-200);
   justify-content: end;
   align-items: center;
+}
+
+.counter-flex {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-200);
+  background-color: var(--clr-grey-200);
+  border-radius: var(--size-200);
+  overflow: hidden;
+  height: 2.5em;
+}
+
+.counter-flex > * {
+  height: 100%;
+}
+
+.counter-label {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--clr-primary-400);
+  font-weight: var(--fw-medium);
 }
