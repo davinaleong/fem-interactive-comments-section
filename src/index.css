@@ -2,6 +2,7 @@
     - Root
     - Content
       - Content - General Styling
+      - Content - Form Fields
     - Utility
       - Utility - Colours
       - Utility - Background Colours
@@ -137,6 +138,19 @@ main {
   height: var(--size);
 }
 
+/** Content - Form Fields **/
+.form-field {
+  display: block;
+  width: 100%;
+  outline: thin solid var(--clr-grey-400);
+  border: none;
+  border-radius: var(--size-200);
+  padding: var(--size-400);
+}
+
+.form-field:where(:focus, :focus-visible) {
+  outline: thin solid var(--clr-primary-400);
+}
 /** Content - End **/
 
 /** Utility **/

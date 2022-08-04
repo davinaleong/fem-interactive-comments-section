@@ -8,6 +8,7 @@ import Avatar from "../avatar/avatar";
 import Button from "../button/button";
 import Counter from "../counter/counter";
 import Modal from "../modal/modal";
+import Input from "../input/input";
 
 type AppProps = {
   data: any;
@@ -307,18 +308,11 @@ export default class MainComponent extends React.Component {
             </div>
           </div>
         </div>
-        <div className="input-grid">
-          <Avatar username={currentUser.username} />
-          <textarea className="form-field" name="text" rows="4"></textarea>
-          <div className="input-cell">
-            <Button
-              type="btn-primary"
-              clickHandler={this.createContentClickHandler}
-            >
-              Send
-            </Button>
-          </div>
-        </div>
+        <Input
+          isSend={true}
+          avatar={currentUser.username}
+          createContentClickHandler={this.createContentClickHandler}
+        />
       </main>
     );
   };

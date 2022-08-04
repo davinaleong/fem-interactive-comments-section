@@ -1,0 +1,9 @@
+.input-grid {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 3em auto 5em;
+  gap: var(--size-400);
+  background-color: var(--clr-grey-100);
+  border-radius: var(--size-200);
+  padding: var(--size-400);
+}
