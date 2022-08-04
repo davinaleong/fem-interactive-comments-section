@@ -109,7 +109,17 @@ class MainComponent extends React.Component {
           </div>
           <div className="comment-flex">
             <div className="content-grid" data-edit>
-              <div className="counter-cell">Counter</div>
+              <div className="counter-cell">
+                <div className="counter-flex">
+                  <button className="btn btn-icon" type="button">
+                    <PlusIcon />
+                  </button>
+                  <div className="counter-label">12</div>
+                  <button className="btn btn-icon" type="button">
+                    <MinusIcon />
+                  </button>
+                </div>
+              </div>
               <div className="info-cell">
                 <div className="info-flex">
                   {this.renderAvatar(`amyrobson`)}
@@ -126,7 +136,14 @@ class MainComponent extends React.Component {
                   <EditIcon /> Edit
                 </button>
               </div>
-              <div className="content-cell">Content</div>
+              <div className="content-cell">
+                <p>
+                  Impressive! Though it seems the drag feature could be
+                  improved. But overall it looks incredible. You've nailed the
+                  design and the responsiveness at various breakpoints works
+                  really well.
+                </p>
+              </div>
               <div className="update-cell">
                 <button className="btn btn-primary" type="button">
                   Update

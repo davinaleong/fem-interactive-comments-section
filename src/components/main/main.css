@@ -102,6 +102,7 @@
 .content-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, auto);
   grid-template-areas:
     "info-cell info-cell"
     "content-cell content-cell"
@@ -141,11 +142,30 @@
 }
 
 .content-grid[data-edit] {
+  grid-template-rows: repeat(4, auto);
   grid-template-areas:
     "info-cell info-cell"
     "content-cell content-cell"
     "counter-cell buttons-cell"
     "update-cell update-cell";
+}
+
+@media (min-width: 48em) {
+  .content-grid {
+    grid-template-columns: 3em 1fr 1fr;
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+      "counter-cell info-cell buttons-cell"
+      "counter-cell content-cell content-cell";
+  }
+
+  .content-grid[data-edit] {
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+      "counter-cell info-cell buttons-cell"
+      "counter-cell content-cell content-cell"
+      "counter-cell update-cell update-cell";
+  }
 }
 
 .content-grid[data-edit] .update-cell {
@@ -196,11 +216,27 @@
   background-color: var(--clr-grey-200);
   border-radius: var(--size-200);
   overflow: hidden;
+  width: auto;
   height: 2.5em;
 }
 
 .counter-flex > * {
+  width: auto;
   height: 100%;
+}
+
+@media (min-width: 48em) {
+  .counter-flex {
+    display: inline-flex;
+    flex-direction: column;
+    width: 2.5em;
+    height: auto;
+  }
+
+  .counter-flex > * {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .counter-label {
