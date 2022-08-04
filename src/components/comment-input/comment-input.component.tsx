@@ -6,6 +6,7 @@ import ButtonComponent from "../button/button.component";
 import FormFieldComponent from "../form-field/form-field.component";
 
 type AppProps = {
+  isReplyInput: boolean;
   currentUser: any;
   commentsHandler: any;
 };
@@ -30,7 +31,7 @@ class CommentInputComponent extends React.Component {
   };
 
   render = () => {
-    const { currentUser } = this.props;
+    const { isReplyInput, currentUser } = this.props;
     const { comment } = this.state;
     return (
       <div className="input-grid">
@@ -43,7 +44,7 @@ class CommentInputComponent extends React.Component {
         />
         <div className="button-column button-grid">
           <ButtonComponent type="btn-primary" clickHandler={this.sendHandler}>
-            Send
+            {isReplyInput ? `Reply` : `Send`}
           </ButtonComponent>
         </div>
       </div>

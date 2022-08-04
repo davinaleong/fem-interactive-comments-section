@@ -27,7 +27,8 @@
 
   --clr-grey-100: hsl(0, 0%, 100%);
   --clr-grey-200: hsl(228, 33%, 97%);
-  --clr-grey-300: hsl(223, 19%, 93%);
+  --clr-grey-300: hsl(228, 12%, 92%);
+  --clr-grey-400: hsl(223, 19%, 93%);
 
   --ff-primary: "Rubik", Arial, sans-serif;
   --ff-body: var(--ff-primary);
@@ -95,9 +96,10 @@ main {
 
 .container {
   --max-width: 51em;
-  --horizontal-padding: var(--container-padding);
+  --padding: var(--container-padding);
 
-  width: min(var(--max-width), 100% - (var(--horizontal-padding) * 2));
+  width: min(var(--max-width), 100% - (var(--padding) * 2));
+  padding-block: var(--padding);
   margin-inline: auto;
 }
 
@@ -174,6 +176,9 @@ main {
 .text-grey-300 {
   color: var(--clr-grey-300);
 }
+.text-grey-400 {
+  color: var(--clr-grey-400);
+}
 
 /** Utility - Background Colours **/
 .bg-primary-300 {
@@ -202,6 +207,9 @@ main {
 }
 .bg-grey-300 {
   background-color: var(--clr-grey-300);
+}
+.bg-grey-400 {
+  background-color: var(--clr-grey-400);
 }
 
 /** Utility - Font Families **/

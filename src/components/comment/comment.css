@@ -1,27 +1,7 @@
-.comment-grid {
-  display: grid;
-  grid-template-columns: 3em 1fr 1fr;
-  grid-template-areas:
-    "comment-counter-cell comment-info-cell comment-button-cell"
-    "comment-counter-cell comment-content-cell comment-content-cell";
-  gap: var(--size-400);
-  padding: var(--size-400);
-  background-color: var(--clr-grey-100);
-  border-radius: var(--size-200);
-}
+.replies-grid {
+  --reply-spacer: var(--size-600);
 
-.comment-counter-cell {
-  grid-area: comment-counter-cell;
-}
-
-.comment-info-cell {
-  grid-area: comment-info-cell;
-}
-
-.comment-button-cell {
-  grid-area: comment-button-cell;
-}
-
-.comment-content-cell {
-  grid-area: comment-content-cell;
+  margin-left: var(--reply-spacer);
+  padding-left: var(--reply-spacer);
+  border-left: thin solid var(--clr-grey-300);
 }
