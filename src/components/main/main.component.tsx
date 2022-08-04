@@ -3,6 +3,8 @@ import AmyrobsonAvatar from "../../avatars/amyrobson.avatar";
 import JuliusomoAvatar from "../../avatars/juliusomo.avatar";
 import MaxblagunAvatar from "../../avatars/maxblagun.avatar";
 import RamsesmironAvatar from "../../avatars/ramsesmiron.avatar";
+import DeleteIcon from "../../icons/delete.icon";
+import ReplyIcon from "../../icons/reply.icon";
 import "./main.css";
 
 type AppProps = {
@@ -55,9 +57,30 @@ class MainComponent extends React.Component {
           <div className="comment-flex">
             <div className="content-grid">
               <div className="counter-cell">Counter</div>
-              <div className="info-cell">Info</div>
-              <div className="buttons-cell">Buttons</div>
-              <div className="content-cell">Content</div>
+              <div className="info-cell">
+                <div className="info-flex">
+                  {this.renderAvatar(`amyrobson`)}
+                  <div className="info-username">amyrobson</div>
+                  <div className="badge badge-primary">You</div>
+                  <div className="info-created-at">1 month ago</div>
+                </div>
+              </div>
+              <div className="buttons-cell buttons-flex">
+                <button className="btn btn-link btn-link-danger" type="button">
+                  <DeleteIcon /> Delete
+                </button>
+                <button className="btn btn-link btn-link-primary" type="button">
+                  <ReplyIcon /> Reply
+                </button>
+              </div>
+              <div className="content-cell">
+                <p>
+                  Impressive! Though it seems the drag feature could be
+                  improved. But overall it looks incredible. You've nailed the
+                  design and the responsiveness at various breakpoints works
+                  really well.
+                </p>
+              </div>
               <div className="update-cell">
                 <button className="btn btn-primary" type="button">
                   Update

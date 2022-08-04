@@ -11,6 +11,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  gap: var(--size-200);
   padding: var(--size-200) var(--size-400);
   border-radius: var(--size-200);
   border: none;
@@ -24,6 +25,31 @@
 
 .btn-primary:where(:hover, :focus, :focus-visible) {
   background-color: var(--clr-primary-300);
+}
+
+.btn-link {
+  padding: var(--size-100) var(--size-200);
+  background-color: transparent;
+}
+
+.btn-link-primary {
+  color: var(--clr-primary-400);
+  fill: var(--clr-primary-400);
+}
+
+.btn-link-primary:where(:hover, :focus, :focus-visible) {
+  color: var(--clr-primary-300);
+  fill: var(--clr-primary-300);
+}
+
+.btn-link-danger {
+  color: var(--clr-red-400);
+  fill: var(--clr-red-400);
+}
+
+.btn-link-danger:where(:hover, :focus, :focus-visible) {
+  color: var(--clr-red-300);
+  fill: var(--clr-red-300);
 }
 
 .form-field {
@@ -64,7 +90,6 @@
 .content-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 3em auto 3em;
   grid-template-areas:
     "info-cell info-cell"
     "content-cell content-cell"
@@ -73,6 +98,10 @@
   background-color: var(--clr-grey-100);
   border-radius: var(--size-200);
   padding: var(--size-400);
+}
+
+.content-grid .image-avatar {
+  width: 3em;
 }
 
 .content-grid > .counter-cell {
@@ -100,7 +129,6 @@
 }
 
 .content-grid[data-edit] {
-  grid-template-rows: 3em auto 3em 3em;
   grid-template-areas:
     "info-cell info-cell"
     "content-cell content-cell"
@@ -110,4 +138,39 @@
 
 .content-grid[data-edit] .update-cell {
   display: block;
+}
+
+.info-flex {
+  display: flex;
+  gap: var(--size-400);
+  align-items: center;
+}
+
+.info-username {
+  font-weight: var(--fw-medium);
+}
+
+.info-created-at {
+  color: var(--clr-neutral-400);
+}
+
+.badge {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: var(--size-100);
+  text-transform: lowercase;
+  font-size: var(--fs-300);
+}
+
+.badge-primary {
+  color: var(--clr-grey-100);
+  background-color: var(--clr-primary-400);
+}
+
+.buttons-flex {
+  display: flex;
+  gap: var(--size-200);
+  justify-content: end;
+  align-items: center;
 }
