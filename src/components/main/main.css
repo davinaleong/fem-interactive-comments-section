@@ -2,3 +2,44 @@
   display: grid;
   gap: var(--size-400);
 }
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--size-200) var(--size-400);
+  border-radius: var(--size-200);
+  border: none;
+}
+
+.btn-primary {
+  color: var(--clr-grey-100);
+  background-color: var(--clr-primary-400);
+}
+
+.btn-primary:where(:hover, :focus, :focus-visible) {
+  background-color: var(--clr-primary-300);
+}
+
+.form-field {
+  display: block;
+  width: 100%;
+  outline: thin solid var(--clr-grey-400);
+  border: none;
+  border-radius: var(--size-200);
+  padding: var(--size-400);
+}
+
+.form-field:where(:focus, :focus-visible) {
+  outline: thin solid var(--clr-primary-400);
+}
+
+.input-grid {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 3em auto 5em;
+  gap: var(--size-400);
+  background-color: var(--clr-grey-100);
+  border-radius: var(--size-200);
+  padding: var(--size-400);
+}

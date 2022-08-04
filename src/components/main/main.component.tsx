@@ -1,6 +1,8 @@
 import React from "react";
-import CommentsComponent from "../comments/comments.component";
-import CommentInputComponent from "../comment-input/comment-input.component";
+import AmyrobsonAvatar from "../../avatars/amyrobson.avatar";
+import JuliusomoAvatar from "../../avatars/juliusomo.avatar";
+import MaxblagunAvatar from "../../avatars/maxblagun.avatar";
+import RamsesmironAvatar from "../../avatars/ramsesmiron.avatar";
 import "./main.css";
 
 type AppProps = {
@@ -18,8 +20,28 @@ class MainComponent extends React.Component {
     };
   }
 
-  commentsHandler = (comments: any) => {
-    this.setState({ comments: comments });
+  renderAvatar = (username: string) => {
+    let avatar = null;
+
+    switch (username) {
+      case `juliusomo`:
+        avatar = <JuliusomoAvatar />;
+        break;
+
+      case `amyrobson`:
+        avatar = <AmyrobsonAvatar />;
+        break;
+
+      case `maxblagun`:
+        avatar = <MaxblagunAvatar />;
+        break;
+
+      case `ramsesmiron`:
+        avatar = <RamsesmironAvatar />;
+        break;
+    }
+
+    return avatar;
   };
 
   render = () => {
@@ -28,12 +50,17 @@ class MainComponent extends React.Component {
     const { comments, commentId, comment } = this.state;
 
     return (
-      <main className="comments-grid | container">
-        <CommentsComponent currentUser={currentUser} comments={comments} />
-        <CommentInputComponent
-          currentUser={currentUser}
-          commentsHandler={this.commentsHandler}
-        />
+      <main className="main-grid | container">
+        <div className="comment-flex">Comments</div>
+        <div className="input-grid">
+          {this.renderAvatar(currentUser.username)}
+          <textarea className="form-field" name="text" rows="4"></textarea>
+          <div className="input-cell">
+            <button className="btn btn-primary" type="button">
+              Send
+            </button>
+          </div>
+        </div>
       </main>
     );
   };

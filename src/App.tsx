@@ -7,7 +7,7 @@ import SwatchesComponent from "./components/swatches/swatches.component";
 
 function App() {
   return (
-    <div className="body | bg-grey-200">
+    <div className="body | text-neutral-900 bg-grey-200">
       <MainComponent data={data} />
       <SwatchesComponent />
       <AttributionComponent />

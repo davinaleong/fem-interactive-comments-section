@@ -1,7 +1,0 @@
-.replies-grid {
-  --reply-spacer: var(--size-600);
-
-  margin-left: var(--reply-spacer);
-  padding-left: var(--reply-spacer);
-  border-left: thin solid var(--clr-grey-300);
-}
