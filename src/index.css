@@ -22,6 +22,8 @@
   --clr-red-300: hsl(357, 100%, 86%);
   --clr-red-400: hsl(358, 79%, 66%);
 
+  --clr-neutral-200: hsl(211, 10%, 85%);
+  --clr-neutral-300: hsl(211, 10%, 65%);
   --clr-neutral-400: hsl(211, 10%, 45%);
   --clr-neutral-900: hsl(212, 24%, 26%);
 
@@ -29,6 +31,7 @@
   --clr-grey-200: hsl(228, 33%, 97%);
   --clr-grey-300: hsl(228, 12%, 92%);
   --clr-grey-400: hsl(223, 19%, 93%);
+  --clr-grey-900: hsl(0, 0%, 0%);
 
   --ff-primary: "Rubik", Arial, sans-serif;
   --ff-body: var(--ff-primary);
@@ -64,6 +67,7 @@
 
   --container-padding: var(--size-600) var(--size-400);
   --column-spacing: var(--size-600);
+  --modal-spacing: var(--size-400);
 
   --input-height: 3.125em;
 }

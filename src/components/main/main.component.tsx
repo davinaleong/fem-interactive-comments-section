@@ -56,6 +56,23 @@ class MainComponent extends React.Component {
 
     return (
       <main className="main-grid | container">
+        <div className="modal">
+          <div className="modal-grid">
+            <div className="modal-header">Delete comment</div>
+            <div className="modal-content">
+              <p>
+                Are you sure you want to delete this comment? This will remove
+                the comment and can't be undone.
+              </p>
+            </div>
+            <button className="btn btn-neutral" type="button">
+              No, Cancel
+            </button>
+            <button className="btn btn-danger" type="button">
+              Yes, Delete
+            </button>
+          </div>
+        </div>
         <div className="comments-flex">
           <div className="comment-flex">
             <div className="content-grid">
