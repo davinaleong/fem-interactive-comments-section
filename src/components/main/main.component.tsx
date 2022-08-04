@@ -99,13 +99,168 @@ class MainComponent extends React.Component {
             </div>
             <div className="input-grid">
               {this.renderAvatar(currentUser.username)}
-              <textarea className="form-field" name="text" rows="4">
-                @amyrobson
-              </textarea>
+              <textarea className="form-field" name="text" rows="4"></textarea>
               <div className="input-cell">
                 <button className="btn btn-primary" type="button">
                   Reply
                 </button>
+              </div>
+            </div>
+            <div className="replies-flex">
+              <div className="comment-flex">
+                <div className="content-grid">
+                  <div className="counter-cell">
+                    <div className="counter-flex">
+                      <button className="btn btn-icon" type="button">
+                        <PlusIcon />
+                      </button>
+                      <div className="counter-label">12</div>
+                      <button className="btn btn-icon" type="button">
+                        <MinusIcon />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="info-cell">
+                    <div className="info-flex">
+                      {this.renderAvatar(`juliusomo`)}
+                      <div className="info-username">juliusomo</div>
+                      <div className="badge badge-primary">You</div>
+                      <div className="info-created-at">1 month ago</div>
+                    </div>
+                  </div>
+                  <div className="buttons-cell buttons-flex">
+                    <button
+                      className="btn btn-link btn-link-primary"
+                      type="button"
+                    >
+                      <ReplyIcon /> Reply
+                    </button>
+                  </div>
+                  <div className="content-cell">
+                    <p>
+                      <mark>@amyrobson</mark> Impressive! Though it seems the
+                      drag feature could be improved. But overall it looks
+                      incredible. You've nailed the design and the
+                      responsiveness at various breakpoints works really well.
+                    </p>
+                  </div>
+                  <div className="update-cell">
+                    <button className="btn btn-primary" type="button">
+                      Update
+                    </button>
+                  </div>
+                </div>
+                <div className="input-grid">
+                  {this.renderAvatar(currentUser.username)}
+                  <textarea className="form-field" name="text" rows="4">
+                    @juliusomo
+                  </textarea>
+                  <div className="input-cell">
+                    <button className="btn btn-primary" type="button">
+                      Reply
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="comment-flex">
+                <div className="content-grid">
+                  <div className="counter-cell">
+                    <div className="counter-flex">
+                      <button className="btn btn-icon" type="button">
+                        <PlusIcon />
+                      </button>
+                      <div className="counter-label">12</div>
+                      <button className="btn btn-icon" type="button">
+                        <MinusIcon />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="info-cell">
+                    <div className="info-flex">
+                      {this.renderAvatar(`juliusomo`)}
+                      <div className="info-username">juliusomo</div>
+                      <div className="badge badge-primary">You</div>
+                      <div className="info-created-at">1 month ago</div>
+                    </div>
+                  </div>
+                  <div className="buttons-cell buttons-flex">
+                    <button
+                      className="btn btn-link btn-link-danger"
+                      type="button"
+                    >
+                      <DeleteIcon /> Delete
+                    </button>
+                    <button
+                      className="btn btn-link btn-link-primary"
+                      type="button"
+                    >
+                      <EditIcon /> Edit
+                    </button>
+                  </div>
+                  <div className="content-cell">
+                    <p>
+                      <mark>@amyrobson</mark> Impressive! Though it seems the
+                      drag feature could be improved. But overall it looks
+                      incredible. You've nailed the design and the
+                      responsiveness at various breakpoints works really well.
+                    </p>
+                  </div>
+                  <div className="update-cell">
+                    <button className="btn btn-primary" type="button">
+                      Update
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="comment-flex">
+                <div className="content-grid" data-edit>
+                  <div className="counter-cell">
+                    <div className="counter-flex">
+                      <button className="btn btn-icon" type="button">
+                        <PlusIcon />
+                      </button>
+                      <div className="counter-label">12</div>
+                      <button className="btn btn-icon" type="button">
+                        <MinusIcon />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="info-cell">
+                    <div className="info-flex">
+                      {this.renderAvatar(`juliusomo`)}
+                      <div className="info-username">juliusomo</div>
+                      <div className="badge badge-primary">You</div>
+                      <div className="info-created-at">1 month ago</div>
+                    </div>
+                  </div>
+                  <div className="buttons-cell buttons-flex">
+                    <button
+                      className="btn btn-link btn-link-danger"
+                      type="button"
+                    >
+                      <DeleteIcon /> Delete
+                    </button>
+                    <button
+                      className="btn btn-link btn-link-primary"
+                      type="button"
+                    >
+                      <EditIcon /> Edit
+                    </button>
+                  </div>
+                  <div className="content-cell">
+                    <textarea rows="4" className="form-field">
+                      @amyrobson Impressive! Though it seems the drag feature
+                      could be improved. But overall it looks incredible. You've
+                      nailed the design and the responsiveness at various
+                      breakpoints works really well.
+                    </textarea>
+                  </div>
+                  <div className="update-cell">
+                    <button className="btn btn-primary" type="button">
+                      Update
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
