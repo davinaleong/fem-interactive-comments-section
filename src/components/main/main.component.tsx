@@ -21,9 +21,22 @@ class MainComponent extends React.Component {
     const { data } = this.props;
     const { comments } = data;
     this.state = {
+      showDeleteModal: false,
       comments: comments,
     };
   }
+
+  createContentButtonHandler = (event: any) => {
+    console.log(`Create Content`);
+  };
+
+  modalCancelButtonHandler = (event: any) => {
+    console.log(`Cancel Delete Comment`);
+  };
+
+  modalYesButtonHandler = (event: any) => {
+    console.log(`Confirm Delete Comment`);
+  };
 
   renderAvatar = (username: string) => {
     let avatar = null;
@@ -49,30 +62,48 @@ class MainComponent extends React.Component {
     return avatar;
   };
 
+  renderModal = (showDeleteModal: boolean) => {
+    if (!showDeleteModal) {
+      return;
+    }
+
+    return (
+      <div className="modal">
+        <div className="modal-grid">
+          <div className="modal-header">Delete comment</div>
+          <div className="modal-content">
+            <p>
+              Are you sure you want to delete this comment? This will remove the
+              comment and can't be undone.
+            </p>
+          </div>
+          <button
+            className="btn btn-neutral"
+            type="button"
+            onClick={this.modalCancelButtonHandler}
+          >
+            No, Cancel
+          </button>
+          <button
+            className="btn btn-danger"
+            type="button"
+            onClick={this.modalYesButtonHandler}
+          >
+            Yes, Delete
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   render = () => {
     const { data } = this.props;
     const { currentUser } = data;
-    const { comments, commentId, comment } = this.state;
+    const { showDeleteModal, comments, commentId, comment } = this.state;
 
     return (
       <main className="main-grid | container">
-        <div className="modal">
-          <div className="modal-grid">
-            <div className="modal-header">Delete comment</div>
-            <div className="modal-content">
-              <p>
-                Are you sure you want to delete this comment? This will remove
-                the comment and can't be undone.
-              </p>
-            </div>
-            <button className="btn btn-neutral" type="button">
-              No, Cancel
-            </button>
-            <button className="btn btn-danger" type="button">
-              Yes, Delete
-            </button>
-          </div>
-        </div>
+        {this.renderModal(showDeleteModal)}
         <div className="comments-flex">
           <div className="comment-flex">
             <div className="content-grid">
@@ -118,7 +149,11 @@ class MainComponent extends React.Component {
               {this.renderAvatar(currentUser.username)}
               <textarea className="form-field" name="text" rows="4"></textarea>
               <div className="input-cell">
-                <button className="btn btn-primary" type="button">
+                <button
+                  className="btn btn-primary"
+                  type="button"
+                  onClick={this.createContentButtonHandler}
+                >
                   Reply
                 </button>
               </div>
@@ -173,7 +208,11 @@ class MainComponent extends React.Component {
                     @juliusomo
                   </textarea>
                   <div className="input-cell">
-                    <button className="btn btn-primary" type="button">
+                    <button
+                      className="btn btn-primary"
+                      type="button"
+                      onClick={this.createContentButtonHandler}
+                    >
                       Reply
                     </button>
                   </div>
@@ -265,12 +304,14 @@ class MainComponent extends React.Component {
                     </button>
                   </div>
                   <div className="content-cell">
-                    <textarea rows="4" className="form-field">
-                      @amyrobson Impressive! Though it seems the drag feature
+                    <textarea
+                      rows="4"
+                      className="form-field"
+                      value="@amyrobson Impressive! Though it seems the drag feature
                       could be improved. But overall it looks incredible. You've
                       nailed the design and the responsiveness at various
-                      breakpoints works really well.
-                    </textarea>
+                      breakpoints works really well."
+                    ></textarea>
                   </div>
                   <div className="update-cell">
                     <button className="btn btn-primary" type="button">
@@ -286,7 +327,11 @@ class MainComponent extends React.Component {
           {this.renderAvatar(currentUser.username)}
           <textarea className="form-field" name="text" rows="4"></textarea>
           <div className="input-cell">
-            <button className="btn btn-primary" type="button">
+            <button
+              className="btn btn-primary"
+              type="button"
+              onClick={this.createContentButtonHandler}
+            >
               Send
             </button>
           </div>

@@ -19,6 +19,7 @@
   justify-items: center;
   align-items: center;
   padding: var(--size-400);
+  z-index: 1;
 }
 
 .modal-grid {
