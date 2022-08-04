@@ -8,6 +8,7 @@ import EditIcon from "../../icons/edit.icon";
 import MinusIcon from "../../icons/minus.icon";
 import PlusIcon from "../../icons/plus.icon";
 import ReplyIcon from "../../icons/reply.icon";
+import Button from "../button/button";
 import "./main.css";
 
 type AppProps = {
@@ -198,13 +199,12 @@ export default class MainComponent extends React.Component {
                 onInput={this.contentInputHandler}
               ></textarea>
               <div className="input-cell">
-                <button
-                  className="btn btn-primary"
-                  type="button"
-                  onClick={this.createContentClickHandler}
+                <Button
+                  type="btn-primary"
+                  clickHandler={this.createContentClickHandler}
                 >
                   Reply
-                </button>
+                </Button>
               </div>
             </div>
             <div className="replies-flex">
@@ -274,13 +274,12 @@ export default class MainComponent extends React.Component {
                     onInput={this.contentInputHandler}
                   ></textarea>
                   <div className="input-cell">
-                    <button
-                      className="btn btn-primary"
-                      type="button"
-                      onClick={this.createContentClickHandler}
+                    <Button
+                      type="btn-primary"
+                      clickHandler={this.createContentClickHandler}
                     >
                       Reply
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -420,13 +419,12 @@ export default class MainComponent extends React.Component {
           {this.renderAvatar(currentUser.username)}
           <textarea className="form-field" name="text" rows="4"></textarea>
           <div className="input-cell">
-            <button
-              className="btn btn-primary"
-              type="button"
-              onClick={this.createContentClickHandler}
+            <Button
+              type="btn-primary"
+              clickHandler={this.createContentClickHandler}
             >
               Send
-            </button>
+            </Button>
           </div>
         </div>
       </main>
