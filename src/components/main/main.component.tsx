@@ -51,7 +51,43 @@ class MainComponent extends React.Component {
 
     return (
       <main className="main-grid | container">
-        <div className="comment-flex">Comments</div>
+        <div className="comments-flex">
+          <div className="comment-flex">
+            <div className="content-grid">
+              <div className="counter-cell">Counter</div>
+              <div className="info-cell">Info</div>
+              <div className="buttons-cell">Buttons</div>
+              <div className="content-cell">Content</div>
+              <div className="update-cell">
+                <button className="btn btn-primary" type="button">
+                  Update
+                </button>
+              </div>
+            </div>
+            <div className="input-grid">
+              {this.renderAvatar(currentUser.username)}
+              <textarea className="form-field" name="text" rows="4"></textarea>
+              <div className="input-cell">
+                <button className="btn btn-primary" type="button">
+                  Reply
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="comment-flex">
+            <div className="content-grid" data-edit>
+              <div className="counter-cell">Counter</div>
+              <div className="info-cell">Info</div>
+              <div className="buttons-cell">Buttons</div>
+              <div className="content-cell">Content</div>
+              <div className="update-cell">
+                <button className="btn btn-primary" type="button">
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="input-grid">
           {this.renderAvatar(currentUser.username)}
           <textarea className="form-field" name="text" rows="4"></textarea>

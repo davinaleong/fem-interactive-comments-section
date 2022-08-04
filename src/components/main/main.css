@@ -1,4 +1,8 @@
-.comments-grid {
+* {
+  outline: thin solid red;
+}
+
+.main-grid {
   display: grid;
   gap: var(--size-400);
 }
@@ -15,6 +19,7 @@
 .btn-primary {
   color: var(--clr-grey-100);
   background-color: var(--clr-primary-400);
+  text-transform: uppercase;
 }
 
 .btn-primary:where(:hover, :focus, :focus-visible) {
@@ -42,4 +47,67 @@
   background-color: var(--clr-grey-100);
   border-radius: var(--size-200);
   padding: var(--size-400);
+}
+
+.comments-flex {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-400);
+}
+
+.comment-flex {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-400);
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 3em auto 3em;
+  grid-template-areas:
+    "info-cell info-cell"
+    "content-cell content-cell"
+    "counter-cell buttons-cell";
+  gap: var(--size-400);
+  background-color: var(--clr-grey-100);
+  border-radius: var(--size-200);
+  padding: var(--size-400);
+}
+
+.content-grid > .counter-cell {
+  grid-area: counter-cell;
+}
+
+.content-grid > .info-cell {
+  grid-area: info-cell;
+}
+
+.content-grid > .buttons-cell {
+  grid-area: buttons-cell;
+}
+
+.content-grid > .content-cell {
+  grid-area: content-cell;
+}
+
+.content-grid > .update-cell {
+  grid-area: update-cell;
+}
+
+.content-grid .update-cell {
+  display: none;
+}
+
+.content-grid[data-edit] {
+  grid-template-rows: 3em auto 3em 3em;
+  grid-template-areas:
+    "info-cell info-cell"
+    "content-cell content-cell"
+    "counter-cell buttons-cell"
+    "update-cell update-cell";
+}
+
+.content-grid[data-edit] .update-cell {
+  display: block;
 }
