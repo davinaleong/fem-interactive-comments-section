@@ -1,16 +1,12 @@
 import React from "react";
-import AmyrobsonAvatar from "../../avatars/amyrobson.avatar";
-import JuliusomoAvatar from "../../avatars/juliusomo.avatar";
-import MaxblagunAvatar from "../../avatars/maxblagun.avatar";
-import RamsesmironAvatar from "../../avatars/ramsesmiron.avatar";
+import "./main.css";
+
 import DeleteIcon from "../../icons/delete.icon";
 import EditIcon from "../../icons/edit.icon";
-import MinusIcon from "../../icons/minus.icon";
-import PlusIcon from "../../icons/plus.icon";
 import ReplyIcon from "../../icons/reply.icon";
+import Avatar from "../avatar/avatar";
 import Button from "../button/button";
 import Counter from "../counter/counter";
-import "./main.css";
 
 type AppProps = {
   data: any;
@@ -68,30 +64,6 @@ export default class MainComponent extends React.Component {
     console.log(event.target.value);
   };
 
-  renderAvatar = (username: string) => {
-    let avatar = null;
-
-    switch (username) {
-      case `juliusomo`:
-        avatar = <JuliusomoAvatar />;
-        break;
-
-      case `amyrobson`:
-        avatar = <AmyrobsonAvatar />;
-        break;
-
-      case `maxblagun`:
-        avatar = <MaxblagunAvatar />;
-        break;
-
-      case `ramsesmiron`:
-        avatar = <RamsesmironAvatar />;
-        break;
-    }
-
-    return avatar;
-  };
-
   renderModal = (showDeleteModal: boolean) => {
     if (!showDeleteModal) {
       return;
@@ -146,7 +118,7 @@ export default class MainComponent extends React.Component {
               </div>
               <div className="info-cell">
                 <div className="info-flex">
-                  {this.renderAvatar(`amyrobson`)}
+                  <Avatar username="amyrobson" />
                   <div className="info-username">amyrobson</div>
                   <div className="badge badge-primary">You</div>
                   <div className="info-created-at">1 month ago</div>
@@ -179,7 +151,7 @@ export default class MainComponent extends React.Component {
               </div>
             </div>
             <div className="input-grid">
-              {this.renderAvatar(currentUser.username)}
+              <Avatar username={currentUser.username} />
               <textarea
                 className="form-field"
                 name="text"
@@ -207,7 +179,7 @@ export default class MainComponent extends React.Component {
                   </div>
                   <div className="info-cell">
                     <div className="info-flex">
-                      {this.renderAvatar(`juliusomo`)}
+                      <Avatar username="juliusomo" />
                       <div className="info-username">juliusomo</div>
                       <div className="badge badge-primary">You</div>
                       <div className="info-created-at">1 month ago</div>
@@ -240,7 +212,7 @@ export default class MainComponent extends React.Component {
                   </div>
                 </div>
                 <div className="input-grid">
-                  {this.renderAvatar(currentUser.username)}
+                  <Avatar username={currentUser.username} />
                   <textarea
                     className="form-field"
                     name="text"
@@ -269,7 +241,7 @@ export default class MainComponent extends React.Component {
                   </div>
                   <div className="info-cell">
                     <div className="info-flex">
-                      {this.renderAvatar(`juliusomo`)}
+                      <Avatar username="juliusomo" />
                       <div className="info-username">juliusomo</div>
                       <div className="badge badge-primary">You</div>
                       <div className="info-created-at">1 month ago</div>
@@ -319,7 +291,7 @@ export default class MainComponent extends React.Component {
                   </div>
                   <div className="info-cell">
                     <div className="info-flex">
-                      {this.renderAvatar(`juliusomo`)}
+                      <Avatar username="juliusomo" />
                       <div className="info-username">juliusomo</div>
                       <div className="badge badge-primary">You</div>
                       <div className="info-created-at">1 month ago</div>
@@ -365,7 +337,7 @@ export default class MainComponent extends React.Component {
           </div>
         </div>
         <div className="input-grid">
-          {this.renderAvatar(currentUser.username)}
+          <Avatar username={currentUser.username} />
           <textarea className="form-field" name="text" rows="4"></textarea>
           <div className="input-cell">
             <Button
