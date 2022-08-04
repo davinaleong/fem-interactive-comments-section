@@ -3,6 +3,7 @@ import CommentComponent from "../comment/comment.component";
 import "./comments.css";
 
 type AppProps = {
+  currentUser: any;
   comments: any;
 };
 
@@ -18,9 +19,10 @@ class CommentsComponet extends React.Component {
   }
 
   render = () => {
+    const { currentUser } = this.props;
     return (
       <div className="comments-flex">
-        <CommentComponent isCurrentUser={true} />
+        <CommentComponent currentUser={currentUser} isCurrentUser={true} />
       </div>
     );
   };

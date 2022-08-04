@@ -1,5 +1,5 @@
 import React from "react";
-import "./comment-input.css";
+import "./reply-input.css";
 
 import AvatarComponent from "../avatar/avatar.component";
 import ButtonComponent from "../button/button.component";
@@ -10,7 +10,7 @@ type AppProps = {
   commentsHandler: any;
 };
 
-class CommentInputComponent extends React.Component {
+class ReplyInputComponent extends React.Component {
   constructor(props: any) {
     super(props);
 
@@ -43,7 +43,7 @@ class CommentInputComponent extends React.Component {
         />
         <div className="button-column button-grid">
           <ButtonComponent type="btn-primary" clickHandler={this.sendHandler}>
-            Send
+            Reply
           </ButtonComponent>
         </div>
       </div>
@@ -51,4 +51,4 @@ class CommentInputComponent extends React.Component {
   };
 }
 
-export default CommentInputComponent;
+export default ReplyInputComponent;
