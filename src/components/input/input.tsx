@@ -7,41 +7,47 @@ import removeUsername from "../../helpers/removeUsename";
 import FormField from "../form-field/form-field";
 
 type AppProps = {
-  isSend: boolean;
-  avatar: string;
-  username: string;
+  isSend: Boolean;
+  currentUser: Object;
+  objectId: Number;
+  replyingTo: String;
+  content: String;
+  contentInputHandler: Function;
   createContentClickHandler: Function;
 };
 
 export default class Input extends React.Component {
   constructor(props: any) {
     super(props);
-
-    const { username } = this.props;
-
-    this.state = {
-      content: username ? `@${username} ` : ``,
-    };
   }
 
   contentInputHandler = (event: any) => {
     const { isSend, username } = this.props;
-    const value = removeUsername(event.target.value);
-    this.setState({
-      content: isSend ? event.target.value : `@${username} ${value}`,
-    });
+    const value: string = removeUsername(event.target.value);
+    const content: string = isSend
+      ? event.target.value
+      : `@${username} ${value}`;
+
+    this.props.contentInputHandler(content);
+  };
+
+  createContentClickHandler = (event: any) => {
+    const { objectId, replyingTo } = this.props;
+    this.props.createContentClickHandler(objectId, replyingTo);
   };
 
   render = () => {
-    const { isSend, avatar, createContentClickHandler } = this.props;
-    const { content } = this.state;
+    const { isSend, currentUser, content } = this.props;
 
     return (
       <div className="input-grid">
-        <Avatar username={avatar} />
+        <Avatar username={currentUser.username} />
         <FormField value={content} inputHandler={this.contentInputHandler} />
         <div className="input-cell">
-          <Button type="btn-primary" clickHandler={createContentClickHandler}>
+          <Button
+            type="btn-primary"
+            clickHandler={this.createContentClickHandler}
+          >
             {isSend ? `Send` : `Reply`}
           </Button>
         </div>

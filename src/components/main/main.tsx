@@ -4,7 +4,8 @@ import "./main.css";
 import Modal from "../modal/modal";
 import Input from "../input/input";
 import Comment from "../comment/comment";
-import getNextValue from "../../helpers/getNextValue";
+import createComment from "../../helpers/createComment";
+import createReply from "../../helpers/createReply";
 import getArrayItem from "../../helpers/getArrayItem";
 
 type AppProps = {
@@ -21,11 +22,50 @@ export default class MainComponent extends React.Component {
       showModal: false,
       nextId: 5,
       comments: comments,
+      content: ``,
     };
   }
 
-  createContentClickHandler = (event: any) => {
-    console.log(`Create Content`);
+  createContentClickHandler = (
+    commentId: Number = 0,
+    replyingTo: string = ``
+  ) => {
+    const { data } = this.props;
+    const { currentUser } = data;
+    const defaultCreatedAt = `just now`;
+    const defaultScore = 0;
+
+    let { nextId, comments, content } = this.state;
+    let object: object = createComment(
+      nextId,
+      content,
+      defaultCreatedAt,
+      defaultScore,
+      currentUser,
+      []
+    );
+
+    if (commentId == 0) {
+      comments.push(object);
+    } else {
+      object = createReply(
+        nextId,
+        content,
+        defaultCreatedAt,
+        defaultScore,
+        replyingTo,
+        currentUser
+      );
+      const comment: object = getArrayItem(comments, `id`, commentId);
+      comment.replies.push(object);
+    }
+
+    nextId++;
+    content = ``;
+    this.setState({
+      nextId,
+      comments,
+    });
   };
 
   toggleDeleteClickHandler = (event: any) => {
@@ -44,8 +84,8 @@ export default class MainComponent extends React.Component {
     console.log(`Decrease Score`);
   };
 
-  contentInputHandler = (event: any) => {
-    console.log(event.target.value);
+  contentInputHandler = (content: string) => {
+    this.setState({ content });
   };
 
   modalCancelClickHandler = (event: any) => {
@@ -59,7 +99,7 @@ export default class MainComponent extends React.Component {
   render = () => {
     const { data } = this.props;
     const { currentUser } = data;
-    const { showModal, comments } = this.state;
+    const { showModal, comments, content } = this.state;
 
     const commentElements: any[] = [];
     comments.forEach((comment, index) => {
@@ -87,7 +127,10 @@ export default class MainComponent extends React.Component {
         <div className="comments-flex">{commentElements}</div>
         <Input
           isSend={true}
-          avatar={currentUser.username}
+          currentUser={currentUser}
+          objectId={0}
+          content={content}
+          contentInputHandler={this.contentInputHandler}
           createContentClickHandler={this.createContentClickHandler}
         />
       </main>

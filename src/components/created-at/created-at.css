@@ -1,3 +1,4 @@
 .info-created-at {
   color: var(--clr-neutral-400);
+  text-transform: lowercase;
 }
