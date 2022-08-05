@@ -11,6 +11,7 @@ import Modal from "../modal/modal";
 import Input from "../input/input";
 import Badge from "../badge/badge";
 import Username from "../username/username";
+import CreatedAt from "../created-at/created-at";
 
 type AppProps = {
   data: any;
@@ -94,7 +95,7 @@ export default class MainComponent extends React.Component {
                 <div className="info-flex">
                   <Avatar username="amyrobson" />
                   <Username>amyrobson</Username>
-                  <div className="info-created-at">1 month ago</div>
+                  <CreatedAt>1 month ago</CreatedAt>
                 </div>
               </div>
               <div className="buttons-cell buttons-flex">
@@ -114,13 +115,12 @@ export default class MainComponent extends React.Component {
                 </p>
               </div>
               <div className="update-cell">
-                <button
-                  className="btn btn-primary"
-                  type="button"
-                  onClick={this.updateContentClickHandler}
+                <Button
+                  type="btn-primary"
+                  clickHandler={this.updateContentClickHandler}
                 >
                   Update
-                </button>
+                </Button>
               </div>
             </div>
             <div className="input-grid">
@@ -155,7 +155,7 @@ export default class MainComponent extends React.Component {
                       <Avatar username="juliusomo" />
                       <Username>juliusomo</Username>
                       <Badge type="badge-primary">You</Badge>
-                      <div className="info-created-at">1 month ago</div>
+                      <CreatedAt>1 month ago</CreatedAt>
                     </div>
                   </div>
                   <div className="buttons-cell buttons-flex">
@@ -175,13 +175,12 @@ export default class MainComponent extends React.Component {
                     </p>
                   </div>
                   <div className="update-cell">
-                    <button
-                      className="btn btn-primary"
-                      type="button"
-                      onClick={this.updateContentClickHandler}
+                    <Button
+                      type="btn-primary"
+                      clickHandler={this.updateContentClickHandler}
                     >
                       Update
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <Input
@@ -205,7 +204,7 @@ export default class MainComponent extends React.Component {
                       <Avatar username="juliusomo" />
                       <Username>juliusomo</Username>
                       <Badge type="badge-primary">You</Badge>
-                      <div className="info-created-at">1 month ago</div>
+                      <CreatedAt>1 month ago</CreatedAt>
                     </div>
                   </div>
                   <div className="buttons-cell buttons-flex">
@@ -231,13 +230,12 @@ export default class MainComponent extends React.Component {
                     </p>
                   </div>
                   <div className="update-cell">
-                    <button
-                      className="btn btn-primary"
-                      type="button"
-                      onClick={this.updateContentClickHandler}
+                    <Button
+                      type="btn-primary"
+                      clickHandler={this.updateContentClickHandler}
                     >
                       Update
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -255,7 +253,7 @@ export default class MainComponent extends React.Component {
                       <Avatar username="juliusomo" />
                       <Username>juliusomo</Username>
                       <Badge type="badge-primary">You</Badge>
-                      <div className="info-created-at">1 month ago</div>
+                      <CreatedAt>1 month ago</CreatedAt>
                     </div>
                   </div>
                   <div className="buttons-cell buttons-flex">
@@ -284,13 +282,12 @@ export default class MainComponent extends React.Component {
                     ></textarea>
                   </div>
                   <div className="update-cell">
-                    <button
-                      className="btn btn-primary"
-                      type="button"
-                      onClick={this.updateContentClickHandler}
+                    <Button
+                      type="btn-primary"
+                      clickHandler={this.updateContentClickHandler}
                     >
                       Update
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
