@@ -95,13 +95,6 @@
   align-items: center;
 }
 
-.buttons-flex {
-  display: flex;
-  gap: var(--size-200);
-  justify-content: end;
-  align-items: center;
-}
-
 .replies-flex {
   --spacer: var(--size-200);
 

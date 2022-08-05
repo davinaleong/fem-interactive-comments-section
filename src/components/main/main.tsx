@@ -4,15 +4,12 @@ import "./main.css";
 import DeleteIcon from "../../icons/delete.icon";
 import EditIcon from "../../icons/edit.icon";
 import ReplyIcon from "../../icons/reply.icon";
-import Avatar from "../avatar/avatar";
 import Button from "../button/button";
 import Counter from "../counter/counter";
 import Modal from "../modal/modal";
 import Input from "../input/input";
-import Badge from "../badge/badge";
-import Username from "../username/username";
-import CreatedAt from "../created-at/created-at";
 import Info from "../info/info";
+import Buttons from "../buttons/buttons";
 
 type AppProps = {
   data: any;
@@ -38,12 +35,12 @@ export default class MainComponent extends React.Component {
     console.log(`Toggle Reply Input`);
   };
 
-  toggleEditClickHandler = (event: any) => {
-    console.log(`Toggle Edit Content`);
-  };
-
   toggleDeleteClickHandler = (event: any) => {
     console.log(`Toggle Delete Modal`);
+  };
+
+  toggleEditClickHandler = (event: any) => {
+    console.log(`Toggle Edit Content`);
   };
 
   updateContentClickHandler = (event: any) => {
@@ -95,13 +92,12 @@ export default class MainComponent extends React.Component {
               <div className="info-cell">
                 <Info username="amyrobson" createdAt="1 month ago" />
               </div>
-              <div className="buttons-cell buttons-flex">
-                <Button
-                  type="btn-link btn-link-primary"
-                  clickHandler={this.toggleReplyClickHandler}
-                >
-                  <ReplyIcon /> Reply
-                </Button>
+              <div className="buttons-cell">
+                <Buttons
+                  toggleReplyClickHandler={this.toggleReplyClickHandler}
+                  toggleDeleteClickHandler={this.toggleDeleteClickHandler}
+                  toggleEditClickHandler={this.toggleEditClickHandler}
+                />
               </div>
               <div className="content-cell">
                 <p>
@@ -142,13 +138,12 @@ export default class MainComponent extends React.Component {
                       createdAt="1 month ago"
                     />
                   </div>
-                  <div className="buttons-cell buttons-flex">
-                    <Button
-                      type="btn-link btn-link-primary"
-                      clickHandler={this.toggleReplyClickHandler}
-                    >
-                      <ReplyIcon /> Reply
-                    </Button>
+                  <div className="buttons-cell">
+                    <Buttons
+                      toggleReplyClickHandler={this.toggleReplyClickHandler}
+                      toggleDeleteClickHandler={this.toggleDeleteClickHandler}
+                      toggleEditClickHandler={this.toggleEditClickHandler}
+                    />
                   </div>
                   <div className="content-cell">
                     <p>
@@ -190,19 +185,13 @@ export default class MainComponent extends React.Component {
                       createdAt="1 month ago"
                     />
                   </div>
-                  <div className="buttons-cell buttons-flex">
-                    <Button
-                      type="btn-link btn-link-danger"
-                      clickHandler={this.toggleDeleteClickHandler}
-                    >
-                      <DeleteIcon /> Delete
-                    </Button>
-                    <Button
-                      type="btn-link btn-link-primary"
-                      clickHandler={this.toggleEditClickHandler}
-                    >
-                      <EditIcon /> Edit
-                    </Button>
+                  <div className="buttons-cell">
+                    <Buttons
+                      isCurrentUser={true}
+                      toggleReplyClickHandler={this.toggleReplyClickHandler}
+                      toggleDeleteClickHandler={this.toggleDeleteClickHandler}
+                      toggleEditClickHandler={this.toggleEditClickHandler}
+                    />
                   </div>
                   <div className="content-cell">
                     <p>
@@ -238,19 +227,13 @@ export default class MainComponent extends React.Component {
                       createdAt="1 month ago"
                     />
                   </div>
-                  <div className="buttons-cell buttons-flex">
-                    <Button
-                      type="btn-link btn-link-danger"
-                      clickHandler={this.toggleDeleteClickHandler}
-                    >
-                      <DeleteIcon /> Delete
-                    </Button>
-                    <Button
-                      type="btn-link btn-link-primary"
-                      clickHandler={this.toggleEditClickHandler}
-                    >
-                      <EditIcon /> Edit
-                    </Button>
+                  <div className="buttons-cell">
+                    <Buttons
+                      isCurrentUser={true}
+                      toggleReplyClickHandler={this.toggleReplyClickHandler}
+                      toggleDeleteClickHandler={this.toggleDeleteClickHandler}
+                      toggleEditClickHandler={this.toggleEditClickHandler}
+                    />
                   </div>
                   <div className="content-cell">
                     <textarea
