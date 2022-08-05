@@ -101,10 +101,6 @@
   align-items: center;
 }
 
-.info-username {
-  font-weight: var(--fw-medium);
-}
-
 .info-created-at {
   color: var(--clr-neutral-400);
 }

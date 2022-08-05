@@ -10,6 +10,7 @@ import Counter from "../counter/counter";
 import Modal from "../modal/modal";
 import Input from "../input/input";
 import Badge from "../badge/badge";
+import Username from "../username/username";
 
 type AppProps = {
   data: any;
@@ -92,7 +93,7 @@ export default class MainComponent extends React.Component {
               <div className="info-cell">
                 <div className="info-flex">
                   <Avatar username="amyrobson" />
-                  <div className="info-username">amyrobson</div>
+                  <Username>amyrobson</Username>
                   <div className="info-created-at">1 month ago</div>
                 </div>
               </div>
@@ -152,7 +153,7 @@ export default class MainComponent extends React.Component {
                   <div className="info-cell">
                     <div className="info-flex">
                       <Avatar username="juliusomo" />
-                      <div className="info-username">juliusomo</div>
+                      <Username>juliusomo</Username>
                       <Badge type="badge-primary">You</Badge>
                       <div className="info-created-at">1 month ago</div>
                     </div>
@@ -202,7 +203,7 @@ export default class MainComponent extends React.Component {
                   <div className="info-cell">
                     <div className="info-flex">
                       <Avatar username="juliusomo" />
-                      <div className="info-username">juliusomo</div>
+                      <Username>juliusomo</Username>
                       <Badge type="badge-primary">You</Badge>
                       <div className="info-created-at">1 month ago</div>
                     </div>
@@ -252,7 +253,7 @@ export default class MainComponent extends React.Component {
                   <div className="info-cell">
                     <div className="info-flex">
                       <Avatar username="juliusomo" />
-                      <div className="info-username">juliusomo</div>
+                      <Username>juliusomo</Username>
                       <Badge type="badge-primary">You</Badge>
                       <div className="info-created-at">1 month ago</div>
                     </div>
