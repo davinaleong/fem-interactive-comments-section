@@ -11,9 +11,9 @@ import removeUsername from "../../helpers/removeUsename";
 
 type AppProps = {
   isEditMode: boolean;
-  isCurrentUser: boolean;
   isReply: boolean;
-  object: Object;
+  currentUser: object;
+  object: object;
   increaseScoreClickHandler: Function;
   decreaseScoreClickHandler: Function;
   toggleReplyClickHandler: Function;
@@ -47,8 +47,8 @@ export default class Content extends React.Component {
   render = () => {
     const {
       isEditMode,
-      isCurrentUser,
       isReply,
+      currentUser,
       object,
       increaseScoreClickHandler,
       decreaseScoreClickHandler,
@@ -60,6 +60,8 @@ export default class Content extends React.Component {
 
     const { replyingTo, score, createdAt, content, user } = object;
     const { username } = user;
+
+    const isCurrentUser = currentUser.username == username;
 
     const { contentEditable } = this.state;
 

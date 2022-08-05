@@ -73,7 +73,7 @@ export default class MainComponent extends React.Component {
   };
 
   toggleDeleteClickHandler = (event: any) => {
-    console.log(`Toggle Delete Modal`);
+    this.setState({ showModal: true });
   };
 
   toggleEditClickHandler = (event: any) => {
@@ -97,7 +97,7 @@ export default class MainComponent extends React.Component {
   };
 
   modalCancelClickHandler = (event: any) => {
-    console.log(`Cancel Delete Comment`);
+    this.setState({ showModal: false });
   };
 
   modalYesClickHandler = (event: any) => {
@@ -114,6 +114,7 @@ export default class MainComponent extends React.Component {
       commentElements.push(
         <Comment
           key={`c${index}`}
+          currentUser={currentUser}
           object={comment}
           increaseScoreClickHandler={this.increaseScoreClickHandler}
           decreaseScoreClickHandler={this.decreaseScoreClickHandler}

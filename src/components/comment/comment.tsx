@@ -4,6 +4,7 @@ import "./comment.css";
 import Card from "./../card/card";
 
 type AppProps = {
+  currentUser: object;
   object: object;
   increaseScoreClickHandler: Function;
   decreaseScoreClickHandler: Function;
@@ -15,6 +16,7 @@ type AppProps = {
 
 const Comment = (props: any) => {
   const {
+    currentUser,
     object,
     increaseScoreClickHandler,
     decreaseScoreClickHandler,
@@ -30,6 +32,7 @@ const Comment = (props: any) => {
     replyElements.push(
       <Card
         key={`r${index}`}
+        currentUser={currentUser}
         object={reply}
         increaseScoreClickHandler={increaseScoreClickHandler}
         decreaseScoreClickHandler={decreaseScoreClickHandler}
@@ -44,6 +47,7 @@ const Comment = (props: any) => {
   return (
     <div className="comment-flex">
       <Card
+        currentUser={currentUser}
         object={object}
         increaseScoreClickHandler={increaseScoreClickHandler}
         decreaseScoreClickHandler={decreaseScoreClickHandler}

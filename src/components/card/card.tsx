@@ -5,6 +5,7 @@ import Content from "../content/content";
 import Input from "../input/input";
 
 type AppProps = {
+  currentUser: object;
   object: object;
   increaseScoreClickHandler: Function;
   decreaseScoreClickHandler: Function;
@@ -13,49 +14,6 @@ type AppProps = {
   updateContentClickHandler: Function;
   createContentClickHandler: Function;
 };
-
-// const Card = (props: any) => {
-//   const {
-//     isInputEnabled,
-//     object,
-//     increaseScoreClickHandler,
-//     decreaseScoreClickHandler,
-//     toggleReplyClickHandler,
-//     toggleDeleteClickHandler,
-//     toggleEditClickHandler,
-//     updateContentClickHandler,
-//     createContentClickHandler,
-//   } = props;
-
-//   let inputElement = null;
-
-//   if (isInputEnabled) {
-//     inputElement = (
-//       <Input
-//         avatar="juliusomo"
-//         username="amyrobson"
-//         createContentClickHandler={createContentClickHandler}
-//       />
-//     );
-//   }
-
-//   return (
-//     <div className="card-flex">
-//       <Content
-//         object={object}
-//         increaseScoreClickHandler={increaseScoreClickHandler}
-//         decreaseScoreClickHandler={decreaseScoreClickHandler}
-//         toggleReplyClickHandler={toggleReplyClickHandler}
-//         toggleDeleteClickHandler={toggleDeleteClickHandler}
-//         toggleEditClickHandler={toggleEditClickHandler}
-//         updateContentClickHandler={updateContentClickHandler}
-//       />
-//       {inputElement}
-//     </div>
-//   );
-// };
-
-// export default Card;
 
 export default class Card extends React.Component {
   constructor(props: any) {
@@ -72,6 +30,7 @@ export default class Card extends React.Component {
 
   render = () => {
     const {
+      currentUser,
       object,
       increaseScoreClickHandler,
       decreaseScoreClickHandler,
@@ -87,7 +46,7 @@ export default class Card extends React.Component {
     if (showInput) {
       inputElement = (
         <Input
-          avatar="juliusomo"
+          avatar={currentUser.username}
           username="amyrobson"
           createContentClickHandler={createContentClickHandler}
         />
@@ -97,6 +56,7 @@ export default class Card extends React.Component {
     return (
       <div className="card-flex">
         <Content
+          currentUser={currentUser}
           object={object}
           increaseScoreClickHandler={increaseScoreClickHandler}
           decreaseScoreClickHandler={decreaseScoreClickHandler}
