@@ -1,5 +1,5 @@
 import React from "react";
-import SwatchComponent from "./../swatch/swatch.component";
+import SwatchComponent from "../swatch/swatch";
 
 const SwatchesComponent = () => {
   return (
