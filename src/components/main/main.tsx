@@ -10,6 +10,7 @@ import Modal from "../modal/modal";
 import Input from "../input/input";
 import Info from "../info/info";
 import Buttons from "../buttons/buttons";
+import Content from "../content/content";
 
 type AppProps = {
   data: any;
@@ -81,41 +82,18 @@ export default class MainComponent extends React.Component {
         />
         <div className="comments-flex">
           <div className="comment-flex">
-            <div className="content-grid">
-              <div className="counter-cell">
-                <Counter
-                  score="3"
-                  increaseScoreClickHandler={this.increaseScoreClickHandler}
-                  decreaseScoreClickHandler={this.decreaseScoreClickHandler}
-                />
-              </div>
-              <div className="info-cell">
-                <Info username="amyrobson" createdAt="1 month ago" />
-              </div>
-              <div className="buttons-cell">
-                <Buttons
-                  toggleReplyClickHandler={this.toggleReplyClickHandler}
-                  toggleDeleteClickHandler={this.toggleDeleteClickHandler}
-                  toggleEditClickHandler={this.toggleEditClickHandler}
-                />
-              </div>
-              <div className="content-cell">
-                <p>
-                  Impressive! Though it seems the drag feature could be
-                  improved. But overall it looks incredible. You've nailed the
-                  design and the responsiveness at various breakpoints works
-                  really well.
-                </p>
-              </div>
-              <div className="update-cell">
-                <Button
-                  type="btn-primary"
-                  clickHandler={this.updateContentClickHandler}
-                >
-                  Update
-                </Button>
-              </div>
-            </div>
+            <Content
+              score="12"
+              username="amyrobson"
+              createdAt="1 month ago"
+              text="Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well."
+              increaseScoreClickHandler={this.increaseScoreClickHandler}
+              decreaseScoreClickHandler={this.decreaseScoreClickHandler}
+              toggleReplyClickHandler={this.toggleReplyClickHandler}
+              toggleDeleteClickHandler={this.toggleDeleteClickHandler}
+              toggleEditClickHandler={this.toggleEditClickHandler}
+              updateContentClickHandler={this.updateContentClickHandler}
+            />
             <Input
               avatar={currentUser.username}
               username="amyrobson"
@@ -123,45 +101,20 @@ export default class MainComponent extends React.Component {
             />
             <div className="replies-flex">
               <div className="comment-flex">
-                <div className="content-grid">
-                  <div className="counter-cell">
-                    <Counter
-                      score="3"
-                      increaseScoreClickHandler={this.increaseScoreClickHandler}
-                      decreaseScoreClickHandler={this.decreaseScoreClickHandler}
-                    />
-                  </div>
-                  <div className="info-cell">
-                    <Info
-                      isCurrentUser={true}
-                      username="juliusomo"
-                      createdAt="1 month ago"
-                    />
-                  </div>
-                  <div className="buttons-cell">
-                    <Buttons
-                      toggleReplyClickHandler={this.toggleReplyClickHandler}
-                      toggleDeleteClickHandler={this.toggleDeleteClickHandler}
-                      toggleEditClickHandler={this.toggleEditClickHandler}
-                    />
-                  </div>
-                  <div className="content-cell">
-                    <p>
-                      <mark>@amyrobson</mark> Impressive! Though it seems the
-                      drag feature could be improved. But overall it looks
-                      incredible. You've nailed the design and the
-                      responsiveness at various breakpoints works really well.
-                    </p>
-                  </div>
-                  <div className="update-cell">
-                    <Button
-                      type="btn-primary"
-                      clickHandler={this.updateContentClickHandler}
-                    >
-                      Update
-                    </Button>
-                  </div>
-                </div>
+                <Content
+                  isCurrentUser={true}
+                  isReply={true}
+                  score="12"
+                  username="juliusomo"
+                  createdAt="1 month ago"
+                  text="Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well."
+                  increaseScoreClickHandler={this.increaseScoreClickHandler}
+                  decreaseScoreClickHandler={this.decreaseScoreClickHandler}
+                  toggleReplyClickHandler={this.toggleReplyClickHandler}
+                  toggleDeleteClickHandler={this.toggleDeleteClickHandler}
+                  toggleEditClickHandler={this.toggleEditClickHandler}
+                  updateContentClickHandler={this.updateContentClickHandler}
+                />
                 <Input
                   isSend={false}
                   avatar={currentUser.username}
@@ -170,91 +123,37 @@ export default class MainComponent extends React.Component {
                 />
               </div>
               <div className="comment-flex">
-                <div className="content-grid">
-                  <div className="counter-cell">
-                    <Counter
-                      score="3"
-                      increaseScoreClickHandler={this.increaseScoreClickHandler}
-                      decreaseScoreClickHandler={this.decreaseScoreClickHandler}
-                    />
-                  </div>
-                  <div className="info-cell">
-                    <Info
-                      isCurrentUser={true}
-                      username="juliusomo"
-                      createdAt="1 month ago"
-                    />
-                  </div>
-                  <div className="buttons-cell">
-                    <Buttons
-                      isCurrentUser={true}
-                      toggleReplyClickHandler={this.toggleReplyClickHandler}
-                      toggleDeleteClickHandler={this.toggleDeleteClickHandler}
-                      toggleEditClickHandler={this.toggleEditClickHandler}
-                    />
-                  </div>
-                  <div className="content-cell">
-                    <p>
-                      <mark>@amyrobson</mark> Impressive! Though it seems the
-                      drag feature could be improved. But overall it looks
-                      incredible. You've nailed the design and the
-                      responsiveness at various breakpoints works really well.
-                    </p>
-                  </div>
-                  <div className="update-cell">
-                    <Button
-                      type="btn-primary"
-                      clickHandler={this.updateContentClickHandler}
-                    >
-                      Update
-                    </Button>
-                  </div>
-                </div>
+                <Content
+                  isCurrentUser={true}
+                  isReply={true}
+                  score="12"
+                  username="juliusomo"
+                  createdAt="1 month ago"
+                  text="Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well."
+                  increaseScoreClickHandler={this.increaseScoreClickHandler}
+                  decreaseScoreClickHandler={this.decreaseScoreClickHandler}
+                  toggleReplyClickHandler={this.toggleReplyClickHandler}
+                  toggleDeleteClickHandler={this.toggleDeleteClickHandler}
+                  toggleEditClickHandler={this.toggleEditClickHandler}
+                  updateContentClickHandler={this.updateContentClickHandler}
+                />
               </div>
               <div className="comment-flex">
-                <div className="content-grid" data-edit>
-                  <div className="counter-cell">
-                    <Counter
-                      score="3"
-                      increaseScoreClickHandler={this.increaseScoreClickHandler}
-                      decreaseScoreClickHandler={this.decreaseScoreClickHandler}
-                    />
-                  </div>
-                  <div className="info-cell">
-                    <Info
-                      isCurrentUser={true}
-                      username="juliusomo"
-                      createdAt="1 month ago"
-                    />
-                  </div>
-                  <div className="buttons-cell">
-                    <Buttons
-                      isCurrentUser={true}
-                      toggleReplyClickHandler={this.toggleReplyClickHandler}
-                      toggleDeleteClickHandler={this.toggleDeleteClickHandler}
-                      toggleEditClickHandler={this.toggleEditClickHandler}
-                    />
-                  </div>
-                  <div className="content-cell">
-                    <textarea
-                      rows="4"
-                      className="form-field"
-                      value="@amyrobson Impressive! Though it seems the drag feature
-                      could be improved. But overall it looks incredible. You've
-                      nailed the design and the responsiveness at various
-                      breakpoints works really well."
-                      onInput={this.contentInputHandler}
-                    ></textarea>
-                  </div>
-                  <div className="update-cell">
-                    <Button
-                      type="btn-primary"
-                      clickHandler={this.updateContentClickHandler}
-                    >
-                      Update
-                    </Button>
-                  </div>
-                </div>
+                <Content
+                  isEditMode={true}
+                  isCurrentUser={true}
+                  isReply={true}
+                  score="12"
+                  username="juliusomo"
+                  createdAt="1 month ago"
+                  text="Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well."
+                  increaseScoreClickHandler={this.increaseScoreClickHandler}
+                  decreaseScoreClickHandler={this.decreaseScoreClickHandler}
+                  toggleReplyClickHandler={this.toggleReplyClickHandler}
+                  toggleDeleteClickHandler={this.toggleDeleteClickHandler}
+                  toggleEditClickHandler={this.toggleEditClickHandler}
+                  updateContentClickHandler={this.updateContentClickHandler}
+                />
               </div>
             </div>
           </div>

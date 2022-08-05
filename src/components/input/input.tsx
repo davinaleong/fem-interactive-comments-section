@@ -32,12 +32,8 @@ export default class Input extends React.Component {
     });
   };
 
-  createContentClickHandler = (event: any) => {
-    this.props.createContentClickHandler(event);
-  };
-
   render = () => {
-    const { isSend, avatar } = this.props;
+    const { isSend, avatar, createContentClickHandler } = this.props;
     const { content } = this.state;
 
     return (
@@ -45,10 +41,7 @@ export default class Input extends React.Component {
         <Avatar username={avatar} />
         <FormField value={content} inputHandler={this.contentInputHandler} />
         <div className="input-cell">
-          <Button
-            type="btn-primary"
-            clickHandler={this.createContentClickHandler}
-          >
+          <Button type="btn-primary" clickHandler={createContentClickHandler}>
             {isSend ? `Send` : `Reply`}
           </Button>
         </div>
