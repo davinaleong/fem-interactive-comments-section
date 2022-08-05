@@ -183,24 +183,12 @@ export default class MainComponent extends React.Component {
                     </button>
                   </div>
                 </div>
-                <div className="input-grid">
-                  <Avatar username={currentUser.username} />
-                  <textarea
-                    className="form-field"
-                    name="text"
-                    rows="4"
-                    value="@juliusomo"
-                    onInput={this.contentInputHandler}
-                  ></textarea>
-                  <div className="input-cell">
-                    <Button
-                      type="btn-primary"
-                      clickHandler={this.createContentClickHandler}
-                    >
-                      Reply
-                    </Button>
-                  </div>
-                </div>
+                <Input
+                  isSend={false}
+                  avatar={currentUser.username}
+                  username="juliusomo"
+                  createContentClickHandler={this.createContentClickHandler}
+                />
               </div>
               <div className="comment-flex">
                 <div className="content-grid">

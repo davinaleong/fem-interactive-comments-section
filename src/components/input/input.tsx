@@ -3,6 +3,7 @@ import "./input.css";
 
 import Avatar from "../avatar/avatar";
 import Button from "../button/button";
+import removeUsername from "../../helpers/removeUsename";
 
 type AppProps = {
   isSend: boolean;
@@ -15,17 +16,18 @@ export default class Input extends React.Component {
   constructor(props: any) {
     super(props);
 
+    const { username } = this.props;
+
     this.state = {
-      content: "",
+      content: `@${username} `,
     };
   }
 
   contentInputHandler = (event: any) => {
     const { isSend, username } = this.props;
+    const value = removeUsername(event.target.value);
     this.setState({
-      content: isSend
-        ? event.target.value
-        : `@${username} ${event.target.value}`,
+      content: isSend ? event.target.value : `@${username} ${value}`,
     });
   };
 
