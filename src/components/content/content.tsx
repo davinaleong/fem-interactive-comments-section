@@ -5,18 +5,15 @@ import Counter from "../counter/counter";
 import Info from "../info/info";
 import Buttons from "../buttons/buttons";
 import Button from "../button/button";
+import FormField from "../form-field/form-field";
 
 import removeUsername from "../../helpers/removeUsename";
-import FormField from "../form-field/form-field";
 
 type AppProps = {
   isEditMode: boolean;
   isCurrentUser: boolean;
   isReply: boolean;
-  score: Number;
-  username: string;
-  createdAt: string;
-  text: string;
+  object: Object;
   increaseScoreClickHandler: Function;
   decreaseScoreClickHandler: Function;
   toggleReplyClickHandler: Function;
@@ -29,18 +26,21 @@ export default class Content extends React.Component {
   constructor(props: any) {
     super(props);
 
-    const { isReply, username, text } = this.props;
+    const { isReply, object } = this.props;
+    const { replyingTo, content } = object;
 
     this.state = {
-      content: isReply ? `@${username} ${text}` : `${text}`,
+      contentEditable: isReply ? `@${replyingTo} ${content}` : `${content}`,
     };
   }
 
   contentInputHandler = (event: any) => {
-    const { isReply, username } = this.props;
+    const { isReply, object } = this.props;
+    const { replyingTo } = object;
     const value = removeUsername(event.target.value);
+
     this.setState({
-      content: isReply ? `@${username} ${value}` : value,
+      contentEditable: isReply ? `@${replyingTo} ${value}` : value,
     });
   };
 
@@ -49,10 +49,7 @@ export default class Content extends React.Component {
       isEditMode,
       isCurrentUser,
       isReply,
-      score,
-      username,
-      createdAt,
-      text,
+      object,
       increaseScoreClickHandler,
       decreaseScoreClickHandler,
       toggleReplyClickHandler,
@@ -61,19 +58,25 @@ export default class Content extends React.Component {
       updateContentClickHandler,
     } = this.props;
 
-    const { content } = this.state;
+    const { replyingTo, score, createdAt, content, user } = object;
+    const { username } = user;
+
+    const { contentEditable } = this.state;
 
     let contentElement: any = isReply ? (
       <p>
-        <mark>@{username}</mark> {text}
+        <mark>@{replyingTo}</mark> {content}
       </p>
     ) : (
-      <p>{text}</p>
+      <p>{content}</p>
     );
 
     if (isEditMode) {
       contentElement = (
-        <FormField value={content} inputHandler={this.contentInputHandler} />
+        <FormField
+          value={contentEditable}
+          inputHandler={this.contentInputHandler}
+        />
       );
     }
 

@@ -12,6 +12,22 @@ import Info from "../info/info";
 import Buttons from "../buttons/buttons";
 import Content from "../content/content";
 
+const comment = {
+  id: 4,
+  content:
+    "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
+  createdAt: "2 days ago",
+  score: 2,
+  replyingTo: "ramsesmiron",
+  user: {
+    image: {
+      png: "images/avatars/image-juliusomo.png",
+      webp: "images/avatars/image-juliusomo.webp",
+    },
+    username: "juliusomo",
+  },
+};
+
 type AppProps = {
   data: any;
 };
@@ -71,7 +87,7 @@ export default class MainComponent extends React.Component {
   render = () => {
     const { data } = this.props;
     const { currentUser } = data;
-    const { showModal, comments, commentId, comment } = this.state;
+    const { showModal, comments, commentId } = this.state;
 
     return (
       <main className="main-grid | container">
@@ -83,10 +99,7 @@ export default class MainComponent extends React.Component {
         <div className="comments-flex">
           <div className="comment-flex">
             <Content
-              score="12"
-              username="amyrobson"
-              createdAt="1 month ago"
-              text="Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well."
+              object={comment}
               increaseScoreClickHandler={this.increaseScoreClickHandler}
               decreaseScoreClickHandler={this.decreaseScoreClickHandler}
               toggleReplyClickHandler={this.toggleReplyClickHandler}
@@ -104,10 +117,7 @@ export default class MainComponent extends React.Component {
                 <Content
                   isCurrentUser={true}
                   isReply={true}
-                  score="12"
-                  username="juliusomo"
-                  createdAt="1 month ago"
-                  text="Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well."
+                  object={comment}
                   increaseScoreClickHandler={this.increaseScoreClickHandler}
                   decreaseScoreClickHandler={this.decreaseScoreClickHandler}
                   toggleReplyClickHandler={this.toggleReplyClickHandler}
@@ -126,10 +136,7 @@ export default class MainComponent extends React.Component {
                 <Content
                   isCurrentUser={true}
                   isReply={true}
-                  score="12"
-                  username="juliusomo"
-                  createdAt="1 month ago"
-                  text="Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well."
+                  object={comment}
                   increaseScoreClickHandler={this.increaseScoreClickHandler}
                   decreaseScoreClickHandler={this.decreaseScoreClickHandler}
                   toggleReplyClickHandler={this.toggleReplyClickHandler}
@@ -143,10 +150,7 @@ export default class MainComponent extends React.Component {
                   isEditMode={true}
                   isCurrentUser={true}
                   isReply={true}
-                  score="12"
-                  username="juliusomo"
-                  createdAt="1 month ago"
-                  text="Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well."
+                  object={comment}
                   increaseScoreClickHandler={this.increaseScoreClickHandler}
                   decreaseScoreClickHandler={this.decreaseScoreClickHandler}
                   toggleReplyClickHandler={this.toggleReplyClickHandler}
