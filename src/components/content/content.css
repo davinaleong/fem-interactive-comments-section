@@ -72,3 +72,9 @@
   justify-content: end;
   align-items: center;
 }
+
+mark {
+  color: var(--clr-primary-400);
+  background-color: transparent;
+  font-weight: var(--fw-medium);
+}

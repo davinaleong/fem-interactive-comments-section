@@ -1,31 +1,56 @@
 import React from "react";
 import "./main.css";
 
-import DeleteIcon from "../../icons/delete.icon";
-import EditIcon from "../../icons/edit.icon";
-import ReplyIcon from "../../icons/reply.icon";
-import Button from "../button/button";
-import Counter from "../counter/counter";
 import Modal from "../modal/modal";
+import Card from "../card/card";
 import Input from "../input/input";
-import Info from "../info/info";
-import Buttons from "../buttons/buttons";
-import Content from "../content/content";
+import Comment from "../comment/comment";
 
 const comment = {
-  id: 4,
+  id: 2,
   content:
-    "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
-  createdAt: "2 days ago",
-  score: 2,
-  replyingTo: "ramsesmiron",
+    "Woah, your project looks awesome! How long have you been coding for? I'm still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!",
+  createdAt: "2 weeks ago",
+  score: 5,
   user: {
     image: {
-      png: "images/avatars/image-juliusomo.png",
-      webp: "images/avatars/image-juliusomo.webp",
+      png: "images/avatars/image-maxblagun.png",
+      webp: "images/avatars/image-maxblagun.webp",
     },
-    username: "juliusomo",
+    username: "maxblagun",
   },
+  replies: [
+    {
+      id: 3,
+      content:
+        "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
+      createdAt: "1 week ago",
+      score: 4,
+      replyingTo: "maxblagun",
+      user: {
+        image: {
+          png: "images/avatars/image-ramsesmiron.png",
+          webp: "images/avatars/image-ramsesmiron.webp",
+        },
+        username: "ramsesmiron",
+      },
+    },
+    {
+      id: 4,
+      content:
+        "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
+      createdAt: "2 days ago",
+      score: 2,
+      replyingTo: "ramsesmiron",
+      user: {
+        image: {
+          png: "images/avatars/image-juliusomo.png",
+          webp: "images/avatars/image-juliusomo.webp",
+        },
+        username: "juliusomo",
+      },
+    },
+  ],
 };
 
 type AppProps = {
@@ -72,16 +97,16 @@ export default class MainComponent extends React.Component {
     console.log(`Decrease Score`);
   };
 
+  contentInputHandler = (event: any) => {
+    console.log(event.target.value);
+  };
+
   modalCancelClickHandler = (event: any) => {
     console.log(`Cancel Delete Comment`);
   };
 
   modalYesClickHandler = (event: any) => {
     console.log(`Confirm Delete Comment`);
-  };
-
-  contentInputHandler = (event: any) => {
-    console.log(event.target.value);
   };
 
   render = () => {
@@ -97,70 +122,16 @@ export default class MainComponent extends React.Component {
           modalYesClickHandler={this.modalYesClickHandler}
         />
         <div className="comments-flex">
-          <div className="comment-flex">
-            <Content
-              object={comment}
-              increaseScoreClickHandler={this.increaseScoreClickHandler}
-              decreaseScoreClickHandler={this.decreaseScoreClickHandler}
-              toggleReplyClickHandler={this.toggleReplyClickHandler}
-              toggleDeleteClickHandler={this.toggleDeleteClickHandler}
-              toggleEditClickHandler={this.toggleEditClickHandler}
-              updateContentClickHandler={this.updateContentClickHandler}
-            />
-            <Input
-              avatar={currentUser.username}
-              username="amyrobson"
-              createContentClickHandler={this.createContentClickHandler}
-            />
-            <div className="replies-flex">
-              <div className="comment-flex">
-                <Content
-                  isCurrentUser={true}
-                  isReply={true}
-                  object={comment}
-                  increaseScoreClickHandler={this.increaseScoreClickHandler}
-                  decreaseScoreClickHandler={this.decreaseScoreClickHandler}
-                  toggleReplyClickHandler={this.toggleReplyClickHandler}
-                  toggleDeleteClickHandler={this.toggleDeleteClickHandler}
-                  toggleEditClickHandler={this.toggleEditClickHandler}
-                  updateContentClickHandler={this.updateContentClickHandler}
-                />
-                <Input
-                  isSend={false}
-                  avatar={currentUser.username}
-                  username="juliusomo"
-                  createContentClickHandler={this.createContentClickHandler}
-                />
-              </div>
-              <div className="comment-flex">
-                <Content
-                  isCurrentUser={true}
-                  isReply={true}
-                  object={comment}
-                  increaseScoreClickHandler={this.increaseScoreClickHandler}
-                  decreaseScoreClickHandler={this.decreaseScoreClickHandler}
-                  toggleReplyClickHandler={this.toggleReplyClickHandler}
-                  toggleDeleteClickHandler={this.toggleDeleteClickHandler}
-                  toggleEditClickHandler={this.toggleEditClickHandler}
-                  updateContentClickHandler={this.updateContentClickHandler}
-                />
-              </div>
-              <div className="comment-flex">
-                <Content
-                  isEditMode={true}
-                  isCurrentUser={true}
-                  isReply={true}
-                  object={comment}
-                  increaseScoreClickHandler={this.increaseScoreClickHandler}
-                  decreaseScoreClickHandler={this.decreaseScoreClickHandler}
-                  toggleReplyClickHandler={this.toggleReplyClickHandler}
-                  toggleDeleteClickHandler={this.toggleDeleteClickHandler}
-                  toggleEditClickHandler={this.toggleEditClickHandler}
-                  updateContentClickHandler={this.updateContentClickHandler}
-                />
-              </div>
-            </div>
-          </div>
+          <Comment
+            object={comment}
+            increaseScoreClickHandler={this.increaseScoreClickHandler}
+            decreaseScoreClickHandler={this.decreaseScoreClickHandler}
+            toggleReplyClickHandler={this.toggleReplyClickHandler}
+            toggleDeleteClickHandler={this.toggleDeleteClickHandler}
+            toggleEditClickHandler={this.toggleEditClickHandler}
+            updateContentClickHandler={this.updateContentClickHandler}
+            createContentClickHandler={this.createContentClickHandler}
+          />
         </div>
         <Input
           isSend={true}
