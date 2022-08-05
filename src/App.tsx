@@ -1,16 +1,14 @@
 import React from "react";
 import data from "./db/data.json";
 
-import AttributionComponent from "./components/attribution/attribution.component";
-import MainComponent from "./components/main/main";
-import SwatchesComponent from "./components/swatches/swatches";
+import Attributon from "./components/attribution/attribution";
+import Main from "./components/main/main";
 
 function App() {
   return (
     <div className="body | text-neutral-900 bg-grey-200">
-      <MainComponent data={data} />
-      <SwatchesComponent />
-      <AttributionComponent />
+      <Main data={data} />
+      <Attributon />
     </div>
   );
 }

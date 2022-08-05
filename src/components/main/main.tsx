@@ -12,7 +12,7 @@ type AppProps = {
   data: any;
 };
 
-export default class MainComponent extends React.Component {
+export default class Main extends React.Component {
   constructor(props: any) {
     super(props);
 
@@ -65,6 +65,7 @@ export default class MainComponent extends React.Component {
     this.setState({
       nextId,
       comments,
+      content,
     });
   };
 

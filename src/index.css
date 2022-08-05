@@ -90,7 +90,7 @@ body {
 .body {
   min-height: 100vh;
   display: grid;
-  grid-template-rows: auto 3em 2em;
+  grid-template-rows: auto 2em;
   justify-items: center;
   align-items: center;
 }

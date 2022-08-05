@@ -1,7 +1,7 @@
 import React from "react";
 import "./attribution.css";
 
-const AttributionComponent = () => {
+const Attribution = () => {
   return (
     <div className="attribution">
       Challenge by{" "}
@@ -17,4 +17,4 @@ const AttributionComponent = () => {
   );
 };
 
-export default AttributionComponent;
+export default Attribution;
