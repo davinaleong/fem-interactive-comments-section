@@ -4,6 +4,8 @@ import "./main.css";
 import Modal from "../modal/modal";
 import Input from "../input/input";
 import Comment from "../comment/comment";
+import getNextValue from "../../helpers/getNextValue";
+import getArrayItem from "../../helpers/getArrayItem";
 
 type AppProps = {
   data: any;
@@ -17,6 +19,7 @@ export default class MainComponent extends React.Component {
     const { comments } = data;
     this.state = {
       showModal: false,
+      nextId: 5,
       comments: comments,
     };
   }

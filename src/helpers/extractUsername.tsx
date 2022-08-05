@@ -1,7 +1,3 @@
-type AppProps = {
-  text: string;
-};
-
 const pattern = /^@\w+\s/;
 
 const extractUsername = (text: string) => {
