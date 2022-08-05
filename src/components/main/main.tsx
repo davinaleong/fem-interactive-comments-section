@@ -9,6 +9,7 @@ import Button from "../button/button";
 import Counter from "../counter/counter";
 import Modal from "../modal/modal";
 import Input from "../input/input";
+import Badge from "../badge/badge";
 
 type AppProps = {
   data: any;
@@ -74,7 +75,7 @@ export default class MainComponent extends React.Component {
     return (
       <main className="main-grid | container">
         <Modal
-          showModal={this.state.showModal}
+          showModal={showModal}
           modalCancelClickHandler={this.modalCancelClickHandler}
           modalYesClickHandler={this.modalYesClickHandler}
         />
@@ -92,7 +93,6 @@ export default class MainComponent extends React.Component {
                 <div className="info-flex">
                   <Avatar username="amyrobson" />
                   <div className="info-username">amyrobson</div>
-                  <div className="badge badge-primary">You</div>
                   <div className="info-created-at">1 month ago</div>
                 </div>
               </div>
@@ -153,7 +153,7 @@ export default class MainComponent extends React.Component {
                     <div className="info-flex">
                       <Avatar username="juliusomo" />
                       <div className="info-username">juliusomo</div>
-                      <div className="badge badge-primary">You</div>
+                      <Badge type="badge-primary">You</Badge>
                       <div className="info-created-at">1 month ago</div>
                     </div>
                   </div>
@@ -203,7 +203,7 @@ export default class MainComponent extends React.Component {
                     <div className="info-flex">
                       <Avatar username="juliusomo" />
                       <div className="info-username">juliusomo</div>
-                      <div className="badge badge-primary">You</div>
+                      <Badge type="badge-primary">You</Badge>
                       <div className="info-created-at">1 month ago</div>
                     </div>
                   </div>
@@ -253,7 +253,7 @@ export default class MainComponent extends React.Component {
                     <div className="info-flex">
                       <Avatar username="juliusomo" />
                       <div className="info-username">juliusomo</div>
-                      <div className="badge badge-primary">You</div>
+                      <Badge type="badge-primary">You</Badge>
                       <div className="info-created-at">1 month ago</div>
                     </div>
                   </div>
