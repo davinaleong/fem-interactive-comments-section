@@ -2,7 +2,6 @@ import React from "react";
 import "./main.css";
 
 import Modal from "../modal/modal";
-import Card from "../card/card";
 import Input from "../input/input";
 import Comment from "../comment/comment";
 
@@ -114,6 +113,23 @@ export default class MainComponent extends React.Component {
     const { currentUser } = data;
     const { showModal, comments, commentId } = this.state;
 
+    const commentElements: any[] = [];
+    comments.forEach((comment, index) => {
+      commentElements.push(
+        <Comment
+          key={`c${index}`}
+          object={comment}
+          increaseScoreClickHandler={this.increaseScoreClickHandler}
+          decreaseScoreClickHandler={this.decreaseScoreClickHandler}
+          toggleReplyClickHandler={this.toggleReplyClickHandler}
+          toggleDeleteClickHandler={this.toggleDeleteClickHandler}
+          toggleEditClickHandler={this.toggleEditClickHandler}
+          updateContentClickHandler={this.updateContentClickHandler}
+          createContentClickHandler={this.createContentClickHandler}
+        />
+      );
+    });
+
     return (
       <main className="main-grid | container">
         <Modal
@@ -121,18 +137,7 @@ export default class MainComponent extends React.Component {
           modalCancelClickHandler={this.modalCancelClickHandler}
           modalYesClickHandler={this.modalYesClickHandler}
         />
-        <div className="comments-flex">
-          <Comment
-            object={comment}
-            increaseScoreClickHandler={this.increaseScoreClickHandler}
-            decreaseScoreClickHandler={this.decreaseScoreClickHandler}
-            toggleReplyClickHandler={this.toggleReplyClickHandler}
-            toggleDeleteClickHandler={this.toggleDeleteClickHandler}
-            toggleEditClickHandler={this.toggleEditClickHandler}
-            updateContentClickHandler={this.updateContentClickHandler}
-            createContentClickHandler={this.createContentClickHandler}
-          />
-        </div>
+        <div className="comments-flex">{commentElements}</div>
         <Input
           isSend={true}
           avatar={currentUser.username}
