@@ -7,7 +7,6 @@ type AppProps = {
   object: object;
   increaseScoreClickHandler: Function;
   decreaseScoreClickHandler: Function;
-  toggleReplyClickHandler: Function;
   toggleDeleteClickHandler: Function;
   toggleEditClickHandler: Function;
   updateContentClickHandler: Function;
@@ -19,7 +18,6 @@ const Comment = (props: any) => {
     object,
     increaseScoreClickHandler,
     decreaseScoreClickHandler,
-    toggleReplyClickHandler,
     toggleDeleteClickHandler,
     toggleEditClickHandler,
     updateContentClickHandler,
@@ -35,7 +33,6 @@ const Comment = (props: any) => {
         object={reply}
         increaseScoreClickHandler={increaseScoreClickHandler}
         decreaseScoreClickHandler={decreaseScoreClickHandler}
-        toggleReplyClickHandler={toggleReplyClickHandler}
         toggleDeleteClickHandler={toggleDeleteClickHandler}
         toggleEditClickHandler={toggleEditClickHandler}
         updateContentClickHandler={updateContentClickHandler}
@@ -50,7 +47,6 @@ const Comment = (props: any) => {
         object={object}
         increaseScoreClickHandler={increaseScoreClickHandler}
         decreaseScoreClickHandler={decreaseScoreClickHandler}
-        toggleReplyClickHandler={toggleReplyClickHandler}
         toggleDeleteClickHandler={toggleDeleteClickHandler}
         toggleEditClickHandler={toggleEditClickHandler}
         updateContentClickHandler={updateContentClickHandler}

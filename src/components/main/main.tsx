@@ -72,10 +72,6 @@ export default class MainComponent extends React.Component {
     console.log(`Create Content`);
   };
 
-  toggleReplyClickHandler = (event: any) => {
-    console.log(`Toggle Reply Input`);
-  };
-
   toggleDeleteClickHandler = (event: any) => {
     console.log(`Toggle Delete Modal`);
   };
@@ -111,7 +107,7 @@ export default class MainComponent extends React.Component {
   render = () => {
     const { data } = this.props;
     const { currentUser } = data;
-    const { showModal, comments, commentId } = this.state;
+    const { showModal, comments } = this.state;
 
     const commentElements: any[] = [];
     comments.forEach((comment, index) => {
@@ -121,7 +117,6 @@ export default class MainComponent extends React.Component {
           object={comment}
           increaseScoreClickHandler={this.increaseScoreClickHandler}
           decreaseScoreClickHandler={this.decreaseScoreClickHandler}
-          toggleReplyClickHandler={this.toggleReplyClickHandler}
           toggleDeleteClickHandler={this.toggleDeleteClickHandler}
           toggleEditClickHandler={this.toggleEditClickHandler}
           updateContentClickHandler={this.updateContentClickHandler}
