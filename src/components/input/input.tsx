@@ -4,6 +4,7 @@ import "./input.css";
 import Avatar from "../avatar/avatar";
 import Button from "../button/button";
 import removeUsername from "../../helpers/removeUsename";
+import FormField from "../form-field/form-field";
 
 type AppProps = {
   isSend: boolean;
@@ -42,13 +43,7 @@ export default class Input extends React.Component {
     return (
       <div className="input-grid">
         <Avatar username={avatar} />
-        <textarea
-          className="form-field"
-          name="text"
-          rows="4"
-          value={content}
-          onInput={this.contentInputHandler}
-        ></textarea>
+        <FormField value={content} inputHandler={this.contentInputHandler} />
         <div className="input-cell">
           <Button
             type="btn-primary"
