@@ -9,7 +9,6 @@ type AppProps = {
   increaseScoreClickHandler: Function;
   decreaseScoreClickHandler: Function;
   toggleDeleteClickHandler: Function;
-  toggleEditClickHandler: Function;
   updateContentClickHandler: Function;
   createContentClickHandler: Function;
 };
@@ -21,7 +20,6 @@ const Comment = (props: any) => {
     increaseScoreClickHandler,
     decreaseScoreClickHandler,
     toggleDeleteClickHandler,
-    toggleEditClickHandler,
     updateContentClickHandler,
     createContentClickHandler,
   } = props;
@@ -32,12 +30,12 @@ const Comment = (props: any) => {
     replyElements.push(
       <Card
         key={`r${index}`}
+        isReply={true}
         currentUser={currentUser}
         object={reply}
         increaseScoreClickHandler={increaseScoreClickHandler}
         decreaseScoreClickHandler={decreaseScoreClickHandler}
         toggleDeleteClickHandler={toggleDeleteClickHandler}
-        toggleEditClickHandler={toggleEditClickHandler}
         updateContentClickHandler={updateContentClickHandler}
         createContentClickHandler={createContentClickHandler}
       />
@@ -52,7 +50,6 @@ const Comment = (props: any) => {
         increaseScoreClickHandler={increaseScoreClickHandler}
         decreaseScoreClickHandler={decreaseScoreClickHandler}
         toggleDeleteClickHandler={toggleDeleteClickHandler}
-        toggleEditClickHandler={toggleEditClickHandler}
         updateContentClickHandler={updateContentClickHandler}
         createContentClickHandler={createContentClickHandler}
       />

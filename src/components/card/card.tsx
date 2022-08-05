@@ -5,12 +5,12 @@ import Content from "../content/content";
 import Input from "../input/input";
 
 type AppProps = {
+  isReply: boolean;
   currentUser: object;
   object: object;
   increaseScoreClickHandler: Function;
   decreaseScoreClickHandler: Function;
   toggleDeleteClickHandler: Function;
-  toggleEditClickHandler: Function;
   updateContentClickHandler: Function;
   createContentClickHandler: Function;
 };
@@ -25,17 +25,18 @@ export default class Card extends React.Component {
   }
 
   toggleReplyClickHandler = (event: any) => {
-    this.setState({ showInput: true });
+    const { showInput } = this.state;
+    this.setState({ showInput: !showInput });
   };
 
   render = () => {
     const {
+      isReply,
       currentUser,
       object,
       increaseScoreClickHandler,
       decreaseScoreClickHandler,
       toggleDeleteClickHandler,
-      toggleEditClickHandler,
       updateContentClickHandler,
       createContentClickHandler,
     } = this.props;
@@ -56,13 +57,13 @@ export default class Card extends React.Component {
     return (
       <div className="card-flex">
         <Content
+          isReply={isReply}
           currentUser={currentUser}
           object={object}
           increaseScoreClickHandler={increaseScoreClickHandler}
           decreaseScoreClickHandler={decreaseScoreClickHandler}
           toggleReplyClickHandler={this.toggleReplyClickHandler}
           toggleDeleteClickHandler={toggleDeleteClickHandler}
-          toggleEditClickHandler={toggleEditClickHandler}
           updateContentClickHandler={updateContentClickHandler}
         />
         {inputElement}

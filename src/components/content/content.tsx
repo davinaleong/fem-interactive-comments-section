@@ -10,7 +10,6 @@ import FormField from "../form-field/form-field";
 import removeUsername from "../../helpers/removeUsename";
 
 type AppProps = {
-  isEditMode: boolean;
   isReply: boolean;
   currentUser: object;
   object: object;
@@ -18,7 +17,6 @@ type AppProps = {
   decreaseScoreClickHandler: Function;
   toggleReplyClickHandler: Function;
   toggleDeleteClickHandler: Function;
-  toggleEditClickHandler: Function;
   updateContentClickHandler: Function;
 };
 
@@ -30,9 +28,15 @@ export default class Content extends React.Component {
     const { replyingTo, content } = object;
 
     this.state = {
+      toggleEditMode: false,
       contentEditable: isReply ? `@${replyingTo} ${content}` : `${content}`,
     };
   }
+
+  toggleEditClickHandler = (event: any) => {
+    const { toggleEditMode } = this.state;
+    this.setState({ toggleEditMode: !toggleEditMode });
+  };
 
   contentInputHandler = (event: any) => {
     const { isReply, object } = this.props;
@@ -46,7 +50,6 @@ export default class Content extends React.Component {
 
   render = () => {
     const {
-      isEditMode,
       isReply,
       currentUser,
       object,
@@ -54,7 +57,6 @@ export default class Content extends React.Component {
       decreaseScoreClickHandler,
       toggleReplyClickHandler,
       toggleDeleteClickHandler,
-      toggleEditClickHandler,
       updateContentClickHandler,
     } = this.props;
 
@@ -63,7 +65,7 @@ export default class Content extends React.Component {
 
     const isCurrentUser = currentUser.username == username;
 
-    const { contentEditable } = this.state;
+    const { toggleEditMode, contentEditable } = this.state;
 
     let contentElement: any = isReply ? (
       <p>
@@ -73,7 +75,7 @@ export default class Content extends React.Component {
       <p>{content}</p>
     );
 
-    if (isEditMode) {
+    if (toggleEditMode) {
       contentElement = (
         <FormField
           value={contentEditable}
@@ -83,7 +85,7 @@ export default class Content extends React.Component {
     }
 
     return (
-      <div className="content-grid" data-edit={isEditMode}>
+      <div className="content-grid" data-edit={toggleEditMode}>
         <div className="counter-cell">
           <Counter
             score={score}
@@ -103,7 +105,7 @@ export default class Content extends React.Component {
             isCurrentUser={isCurrentUser}
             toggleReplyClickHandler={toggleReplyClickHandler}
             toggleDeleteClickHandler={toggleDeleteClickHandler}
-            toggleEditClickHandler={toggleEditClickHandler}
+            toggleEditClickHandler={this.toggleEditClickHandler}
           />
         </div>
         <div className="content-cell">{contentElement}</div>
@@ -119,7 +121,7 @@ export default class Content extends React.Component {
 
 // const Content = (props: any) => {
 //   const {
-//     isEditMode,
+//     toggleEditMode,
 //     comment,
 //     increaseScoreClickHandler,
 //     decreaseScoreClickHandler,
@@ -129,7 +131,7 @@ export default class Content extends React.Component {
 //     updateContentClickHandler,
 //   } = props;
 //   return (
-//     <div className="content-grid" {isEditMode ? `data-edit` : ``}>
+//     <div className="content-grid" {toggleEditMode ? `data-edit` : ``}>
 //       <div className="counter-cell">
 //         <Counter
 //           score="3"
