@@ -95,12 +95,6 @@
   align-items: center;
 }
 
-.info-flex {
-  display: flex;
-  gap: var(--size-400);
-  align-items: center;
-}
-
 .buttons-flex {
   display: flex;
   gap: var(--size-200);

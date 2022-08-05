@@ -12,6 +12,7 @@ import Input from "../input/input";
 import Badge from "../badge/badge";
 import Username from "../username/username";
 import CreatedAt from "../created-at/created-at";
+import Info from "../info/info";
 
 type AppProps = {
   data: any;
@@ -92,11 +93,7 @@ export default class MainComponent extends React.Component {
                 />
               </div>
               <div className="info-cell">
-                <div className="info-flex">
-                  <Avatar username="amyrobson" />
-                  <Username>amyrobson</Username>
-                  <CreatedAt>1 month ago</CreatedAt>
-                </div>
+                <Info username="amyrobson" createdAt="1 month ago" />
               </div>
               <div className="buttons-cell buttons-flex">
                 <Button
@@ -123,23 +120,11 @@ export default class MainComponent extends React.Component {
                 </Button>
               </div>
             </div>
-            <div className="input-grid">
-              <Avatar username={currentUser.username} />
-              <textarea
-                className="form-field"
-                name="text"
-                rows="4"
-                onInput={this.contentInputHandler}
-              ></textarea>
-              <div className="input-cell">
-                <Button
-                  type="btn-primary"
-                  clickHandler={this.createContentClickHandler}
-                >
-                  Reply
-                </Button>
-              </div>
-            </div>
+            <Input
+              avatar={currentUser.username}
+              username="amyrobson"
+              createContentClickHandler={this.createContentClickHandler}
+            />
             <div className="replies-flex">
               <div className="comment-flex">
                 <div className="content-grid">
@@ -151,12 +136,11 @@ export default class MainComponent extends React.Component {
                     />
                   </div>
                   <div className="info-cell">
-                    <div className="info-flex">
-                      <Avatar username="juliusomo" />
-                      <Username>juliusomo</Username>
-                      <Badge type="badge-primary">You</Badge>
-                      <CreatedAt>1 month ago</CreatedAt>
-                    </div>
+                    <Info
+                      isCurrentUser={true}
+                      username="juliusomo"
+                      createdAt="1 month ago"
+                    />
                   </div>
                   <div className="buttons-cell buttons-flex">
                     <Button
@@ -200,12 +184,11 @@ export default class MainComponent extends React.Component {
                     />
                   </div>
                   <div className="info-cell">
-                    <div className="info-flex">
-                      <Avatar username="juliusomo" />
-                      <Username>juliusomo</Username>
-                      <Badge type="badge-primary">You</Badge>
-                      <CreatedAt>1 month ago</CreatedAt>
-                    </div>
+                    <Info
+                      isCurrentUser={true}
+                      username="juliusomo"
+                      createdAt="1 month ago"
+                    />
                   </div>
                   <div className="buttons-cell buttons-flex">
                     <Button
@@ -249,12 +232,11 @@ export default class MainComponent extends React.Component {
                     />
                   </div>
                   <div className="info-cell">
-                    <div className="info-flex">
-                      <Avatar username="juliusomo" />
-                      <Username>juliusomo</Username>
-                      <Badge type="badge-primary">You</Badge>
-                      <CreatedAt>1 month ago</CreatedAt>
-                    </div>
+                    <Info
+                      isCurrentUser={true}
+                      username="juliusomo"
+                      createdAt="1 month ago"
+                    />
                   </div>
                   <div className="buttons-cell buttons-flex">
                     <Button

@@ -19,7 +19,7 @@ export default class Input extends React.Component {
     const { username } = this.props;
 
     this.state = {
-      content: `@${username} `,
+      content: username ? `@${username} ` : ``,
     };
   }
 
