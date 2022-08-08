@@ -24,7 +24,7 @@ export default class Main extends React.Component {
       nextId: 5,
       comments: comments,
       content: ``,
-      replyingTo: {},
+      replyingTo: ``,
     };
   }
 
@@ -69,7 +69,7 @@ export default class Main extends React.Component {
     });
   };
 
-  updateReplyingTo = (replyingTo: Object) => {
+  updateReplyingTo = (replyingTo: string) => {
     this.setState({ replyingTo });
   };
 

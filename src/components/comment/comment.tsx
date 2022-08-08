@@ -7,7 +7,7 @@ type AppProps = {
   currentUser: Object;
   object: Object;
   content: String;
-  replyingTo: Object;
+  replyingTo: String;
   increaseScoreClickHandler: Function;
   decreaseScoreClickHandler: Function;
   toggleDeleteClickHandler: Function;
@@ -41,6 +41,7 @@ const Comment = (props: any) => {
         isReply={true}
         currentUser={currentUser}
         object={reply}
+        parent={object}
         replyingTo={replyingTo}
         content={content}
         increaseScoreClickHandler={increaseScoreClickHandler}

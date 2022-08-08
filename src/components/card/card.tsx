@@ -8,7 +8,8 @@ type AppProps = {
   isReply: boolean;
   currentUser: Object;
   object: Object;
-  replyingTo: Object;
+  parent: Object;
+  replyingTo: String;
   content: String;
   increaseScoreClickHandler: Function;
   decreaseScoreClickHandler: Function;
@@ -32,7 +33,7 @@ export default class Card extends React.Component {
     const { object, updateReplyingTo } = this.props;
     const { showInput } = this.state;
     this.setState({ showInput: !showInput });
-    updateReplyingTo(object.user);
+    updateReplyingTo(object.user.username);
   };
 
   render = () => {
@@ -40,6 +41,7 @@ export default class Card extends React.Component {
       isReply,
       currentUser,
       object,
+      parent,
       replyingTo,
       content,
       increaseScoreClickHandler,
@@ -57,7 +59,8 @@ export default class Card extends React.Component {
       inputElement = (
         <Input
           currentUser={currentUser}
-          objectId={object.id}
+          objectId={object ? object.id : 0}
+          parentId={parent ? parent.id : 0}
           replyingTo={replyingTo}
           content={content}
           createContentClickHandler={createContentClickHandler}

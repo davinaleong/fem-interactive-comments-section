@@ -13,7 +13,7 @@ type AppProps = {
   isReply: Boolean;
   currentUser: Object;
   object: Object;
-  replyingTo: Object;
+  replyingTo: String;
   increaseScoreClickHandler: Function;
   decreaseScoreClickHandler: Function;
   toggleReplyClickHandler: Function;
@@ -28,13 +28,9 @@ export default class Content extends React.Component {
     const { isReply, object } = this.props;
     const { replyingTo, content } = object;
 
-    const replyingToUsername = replyingTo ? replyingTo.username : ``;
-
     this.state = {
       toggleEditMode: false,
-      contentEditable: isReply
-        ? `@${replyingToUsername} ${content}`
-        : `${content}`,
+      contentEditable: isReply ? `@${replyingTo} ${content}` : `${content}`,
     };
   }
 
@@ -44,12 +40,12 @@ export default class Content extends React.Component {
   };
 
   contentInputHandler = (event: any) => {
-    const { isReply, replyingTo } = this.props;
-    const { username } = replyingTo;
+    const { isReply, object } = this.props;
+    const { replyingTo } = object;
     const value = removeUsername(event.target.value);
 
     this.setState({
-      contentEditable: isReply ? `@${username} ${value}` : value,
+      contentEditable: isReply ? `@${replyingTo} ${value}` : value,
     });
   };
 
@@ -58,7 +54,6 @@ export default class Content extends React.Component {
       isReply,
       currentUser,
       object,
-      replyingTo,
       increaseScoreClickHandler,
       decreaseScoreClickHandler,
       toggleReplyClickHandler,
@@ -72,7 +67,7 @@ export default class Content extends React.Component {
     const isCurrentUser = currentUser.username == username;
 
     const { toggleEditMode, contentEditable } = this.state;
-    const replyingToUsername = replyingTo ? replyingTo.username : ``;
+    const replyingToUsername = object ? object.replyingTo : ``;
 
     let contentElement: any = isReply ? (
       <p>

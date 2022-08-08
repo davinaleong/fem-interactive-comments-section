@@ -10,6 +10,7 @@ type AppProps = {
   isSend: Boolean;
   currentUser: Object;
   objectId: Number;
+  parentId: Number;
   replyingTo: String;
   content: String;
   contentInputHandler: Function;
@@ -24,7 +25,7 @@ export default class Input extends React.Component {
   componentDidMount = () => {
     const { isSend, replyingTo, content } = this.props;
     const value: string = removeUsername(content);
-    const contentEditable: string = isSend ? `` : `@${replyingTo.username} ${value}`;
+    const contentEditable: string = isSend ? `` : `@${replyingTo} ${value}`;
 
     this.props.contentInputHandler(contentEditable);
   };
@@ -34,14 +35,18 @@ export default class Input extends React.Component {
     const value: string = removeUsername(event.target.value);
     const contentEditable: string = isSend
       ? event.target.value
-      : `@${replyingTo.username} ${value}`;
+      : `@${replyingTo} ${value}`;
 
     this.props.contentInputHandler(contentEditable);
   };
 
   createContentClickHandler = (event: any) => {
-    const { objectId, replyingTo } = this.props;
-    this.props.createContentClickHandler(objectId, replyingTo);
+    const { objectId, parentId, replyingTo } = this.props;
+    if (parentId) {
+      this.props.createContentClickHandler(parentId, replyingTo);
+    } else {
+      this.props.createContentClickHandler(objectId, replyingTo);
+    }
   };
 
   render = () => {

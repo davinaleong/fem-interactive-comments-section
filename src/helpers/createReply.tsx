@@ -11,7 +11,7 @@ const createReply = (
     content,
     createdAt,
     score,
-    replyingTo: replyingTo.username !== `undefined` ? replyingTo.username : ``,
+    replyingTo,
     user,
   };
 };
