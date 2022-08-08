@@ -36,6 +36,10 @@ export default class Card extends React.Component {
     updateReplyingTo(object.user.username);
   };
 
+  hideReplyClickHandler = (event: any) => {
+    this.setState({ showInput: false });
+  }
+
   render = () => {
     const {
       isReply,
@@ -65,6 +69,7 @@ export default class Card extends React.Component {
           content={content}
           createContentClickHandler={createContentClickHandler}
           contentInputHandler={contentInputHandler}
+          hideReplyClickHandler={this.hideReplyClickHandler}
         />
       );
     }

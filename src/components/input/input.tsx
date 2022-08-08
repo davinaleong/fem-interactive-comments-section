@@ -23,29 +23,37 @@ export default class Input extends React.Component {
   }
 
   componentDidMount = () => {
-    const { isSend, replyingTo, content } = this.props;
+    const { isSend, replyingTo, content, contentInputHandler } = this.props;
     const value: string = removeUsername(content);
     const contentEditable: string = isSend ? `` : `@${replyingTo} ${value}`;
 
-    this.props.contentInputHandler(contentEditable);
+    contentInputHandler(contentEditable);
   };
 
   contentInputHandler = (event: any) => {
-    const { isSend, replyingTo } = this.props;
+    const { isSend, replyingTo, contentInputHandler } = this.props;
     const value: string = removeUsername(event.target.value);
     const contentEditable: string = isSend
       ? event.target.value
       : `@${replyingTo} ${value}`;
 
-    this.props.contentInputHandler(contentEditable);
+    contentInputHandler(contentEditable);
   };
 
   createContentClickHandler = (event: any) => {
-    const { objectId, parentId, replyingTo } = this.props;
+    const {
+      objectId,
+      parentId,
+      replyingTo,
+      hideReplyClickHandler,
+      createContentClickHandler,
+    } = this.props;
+    hideReplyClickHandler();
+
     if (parentId) {
-      this.props.createContentClickHandler(parentId, replyingTo);
+      createContentClickHandler(parentId, replyingTo);
     } else {
-      this.props.createContentClickHandler(objectId, replyingTo);
+      createContentClickHandler(objectId, replyingTo);
     }
   };
 
