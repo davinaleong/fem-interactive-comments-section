@@ -18,12 +18,12 @@
   .counter-flex {
     display: inline-flex;
     flex-direction: column;
-    width: 2.5em;
+    min-width: 2.5em;
     height: auto;
   }
 
   .counter-flex > * {
-    width: 100%;
+    min-width: 100%;
     height: auto;
   }
 
@@ -38,4 +38,5 @@
   align-items: center;
   color: var(--clr-primary-400);
   font-weight: var(--fw-medium);
+  padding-inline: var(--size-100);
 }

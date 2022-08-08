@@ -51,7 +51,7 @@
 
 @media (min-width: 48em) {
   .content-grid {
-    grid-template-columns: 3em auto auto;
+    grid-template-columns: auto auto auto;
     grid-template-rows: repeat(2, auto);
     grid-template-areas:
       "counter-cell info-cell buttons-cell"
