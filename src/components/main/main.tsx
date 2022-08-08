@@ -25,6 +25,10 @@ export default class Main extends React.Component {
       comments: comments,
       content: ``,
       replyingTo: ``,
+      toDelete: {
+        id: 0,
+        parentId: 0,
+      },
     };
   }
 
@@ -73,8 +77,8 @@ export default class Main extends React.Component {
     this.setState({ replyingTo });
   };
 
-  toggleDeleteClickHandler = (event: any) => {
-    this.setState({ showModal: true });
+  toggleDeleteClickHandler = (toDelete: Object) => {
+    this.setState({ showModal: true, toDelete });
   };
 
   updateContentClickHandler = (event: any) => {
@@ -97,8 +101,35 @@ export default class Main extends React.Component {
     this.setState({ showModal: false });
   };
 
-  modalYesClickHandler = (event: any) => {
-    console.log(`Confirm Delete Comment`);
+  modalYesClickHandler = () => {
+    let { comments, toDelete } = this.state;
+    const { id, parentId } = toDelete;
+    if (parentId == 0) {
+      for (let i = 0; i < comments.length; i++) {
+        if (comments[i].id == id) {
+          comments.splice(i, 1);
+          break;
+        }
+      }
+    } else {
+      for (let i = 0; i < comments.length; i++) {
+        if (comments[i].id == parentId) {
+          for (let j = 0; j < comments[i].replies.length; j++) {
+            if (comments[i].replies[j].id == id) {
+              comments[i].replies.splice(j, 1);
+              break;
+            }
+          }
+          break;
+        }
+      }
+    }
+
+    toDelete = {
+      id: 0,
+      parentId: 0,
+    };
+    this.setState({ showModal: false, comments, toDelete });
   };
 
   render = () => {
