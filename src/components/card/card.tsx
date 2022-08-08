@@ -6,13 +6,17 @@ import Input from "../input/input";
 
 type AppProps = {
   isReply: boolean;
-  currentUser: object;
-  object: object;
+  currentUser: Object;
+  object: Object;
+  replyingTo: Object;
+  content: String;
   increaseScoreClickHandler: Function;
   decreaseScoreClickHandler: Function;
   toggleDeleteClickHandler: Function;
   updateContentClickHandler: Function;
   createContentClickHandler: Function;
+  contentInputHandler: Function;
+  updateReplyingTo: Function;
 };
 
 export default class Card extends React.Component {
@@ -25,8 +29,10 @@ export default class Card extends React.Component {
   }
 
   toggleReplyClickHandler = (event: any) => {
+    const { object, updateReplyingTo } = this.props;
     const { showInput } = this.state;
     this.setState({ showInput: !showInput });
+    updateReplyingTo(object.user);
   };
 
   render = () => {
@@ -34,11 +40,14 @@ export default class Card extends React.Component {
       isReply,
       currentUser,
       object,
+      replyingTo,
+      content,
       increaseScoreClickHandler,
       decreaseScoreClickHandler,
       toggleDeleteClickHandler,
       updateContentClickHandler,
       createContentClickHandler,
+      contentInputHandler,
     } = this.props;
 
     const { showInput } = this.state;
@@ -47,9 +56,12 @@ export default class Card extends React.Component {
     if (showInput) {
       inputElement = (
         <Input
-          avatar={currentUser.username}
-          username="amyrobson"
+          currentUser={currentUser}
+          objectId={object.id}
+          replyingTo={replyingTo}
+          content={content}
           createContentClickHandler={createContentClickHandler}
+          contentInputHandler={contentInputHandler}
         />
       );
     }
@@ -60,6 +72,7 @@ export default class Card extends React.Component {
           isReply={isReply}
           currentUser={currentUser}
           object={object}
+          replyingTo={replyingTo}
           increaseScoreClickHandler={increaseScoreClickHandler}
           decreaseScoreClickHandler={decreaseScoreClickHandler}
           toggleReplyClickHandler={this.toggleReplyClickHandler}

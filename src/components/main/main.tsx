@@ -7,6 +7,7 @@ import Comment from "../comment/comment";
 import createComment from "../../helpers/createComment";
 import createReply from "../../helpers/createReply";
 import getArrayItem from "../../helpers/getArrayItem";
+import removeUsername from "../../helpers/removeUsename";
 
 type AppProps = {
   data: any;
@@ -23,19 +24,17 @@ export default class Main extends React.Component {
       nextId: 5,
       comments: comments,
       content: ``,
+      replyingTo: {},
     };
   }
 
-  createContentClickHandler = (
-    commentId: Number = 0,
-    replyingTo: string = ``
-  ) => {
+  createContentClickHandler = (commentId: Number = 0) => {
     const { data } = this.props;
     const { currentUser } = data;
     const defaultCreatedAt = `just now`;
     const defaultScore = 0;
 
-    let { nextId, comments, content } = this.state;
+    let { nextId, comments, content, replyingTo } = this.state;
     let object: object = createComment(
       nextId,
       content,
@@ -48,6 +47,7 @@ export default class Main extends React.Component {
     if (commentId == 0) {
       comments.push(object);
     } else {
+      content = removeUsername(content);
       object = createReply(
         nextId,
         content,
@@ -67,6 +67,10 @@ export default class Main extends React.Component {
       comments,
       content,
     });
+  };
+
+  updateReplyingTo = (replyingTo: Object) => {
+    this.setState({ replyingTo });
   };
 
   toggleDeleteClickHandler = (event: any) => {
@@ -100,7 +104,7 @@ export default class Main extends React.Component {
   render = () => {
     const { data } = this.props;
     const { currentUser } = data;
-    const { showModal, comments, content } = this.state;
+    const { showModal, comments, content, replyingTo } = this.state;
 
     const commentElements: any[] = [];
     comments.forEach((comment, index) => {
@@ -109,11 +113,15 @@ export default class Main extends React.Component {
           key={`c${index}`}
           currentUser={currentUser}
           object={comment}
+          content={content}
+          replyingTo={replyingTo}
           increaseScoreClickHandler={this.increaseScoreClickHandler}
           decreaseScoreClickHandler={this.decreaseScoreClickHandler}
           toggleDeleteClickHandler={this.toggleDeleteClickHandler}
           updateContentClickHandler={this.updateContentClickHandler}
           createContentClickHandler={this.createContentClickHandler}
+          contentInputHandler={this.contentInputHandler}
+          updateReplyingTo={this.updateReplyingTo}
         />
       );
     });

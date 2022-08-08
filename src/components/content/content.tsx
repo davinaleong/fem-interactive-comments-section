@@ -10,9 +10,10 @@ import FormField from "../form-field/form-field";
 import removeUsername from "../../helpers/removeUsename";
 
 type AppProps = {
-  isReply: boolean;
-  currentUser: object;
-  object: object;
+  isReply: Boolean;
+  currentUser: Object;
+  object: Object;
+  replyingTo: Object;
   increaseScoreClickHandler: Function;
   decreaseScoreClickHandler: Function;
   toggleReplyClickHandler: Function;
@@ -27,9 +28,13 @@ export default class Content extends React.Component {
     const { isReply, object } = this.props;
     const { replyingTo, content } = object;
 
+    const replyingToUsername = replyingTo ? replyingTo.username : ``;
+
     this.state = {
       toggleEditMode: false,
-      contentEditable: isReply ? `@${replyingTo} ${content}` : `${content}`,
+      contentEditable: isReply
+        ? `@${replyingToUsername} ${content}`
+        : `${content}`,
     };
   }
 
@@ -39,12 +44,12 @@ export default class Content extends React.Component {
   };
 
   contentInputHandler = (event: any) => {
-    const { isReply, object } = this.props;
-    const { replyingTo } = object;
+    const { isReply, replyingTo } = this.props;
+    const { username } = replyingTo;
     const value = removeUsername(event.target.value);
 
     this.setState({
-      contentEditable: isReply ? `@${replyingTo} ${value}` : value,
+      contentEditable: isReply ? `@${username} ${value}` : value,
     });
   };
 
@@ -53,6 +58,7 @@ export default class Content extends React.Component {
       isReply,
       currentUser,
       object,
+      replyingTo,
       increaseScoreClickHandler,
       decreaseScoreClickHandler,
       toggleReplyClickHandler,
@@ -60,16 +66,17 @@ export default class Content extends React.Component {
       updateContentClickHandler,
     } = this.props;
 
-    const { replyingTo, score, createdAt, content, user } = object;
+    const { score, createdAt, content, user } = object;
     const { username } = user;
 
     const isCurrentUser = currentUser.username == username;
 
     const { toggleEditMode, contentEditable } = this.state;
+    const replyingToUsername = replyingTo ? replyingTo.username : ``;
 
     let contentElement: any = isReply ? (
       <p>
-        <mark>@{replyingTo}</mark> {content}
+        <mark>@{replyingToUsername}</mark> {content}
       </p>
     ) : (
       <p>{content}</p>
@@ -118,55 +125,3 @@ export default class Content extends React.Component {
     );
   };
 }
-
-// const Content = (props: any) => {
-//   const {
-//     toggleEditMode,
-//     comment,
-//     increaseScoreClickHandler,
-//     decreaseScoreClickHandler,
-//     toggleReplyClickHandler,
-//     toggleDeleteClickHandler,
-//     toggleEditClickHandler,
-//     updateContentClickHandler,
-//   } = props;
-//   return (
-//     <div className="content-grid" {toggleEditMode ? `data-edit` : ``}>
-//       <div className="counter-cell">
-//         <Counter
-//           score="3"
-//           increaseScoreClickHandler={increaseScoreClickHandler}
-//           decreaseScoreClickHandler={decreaseScoreClickHandler}
-//         />
-//       </div>
-//       <div className="info-cell">
-//         <Info
-//           isCurrentUser={true}
-//           username="juliusomo"
-//           createdAt="1 month ago"
-//         />
-//       </div>
-//       <div className="buttons-cell">
-//         <Buttons
-//           toggleReplyClickHandler={toggleReplyClickHandler}
-//           toggleDeleteClickHandler={toggleDeleteClickHandler}
-//           toggleEditClickHandler={toggleEditClickHandler}
-//         />
-//       </div>
-//       <div className="content-cell">
-//         <p>
-//           Impressive! Though it seems the drag feature could be improved. But
-//           overall it looks incredible. You've nailed the design and the
-//           responsiveness at various breakpoints works really well.
-//         </p>
-//       </div>
-//       <div className="update-cell">
-//         <Button type="btn-primary" clickHandler={updateContentClickHandler}>
-//           Update
-//         </Button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Content;

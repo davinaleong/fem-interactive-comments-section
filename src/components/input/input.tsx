@@ -21,14 +21,22 @@ export default class Input extends React.Component {
     super(props);
   }
 
-  contentInputHandler = (event: any) => {
-    const { isSend, username } = this.props;
-    const value: string = removeUsername(event.target.value);
-    const content: string = isSend
-      ? event.target.value
-      : `@${username} ${value}`;
+  componentDidMount = () => {
+    const { isSend, replyingTo, content } = this.props;
+    const value: string = removeUsername(content);
+    const contentEditable: string = isSend ? `` : `@${replyingTo.username} ${value}`;
 
-    this.props.contentInputHandler(content);
+    this.props.contentInputHandler(contentEditable);
+  };
+
+  contentInputHandler = (event: any) => {
+    const { isSend, replyingTo } = this.props;
+    const value: string = removeUsername(event.target.value);
+    const contentEditable: string = isSend
+      ? event.target.value
+      : `@${replyingTo.username} ${value}`;
+
+    this.props.contentInputHandler(contentEditable);
   };
 
   createContentClickHandler = (event: any) => {
