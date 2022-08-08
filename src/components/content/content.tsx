@@ -63,11 +63,11 @@ export default class Content extends React.Component {
       isReply,
       currentUser,
       object,
+      parent,
       increaseScoreClickHandler,
       decreaseScoreClickHandler,
       toggleReplyClickHandler,
       toggleDeleteClickHandler,
-      updateContentClickHandler,
     } = this.props;
 
     const { score, createdAt, content, user } = object;
@@ -100,6 +100,8 @@ export default class Content extends React.Component {
         <div className="counter-cell">
           <Counter
             score={score}
+            object={object}
+            parent={parent}
             increaseScoreClickHandler={increaseScoreClickHandler}
             decreaseScoreClickHandler={decreaseScoreClickHandler}
           />

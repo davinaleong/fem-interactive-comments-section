@@ -7,6 +7,8 @@ import MinusIcon from "../../icons/minus.icon";
 
 type AppProps = {
   score: Number;
+  object: Object;
+  parent: Object;
   increaseScoreClickHandler: Function;
   decreaseScoreClickHandler: Function;
 };
@@ -17,11 +19,13 @@ export default class Counter extends React.Component {
   }
 
   increaseScoreClickHandler = (event: any) => {
-    this.props.increaseScoreClickHandler(event);
+    const { object, parent, increaseScoreClickHandler } = this.props;
+    increaseScoreClickHandler(object.id, parent ? parent.id : 0);
   };
 
   decreaseScoreClickHandler = (event: any) => {
-    this.props.decreaseScoreClickHandler(event);
+    const { object, parent, decreaseScoreClickHandler } = this.props;
+    decreaseScoreClickHandler(object.id, parent ? parent.id : 0);
   };
 
   render = () => {

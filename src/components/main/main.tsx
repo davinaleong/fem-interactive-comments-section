@@ -81,12 +81,12 @@ export default class Main extends React.Component {
     this.setState({ showModal: true, toDelete });
   };
 
-  updateContentClickHandler = (id: Number, parentId: Number = 0) => {
+  updateContentClickHandler = (objectId: Number, parentId: Number = 0) => {
     let { comments, content } = this.state;
     content = removeUsername(content);
     if (parentId == 0) {
       for (let i = 0; i < comments.length; i++) {
-        if (comments[i].id == id) {
+        if (comments[i].id == objectId) {
           comments[i].content = content;
         }
       }
@@ -94,7 +94,7 @@ export default class Main extends React.Component {
       for (let i = 0; i < comments.length; i++) {
         if (comments[i].id == parentId) {
           for (let j = 0; j < comments[i].replies.length; j++) {
-            if (comments[i].replies[j].id == id) {
+            if (comments[i].replies[j].id == objectId) {
               comments[i].replies[j].content = content;
             }
           }
@@ -105,12 +105,52 @@ export default class Main extends React.Component {
     this.setState({ comments });
   };
 
-  increaseScoreClickHandler = (event: any) => {
-    console.log(`Increase Score`);
+  increaseScoreClickHandler = (objectId: Number, parentId: Number = 0) => {
+    const { comments } = this.state;
+
+    if (parentId == 0) {
+      for (let i = 0; i < comments.length; i++) {
+        if (comments[i].id == objectId) {
+          comments[i].score++;
+        }
+      }
+    } else {
+      for (let i = 0; i < comments.length; i++) {
+        if (comments[i].id == parentId) {
+          for (let j = 0; j < comments[i].replies.length; j++) {
+            if (comments[i].replies[j].id == objectId) {
+              comments[i].replies[j].score++;
+            }
+          }
+        }
+      }
+    }
+
+    this.setState({ comments });
   };
 
-  decreaseScoreClickHandler = (event: any) => {
-    console.log(`Decrease Score`);
+  decreaseScoreClickHandler = (objectId: Number, parentId: Number = 0) => {
+    const { comments } = this.state;
+
+    if (parentId == 0) {
+      for (let i = 0; i < comments.length; i++) {
+        if (comments[i].id == objectId) {
+          comments[i].score--;
+        }
+      }
+    } else {
+      for (let i = 0; i < comments.length; i++) {
+        if (comments[i].id == parentId) {
+          for (let j = 0; j < comments[i].replies.length; j++) {
+            if (comments[i].replies[j].id == objectId) {
+              comments[i].replies[j].score--;
+            }
+          }
+        }
+      }
+    }
+
+    this.setState({ comments });
   };
 
   contentInputHandler = (content: string) => {
