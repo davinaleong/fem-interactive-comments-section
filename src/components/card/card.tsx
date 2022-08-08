@@ -38,15 +38,12 @@ export default class Card extends React.Component {
 
   hideReplyClickHandler = (event: any) => {
     this.setState({ showInput: false });
-  };
+  }
 
   toggleDeleteClickHandler = () => {
     const { object, parent, toggleDeleteClickHandler } = this.props;
-    toggleDeleteClickHandler({
-      id: object.id,
-      parentId: parent ? parent.id : 0,
-    });
-  };
+    toggleDeleteClickHandler({ id: object.id, parentId: parent ? parent.id : 0 });
+  }
 
   render = () => {
     const {
@@ -88,12 +85,15 @@ export default class Card extends React.Component {
           isReply={isReply}
           currentUser={currentUser}
           object={object}
+          parent={parent}
           replyingTo={replyingTo}
+          content={content}
           increaseScoreClickHandler={increaseScoreClickHandler}
           decreaseScoreClickHandler={decreaseScoreClickHandler}
           toggleReplyClickHandler={this.toggleReplyClickHandler}
-          toggleDeleteClickHandler={this.toggleDeleteClickHandler}
+          toggleDeleteClickHandler={toggleDeleteClickHandler}
           updateContentClickHandler={updateContentClickHandler}
+          contentInputHandler={contentInputHandler}
         />
         {inputElement}
       </div>

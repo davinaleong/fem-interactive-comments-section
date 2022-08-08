@@ -81,8 +81,28 @@ export default class Main extends React.Component {
     this.setState({ showModal: true, toDelete });
   };
 
-  updateContentClickHandler = (event: any) => {
-    console.log(`Update Content`);
+  updateContentClickHandler = (id: Number, parentId: Number = 0) => {
+    let { comments, content } = this.state;
+    content = removeUsername(content);
+    if (parentId == 0) {
+      for (let i = 0; i < comments.length; i++) {
+        if (comments[i].id == id) {
+          comments[i].content = content;
+        }
+      }
+    } else {
+      for (let i = 0; i < comments.length; i++) {
+        if (comments[i].id == parentId) {
+          for (let j = 0; j < comments[i].replies.length; j++) {
+            if (comments[i].replies[j].id == id) {
+              comments[i].replies[j].content = content;
+            }
+          }
+        }
+      }
+    }
+
+    this.setState({ comments });
   };
 
   increaseScoreClickHandler = (event: any) => {

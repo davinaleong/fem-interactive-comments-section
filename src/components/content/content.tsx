@@ -13,12 +13,13 @@ type AppProps = {
   isReply: Boolean;
   currentUser: Object;
   object: Object;
-  replyingTo: String;
+  parent: Object;
   increaseScoreClickHandler: Function;
   decreaseScoreClickHandler: Function;
   toggleReplyClickHandler: Function;
   toggleDeleteClickHandler: Function;
   updateContentClickHandler: Function;
+  contentInputHandler: Function;
 };
 
 export default class Content extends React.Component {
@@ -40,13 +41,21 @@ export default class Content extends React.Component {
   };
 
   contentInputHandler = (event: any) => {
-    const { isReply, object } = this.props;
+    const { isReply, object, contentInputHandler } = this.props;
     const { replyingTo } = object;
     const value = removeUsername(event.target.value);
+    const contentEditable = isReply ? `@${replyingTo} ${value}` : value;
 
     this.setState({
-      contentEditable: isReply ? `@${replyingTo} ${value}` : value,
+      contentEditable,
     });
+    contentInputHandler(contentEditable);
+  };
+
+  updateContentClickHandler = (event: any) => {
+    const { object, parent, updateContentClickHandler } = this.props;
+    this.setState({ toggleEditMode: false });
+    updateContentClickHandler(object.id, parent.id);
   };
 
   render = () => {
@@ -67,11 +76,11 @@ export default class Content extends React.Component {
     const isCurrentUser = currentUser.username == username;
 
     const { toggleEditMode, contentEditable } = this.state;
-    const replyingToUsername = object ? object.replyingTo : ``;
+    const { replyingTo } = object;
 
     let contentElement: any = isReply ? (
       <p>
-        <mark>@{replyingToUsername}</mark> {content}
+        <mark>@{replyingTo}</mark> {content}
       </p>
     ) : (
       <p>{content}</p>
@@ -112,7 +121,10 @@ export default class Content extends React.Component {
         </div>
         <div className="content-cell">{contentElement}</div>
         <div className="update-cell">
-          <Button type="btn-primary" clickHandler={updateContentClickHandler}>
+          <Button
+            type="btn-primary"
+            clickHandler={this.updateContentClickHandler}
+          >
             Update
           </Button>
         </div>
