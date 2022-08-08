@@ -55,7 +55,7 @@ export default class Content extends React.Component {
   updateContentClickHandler = (event: any) => {
     const { object, parent, updateContentClickHandler } = this.props;
     this.setState({ toggleEditMode: false });
-    updateContentClickHandler(object.id, parent.id);
+    updateContentClickHandler(object.id, parent ? parent.id : 0);
   };
 
   render = () => {
