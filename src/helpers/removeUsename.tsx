@@ -1,7 +1,7 @@
-const pattern = /^@\w+\s/;
+const pattern = /^@\w+\s/
 
-const removeUsername = (text: string) => {
-  return text.replace(pattern, "");
-};
+const removeUsername = (text: string): any => {
+  return text.replace(pattern, "")
+}
 
-export default removeUsername;
+export default removeUsername

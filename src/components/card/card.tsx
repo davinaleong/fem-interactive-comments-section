@@ -1,48 +1,55 @@
-import React from "react";
-import "./card.css";
+import React from "react"
+import "./card.css"
 
-import Content from "../content/content";
-import Input from "../input/input";
+import Content from "../content/content"
+import Input from "../input/input"
 
-type AppProps = {
-  isReply: boolean;
-  currentUser: Object;
-  object: Object;
-  parent: Object;
-  replyingTo: String;
-  content: String;
-  increaseScoreClickHandler: Function;
-  decreaseScoreClickHandler: Function;
-  toggleDeleteClickHandler: Function;
-  updateContentClickHandler: Function;
-  createContentClickHandler: Function;
-  contentInputHandler: Function;
-  updateReplyingTo: Function;
-};
+interface AppProps {
+  isReply: boolean
+  currentUser: object
+  object: object
+  parent: object
+  replyingTo: string
+  content: string
+  increaseScoreClickHandler: Function
+  decreaseScoreClickHandler: Function
+  toggleDeleteClickHandler: Function
+  updateContentClickHandler: Function
+  createContentClickHandler: Function
+  contentInputHandler: Function
+  updateReplyingTo: Function
+}
 
-export default class Card extends React.Component {
+interface AppState {
+  showInput: boolean
+}
+
+export default class Card extends React.Component<AppProps, AppState> {
   constructor(props: any) {
-    super(props);
+    super(props)
 
     this.state = {
       showInput: false,
-    };
+    }
   }
 
   toggleReplyClickHandler = (event: any) => {
-    const { object, updateReplyingTo } = this.props;
-    const { showInput } = this.state;
-    this.setState({ showInput: !showInput });
-    updateReplyingTo(object.user.username);
-  };
+    const { object, updateReplyingTo } = this.props
+    const { showInput } = this.state
+    this.setState({ showInput: !showInput })
+    updateReplyingTo(object.user.username)
+  }
 
   hideReplyClickHandler = (event: any) => {
-    this.setState({ showInput: false });
+    this.setState({ showInput: false })
   }
 
   toggleDeleteClickHandler = () => {
-    const { object, parent, toggleDeleteClickHandler } = this.props;
-    toggleDeleteClickHandler({ id: object.id, parentId: parent ? parent.id : 0 });
+    const { object, parent, toggleDeleteClickHandler } = this.props
+    toggleDeleteClickHandler({
+      id: object.id,
+      parentId: parent ? parent.id : 0,
+    })
   }
 
   render = () => {
@@ -59,10 +66,10 @@ export default class Card extends React.Component {
       updateContentClickHandler,
       createContentClickHandler,
       contentInputHandler,
-    } = this.props;
+    } = this.props
 
-    const { showInput } = this.state;
-    let inputElement = null;
+    const { showInput } = this.state
+    let inputElement = null
 
     if (showInput) {
       inputElement = (
@@ -76,7 +83,7 @@ export default class Card extends React.Component {
           contentInputHandler={contentInputHandler}
           hideReplyClickHandler={this.hideReplyClickHandler}
         />
-      );
+      )
     }
 
     return (
@@ -97,6 +104,6 @@ export default class Card extends React.Component {
         />
         {inputElement}
       </div>
-    );
-  };
+    )
+  }
 }

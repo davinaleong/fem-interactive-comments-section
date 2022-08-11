@@ -43,7 +43,7 @@ export default class Main extends React.Component<AppProps, AppState> {
     }
   }
 
-  createContentClickHandler = (commentId: number = 0) => {
+  createContentClickHandler = (commentId: number = 0): void => {
     const { data } = this.props
     const { currentUser } = data
     const defaultCreatedAt = `just now`
@@ -84,15 +84,15 @@ export default class Main extends React.Component<AppProps, AppState> {
     })
   }
 
-  updateReplyingTo = (replyingTo: string) => {
+  updateReplyingTo = (replyingTo: string): void => {
     this.setState({ replyingTo })
   }
 
-  toggleDeleteClickHandler = (toDelete: IToDelete) => {
+  toggleDeleteClickHandler = (toDelete: IToDelete): void => {
     this.setState({ showModal: true, toDelete })
   }
 
-  updateContentClickHandler = (objectId: Number, parentId: Number = 0) => {
+  updateContentClickHandler = (objectId: Number, parentId: Number = 0): void => {
     let { comments, content } = this.state
     content = removeUsername(content)
     if (parentId == 0) {
@@ -116,7 +116,7 @@ export default class Main extends React.Component<AppProps, AppState> {
     this.setState({ comments })
   }
 
-  increaseScoreClickHandler = (objectId: Number, parentId: Number = 0) => {
+  increaseScoreClickHandler = (objectId: Number, parentId: Number = 0): void => {
     const { comments } = this.state
 
     if (parentId == 0) {
@@ -140,7 +140,7 @@ export default class Main extends React.Component<AppProps, AppState> {
     this.setState({ comments })
   }
 
-  decreaseScoreClickHandler = (objectId: Number, parentId: Number = 0) => {
+  decreaseScoreClickHandler = (objectId: Number, parentId: Number = 0): void => {
     const { comments } = this.state
 
     if (parentId == 0) {
@@ -164,15 +164,15 @@ export default class Main extends React.Component<AppProps, AppState> {
     this.setState({ comments })
   }
 
-  contentInputHandler = (content: string) => {
+  contentInputHandler = (content: string): void => {
     this.setState({ content })
   }
 
-  modalCancelClickHandler = (event: any) => {
+  modalCancelClickHandler = (event: any): void => {
     this.setState({ showModal: false })
   }
 
-  modalYesClickHandler = () => {
+  modalYesClickHandler = (): void => {
     let { comments, toDelete } = this.state
     const { id, parentId } = toDelete
     if (parentId == 0) {
@@ -201,6 +201,10 @@ export default class Main extends React.Component<AppProps, AppState> {
       parentId: 0,
     }
     this.setState({ showModal: false, comments, toDelete })
+  }
+
+  hideReplyClickHandler = (): void => {
+    return
   }
 
   render = () => {
@@ -240,9 +244,12 @@ export default class Main extends React.Component<AppProps, AppState> {
           isSend={true}
           currentUser={currentUser}
           objectId={0}
+          parentId={0}
           content={content}
+          replyingTo=""
           contentInputHandler={this.contentInputHandler}
           createContentClickHandler={this.createContentClickHandler}
+          hideReplyClickHandler={this.hideReplyClickHandler}
         />
       </main>
     )

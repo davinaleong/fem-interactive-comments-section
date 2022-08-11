@@ -1,82 +1,100 @@
-import React from "react";
-import "./content.css";
+import React from "react"
+import "./content.css"
 
-import Counter from "../counter/counter";
-import Info from "../info/info";
-import Buttons from "../buttons/buttons";
-import Button from "../button/button";
-import FormField from "../form-field/form-field";
+import Counter from "../counter/counter"
+import Info from "../info/info"
+import Buttons from "../buttons/buttons"
+import Button from "../button/button"
+import FormField from "../form-field/form-field"
 
-import removeUsername from "../../helpers/removeUsename";
+import removeUsername from "../../helpers/removeUsename"
+import IUser from "../../interfaces/user"
+import IComment from "../../interfaces/comment"
+import IReply from "../../interfaces/reply"
 
-type AppProps = {
-  isReply: Boolean;
-  currentUser: Object;
-  object: Object;
-  parent: Object;
-  increaseScoreClickHandler: Function;
-  decreaseScoreClickHandler: Function;
-  toggleReplyClickHandler: Function;
-  toggleDeleteClickHandler: Function;
-  updateContentClickHandler: Function;
-  contentInputHandler: Function;
-};
+interface AppProps {
+  isReply: boolean
+  currentUser: IUser
+  comment: IComment
+  reply: IReply
+  increaseScoreClickHandler: Function
+  decreaseScoreClickHandler: Function
+  toggleReplyClickHandler: Function
+  toggleDeleteClickHandler: Function
+  updateContentClickHandler: Function
+  contentInputHandler: Function
+}
 
-export default class Content extends React.Component {
+interface AppState {
+  toggleEditMode: boolean
+  contentEditable: string
+}
+
+export default class Content extends React.Component<AppProps, AppState> {
   constructor(props: any) {
-    super(props);
+    super(props)
 
-    const { isReply, object } = this.props;
-    const { replyingTo, content } = object;
+    const { isReply, comment, reply } = this.props
+    const { replyingTo } = reply
 
     this.state = {
       toggleEditMode: false,
-      contentEditable: isReply ? `@${replyingTo} ${content}` : `${content}`,
-    };
+      contentEditable: isReply ? `@${replyingTo} ${reply.content}` : `${comment.content}`,
+    }
   }
 
   toggleEditClickHandler = (event: any) => {
-    const { toggleEditMode } = this.state;
-    this.setState({ toggleEditMode: !toggleEditMode });
-  };
+    const { toggleEditMode } = this.state
+    this.setState({ toggleEditMode: !toggleEditMode })
+  }
 
   contentInputHandler = (event: any) => {
-    const { isReply, object, contentInputHandler } = this.props;
-    const { replyingTo } = object;
-    const value = removeUsername(event.target.value);
-    const contentEditable = isReply ? `@${replyingTo} ${value}` : value;
+    const { isReply, reply, contentInputHandler } = this.props
+    const { replyingTo } = reply
+    const value = removeUsername(event.target.value)
+    const contentEditable = isReply ? `@${replyingTo} ${value}` : value
 
     this.setState({
       contentEditable,
-    });
-    contentInputHandler(contentEditable);
-  };
+    })
+    contentInputHandler(contentEditable)
+  }
 
   updateContentClickHandler = (event: any) => {
-    const { object, parent, updateContentClickHandler } = this.props;
-    this.setState({ toggleEditMode: false });
-    updateContentClickHandler(object.id, parent ? parent.id : 0);
-  };
+    const { comment, reply, updateContentClickHandler } = this.props
+    this.setState({ toggleEditMode: false })
+
+    let id: number = comment.id
+    let parentId: number = 0
+    if (reply) {
+      id = reply.id
+      parentId = comment.id
+    }
+    updateContentClickHandler(id, parentId)
+  }
 
   render = () => {
     const {
       isReply,
       currentUser,
-      object,
-      parent,
+      comment,
+      reply,
       increaseScoreClickHandler,
       decreaseScoreClickHandler,
       toggleReplyClickHandler,
       toggleDeleteClickHandler,
-    } = this.props;
+    } = this.props
 
-    const { score, createdAt, content, user } = object;
-    const { username } = user;
+    let { score, createdAt, content, user } = comment
+    if (isReply) {
+      { score, createdAt, content, user } = reply
+    }
+    const { username } = user
 
-    const isCurrentUser = currentUser.username == username;
+    const isCurrentUser = currentUser.username == username
 
-    const { toggleEditMode, contentEditable } = this.state;
-    const { replyingTo } = object;
+    const { toggleEditMode, contentEditable } = this.state
+    const { replyingTo } = reply
 
     let contentElement: any = isReply ? (
       <p>
@@ -84,7 +102,7 @@ export default class Content extends React.Component {
       </p>
     ) : (
       <p>{content}</p>
-    );
+    )
 
     if (toggleEditMode) {
       contentElement = (
@@ -92,7 +110,7 @@ export default class Content extends React.Component {
           value={contentEditable}
           inputHandler={this.contentInputHandler}
         />
-      );
+      )
     }
 
     return (
@@ -131,6 +149,6 @@ export default class Content extends React.Component {
           </Button>
         </div>
       </div>
-    );
-  };
+    )
+  }
 }

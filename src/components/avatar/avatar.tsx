@@ -1,38 +1,38 @@
-import React from "react";
-import "./avatar.css";
+import React from "react"
+import "./avatar.css"
 
-import AmyrobsonAvatar from "../../avatars/amyrobson.avatar";
-import JuliusomoAvatar from "../../avatars/juliusomo.avatar";
-import MaxblagunAvatar from "../../avatars/maxblagun.avatar";
-import RamsesmironAvatar from "../../avatars/ramsesmiron.avatar";
+import AmyrobsonAvatar from "../../avatars/amyrobson.avatar"
+import JuliusomoAvatar from "../../avatars/juliusomo.avatar"
+import MaxblagunAvatar from "../../avatars/maxblagun.avatar"
+import RamsesmironAvatar from "../../avatars/ramsesmiron.avatar"
 
-type AppProps = {
-  username: string;
-};
+interface AppProps {
+  username: string
+}
 
-const Avatar = (props: any): any => {
-  const { username } = props;
+const Avatar = (props: AppProps): any => {
+  const { username } = props
 
   switch (username) {
     case `juliusomo`:
-      return <JuliusomoAvatar />;
-      break;
+      return <JuliusomoAvatar />
+      break
 
     case `amyrobson`:
-      return <AmyrobsonAvatar />;
-      break;
+      return <AmyrobsonAvatar />
+      break
 
     case `maxblagun`:
-      return <MaxblagunAvatar />;
-      break;
+      return <MaxblagunAvatar />
+      break
 
     case `ramsesmiron`:
-      return <RamsesmironAvatar />;
-      break;
+      return <RamsesmironAvatar />
+      break
 
     default:
-      return;
+      return
   }
-};
+}
 
-export default Avatar;
+export default Avatar
