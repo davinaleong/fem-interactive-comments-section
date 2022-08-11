@@ -1,23 +1,23 @@
-import React from "react";
-import "./button.css";
+import React from "react"
+import "./button.css"
 
-type AppProps = {
-  children;
-  type: string;
-  clickHandler: Function;
-};
+interface AppProps {
+  children: any
+  type: string
+  clickHandler: Function
+}
 
-export default class Button extends React.Component {
+export default class Button extends React.Component<AppProps, {}> {
   constructor(props: any) {
-    super(props);
+    super(props)
   }
 
   clickHandler = (event: any) => {
-    this.props.clickHandler(event);
-  };
+    this.props.clickHandler(event)
+  }
 
   render = () => {
-    const { children, type } = this.props;
+    const { children, type } = this.props
 
     return (
       <button
@@ -27,6 +27,6 @@ export default class Button extends React.Component {
       >
         {children}
       </button>
-    );
-  };
+    )
+  }
 }

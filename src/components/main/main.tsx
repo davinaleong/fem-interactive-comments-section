@@ -16,7 +16,7 @@ interface AppProps {
 }
 
 interface AppState {
-  showModal: Boolean
+  showModal: boolean
   nextId: number
   comments: any
   content: string
@@ -50,14 +50,6 @@ export default class Main extends React.Component<AppProps, AppState> {
     const defaultScore = 0
 
     let { nextId, comments, content, replyingTo } = this.state
-    // let object: object = createComment(
-    //   nextId,
-    //   content,
-    //   defaultCreatedAt,
-    //   defaultScore,
-    //   currentUser,
-    //   []
-    // )
     let comment: IComment = {
       id: nextId,
       content,

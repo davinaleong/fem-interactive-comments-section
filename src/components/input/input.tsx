@@ -1,44 +1,46 @@
-import React from "react";
-import "./input.css";
+import React from "react"
+import "./input.css"
 
-import Avatar from "../avatar/avatar";
-import Button from "../button/button";
-import removeUsername from "../../helpers/removeUsename";
-import FormField from "../form-field/form-field";
+import Avatar from "../avatar/avatar"
+import Button from "../button/button"
+import removeUsername from "../../helpers/removeUsename"
+import FormField from "../form-field/form-field"
+import IUser from "../../interfaces/user"
 
-type AppProps = {
-  isSend: Boolean;
-  currentUser: Object;
-  objectId: Number;
-  parentId: Number;
-  replyingTo: String;
-  content: String;
-  contentInputHandler: Function;
-  createContentClickHandler: Function;
-};
+interface AppProps {
+  isSend: boolean
+  currentUser: IUser
+  objectId: number
+  parentId: number
+  replyingTo: string
+  content: string
+  contentInputHandler: Function
+  createContentClickHandler: Function
+  hideReplyClickHandler: Function
+}
 
-export default class Input extends React.Component {
+export default class Input extends React.Component<AppProps, {}> {
   constructor(props: any) {
-    super(props);
+    super(props)
   }
 
   componentDidMount = () => {
-    const { isSend, replyingTo, content, contentInputHandler } = this.props;
-    const value: string = removeUsername(content);
-    const contentEditable: string = isSend ? `` : `@${replyingTo} ${value}`;
+    const { isSend, replyingTo, content, contentInputHandler } = this.props
+    const value: string = removeUsername(content)
+    const contentEditable: string = isSend ? `` : `@${replyingTo} ${value}`
 
-    contentInputHandler(contentEditable);
-  };
+    contentInputHandler(contentEditable)
+  }
 
   contentInputHandler = (event: any) => {
-    const { isSend, replyingTo, contentInputHandler } = this.props;
-    const value: string = removeUsername(event.target.value);
+    const { isSend, replyingTo, contentInputHandler } = this.props
+    const value: string = removeUsername(event.target.value)
     const contentEditable: string = isSend
       ? event.target.value
-      : `@${replyingTo} ${value}`;
+      : `@${replyingTo} ${value}`
 
-    contentInputHandler(contentEditable);
-  };
+    contentInputHandler(contentEditable)
+  }
 
   createContentClickHandler = (event: any) => {
     const {
@@ -47,18 +49,18 @@ export default class Input extends React.Component {
       replyingTo,
       hideReplyClickHandler,
       createContentClickHandler,
-    } = this.props;
-    hideReplyClickHandler();
+    } = this.props
+    hideReplyClickHandler()
 
     if (parentId) {
-      createContentClickHandler(parentId, replyingTo);
+      createContentClickHandler(parentId, replyingTo)
     } else {
-      createContentClickHandler(objectId, replyingTo);
+      createContentClickHandler(objectId, replyingTo)
     }
-  };
+  }
 
   render = () => {
-    const { isSend, currentUser, content } = this.props;
+    const { isSend, currentUser, content } = this.props
 
     return (
       <div className="input-grid">
@@ -73,6 +75,6 @@ export default class Input extends React.Component {
           </Button>
         </div>
       </div>
-    );
-  };
+    )
+  }
 }

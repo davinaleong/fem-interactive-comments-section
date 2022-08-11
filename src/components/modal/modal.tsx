@@ -1,32 +1,32 @@
-import React from "react";
-import "./modal.css";
+import React from "react"
+import "./modal.css"
 
-import Button from "../button/button";
+import Button from "../button/button"
 
-type AppProps = {
-  showModal: boolean;
-  modalCancelClickHandler: Function;
-  modalYesClickHandler: Function;
-};
+interface AppProps {
+  showModal: boolean
+  modalCancelClickHandler: Function
+  modalYesClickHandler: Function
+}
 
-export default class Modal extends React.Component {
+export default class Modal extends React.Component<AppProps, {}> {
   constructor(props: any) {
-    super(props);
+    super(props)
   }
 
   modalCancelClickHandler = (event: any) => {
-    this.props.modalCancelClickHandler(event);
-  };
+    this.props.modalCancelClickHandler(event)
+  }
 
   modalYesClickHandler = (event: any) => {
-    this.props.modalYesClickHandler(event);
-  };
+    this.props.modalYesClickHandler(event)
+  }
 
   render = () => {
-    const { showModal } = this.props;
+    const { showModal } = this.props
 
     if (!showModal) {
-      return;
+      return
     }
 
     return (
@@ -50,6 +50,6 @@ export default class Modal extends React.Component {
           </Button>
         </div>
       </div>
-    );
-  };
+    )
+  }
 }
