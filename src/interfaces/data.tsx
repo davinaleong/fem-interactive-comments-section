@@ -1,7 +1,7 @@
-import User from "./user"
-import Comment from "./comment"
+import IUser from "./user"
+import IComment from "./comment"
 
-export default interface Data {
-  currentUser: User
-  comments: Array<Comment>
+export default interface IData {
+  currentUser: IUser
+  comments: Array<IComment>
 }

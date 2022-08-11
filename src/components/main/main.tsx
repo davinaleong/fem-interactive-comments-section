@@ -1,30 +1,27 @@
 import React from "react"
 import "./main.css"
 
-import Data from "../../interfaces/data"
+import IData from "../../interfaces/data"
+import IComment from "../../interfaces/comment"
+import IToDelete from "../../interfaces/to-delete"
 
 import Modal from "../modal/modal"
 import Input from "../input/input"
 import Comment from "../comment/comment"
-import createComment from "../../helpers/createComment"
-import createReply from "../../helpers/createReply"
-import getArrayItem from "../../helpers/getArrayItem"
 import removeUsername from "../../helpers/removeUsename"
+import IReply from "../../interfaces/reply"
 
 interface AppProps {
-  data: Data
+  data: IData
 }
 
 interface AppState {
   showModal: Boolean
-  nextId: Number
-  comments: Object
+  nextId: number
+  comments: any
   content: string
   replyingTo: string
-  toDelete: {
-    id: Number
-    parentId: Number
-  }
+  toDelete: IToDelete
 }
 
 export default class Main extends React.Component<AppProps, AppState> {
@@ -46,36 +43,44 @@ export default class Main extends React.Component<AppProps, AppState> {
     }
   }
 
-  createContentClickHandler = (commentId: Number = 0) => {
+  createContentClickHandler = (commentId: number = 0) => {
     const { data } = this.props
     const { currentUser } = data
     const defaultCreatedAt = `just now`
     const defaultScore = 0
 
     let { nextId, comments, content, replyingTo } = this.state
-    let object: object = createComment(
-      nextId,
+    // let object: object = createComment(
+    //   nextId,
+    //   content,
+    //   defaultCreatedAt,
+    //   defaultScore,
+    //   currentUser,
+    //   []
+    // )
+    let comment: IComment = {
+      id: nextId,
       content,
-      defaultCreatedAt,
-      defaultScore,
-      currentUser,
-      []
-    )
+      createdAt: defaultCreatedAt,
+      score: defaultScore,
+      user: currentUser,
+      replies: [],
+    }
 
     if (commentId == 0) {
-      comments.push(object)
+      comments.push(comment)
     } else {
       content = removeUsername(content)
-      object = createReply(
-        nextId,
+      const reply: IReply = {
+        id: nextId,
         content,
-        defaultCreatedAt,
-        defaultScore,
+        createdAt: defaultCreatedAt,
+        score: defaultScore,
         replyingTo,
-        currentUser
-      )
-      const comment: object = getArrayItem(comments, `id`, commentId)
-      comment.replies.push(object)
+        user: currentUser,
+      }
+      comment = comments.filter(comment.id == commentId)
+      comment.replies.push(reply)
     }
 
     nextId++
@@ -91,7 +96,7 @@ export default class Main extends React.Component<AppProps, AppState> {
     this.setState({ replyingTo })
   }
 
-  toggleDeleteClickHandler = (toDelete: Object) => {
+  toggleDeleteClickHandler = (toDelete: IToDelete) => {
     this.setState({ showModal: true, toDelete })
   }
 
@@ -212,7 +217,7 @@ export default class Main extends React.Component<AppProps, AppState> {
     const { showModal, comments, content, replyingTo } = this.state
 
     const commentElements: any[] = []
-    comments.forEach((comment, index) => {
+    comments.forEach((comment: Comment, index: number) => {
       commentElements.push(
         <Comment
           key={`c${index}`}

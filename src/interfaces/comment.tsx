@@ -1,11 +1,11 @@
-import User from "./user"
-import Reply from "./reply"
+import IUser from "./user"
+import IReply from "./reply"
 
-export default interface Comment {
-  id: Number
+export default interface IComment {
+  id: number
   content: string
   createdAt: string
-  score: Number
-  user: User
-  replies: Array<Reply>
+  score: number
+  user: IUser
+  replies: Array<IReply>
 }

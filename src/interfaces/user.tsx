@@ -1,4 +1,4 @@
-export default interface User {
+export default interface IUser {
   image: {
     png: string
     webp: string

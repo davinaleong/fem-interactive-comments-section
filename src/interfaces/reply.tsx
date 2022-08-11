@@ -1,10 +1,10 @@
-import User from "./user"
+import IUser from "./user"
 
-export default interface Reply {
-  id: Number
+export default interface IReply {
+  id: number
   content: string
   createdAt: string
-  score: Number
+  score: number
   replyingTo: string
-  user: User
+  user: IUser
 }
