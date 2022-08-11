@@ -1,24 +1,38 @@
-import React from "react";
-import "./main.css";
+import React from "react"
+import "./main.css"
 
-import Modal from "../modal/modal";
-import Input from "../input/input";
-import Comment from "../comment/comment";
-import createComment from "../../helpers/createComment";
-import createReply from "../../helpers/createReply";
-import getArrayItem from "../../helpers/getArrayItem";
-import removeUsername from "../../helpers/removeUsename";
+import Data from "../../interfaces/data"
 
-type AppProps = {
-  data: any;
-};
+import Modal from "../modal/modal"
+import Input from "../input/input"
+import Comment from "../comment/comment"
+import createComment from "../../helpers/createComment"
+import createReply from "../../helpers/createReply"
+import getArrayItem from "../../helpers/getArrayItem"
+import removeUsername from "../../helpers/removeUsename"
 
-export default class Main extends React.Component {
+interface AppProps {
+  data: Data
+}
+
+interface AppState {
+  showModal: Boolean
+  nextId: Number
+  comments: Object
+  content: string
+  replyingTo: string
+  toDelete: {
+    id: Number
+    parentId: Number
+  }
+}
+
+export default class Main extends React.Component<AppProps, AppState> {
   constructor(props: any) {
-    super(props);
+    super(props)
 
-    const { data } = this.props;
-    const { comments } = data;
+    const { data } = this.props
+    const { comments } = data
     this.state = {
       showModal: false,
       nextId: 5,
@@ -29,16 +43,16 @@ export default class Main extends React.Component {
         id: 0,
         parentId: 0,
       },
-    };
+    }
   }
 
   createContentClickHandler = (commentId: Number = 0) => {
-    const { data } = this.props;
-    const { currentUser } = data;
-    const defaultCreatedAt = `just now`;
-    const defaultScore = 0;
+    const { data } = this.props
+    const { currentUser } = data
+    const defaultCreatedAt = `just now`
+    const defaultScore = 0
 
-    let { nextId, comments, content, replyingTo } = this.state;
+    let { nextId, comments, content, replyingTo } = this.state
     let object: object = createComment(
       nextId,
       content,
@@ -46,12 +60,12 @@ export default class Main extends React.Component {
       defaultScore,
       currentUser,
       []
-    );
+    )
 
     if (commentId == 0) {
-      comments.push(object);
+      comments.push(object)
     } else {
-      content = removeUsername(content);
+      content = removeUsername(content)
       object = createReply(
         nextId,
         content,
@@ -59,35 +73,35 @@ export default class Main extends React.Component {
         defaultScore,
         replyingTo,
         currentUser
-      );
-      const comment: object = getArrayItem(comments, `id`, commentId);
-      comment.replies.push(object);
+      )
+      const comment: object = getArrayItem(comments, `id`, commentId)
+      comment.replies.push(object)
     }
 
-    nextId++;
-    content = ``;
+    nextId++
+    content = ``
     this.setState({
       nextId,
       comments,
       content,
-    });
-  };
+    })
+  }
 
   updateReplyingTo = (replyingTo: string) => {
-    this.setState({ replyingTo });
-  };
+    this.setState({ replyingTo })
+  }
 
   toggleDeleteClickHandler = (toDelete: Object) => {
-    this.setState({ showModal: true, toDelete });
-  };
+    this.setState({ showModal: true, toDelete })
+  }
 
   updateContentClickHandler = (objectId: Number, parentId: Number = 0) => {
-    let { comments, content } = this.state;
-    content = removeUsername(content);
+    let { comments, content } = this.state
+    content = removeUsername(content)
     if (parentId == 0) {
       for (let i = 0; i < comments.length; i++) {
         if (comments[i].id == objectId) {
-          comments[i].content = content;
+          comments[i].content = content
         }
       }
     } else {
@@ -95,23 +109,23 @@ export default class Main extends React.Component {
         if (comments[i].id == parentId) {
           for (let j = 0; j < comments[i].replies.length; j++) {
             if (comments[i].replies[j].id == objectId) {
-              comments[i].replies[j].content = content;
+              comments[i].replies[j].content = content
             }
           }
         }
       }
     }
 
-    this.setState({ comments });
-  };
+    this.setState({ comments })
+  }
 
   increaseScoreClickHandler = (objectId: Number, parentId: Number = 0) => {
-    const { comments } = this.state;
+    const { comments } = this.state
 
     if (parentId == 0) {
       for (let i = 0; i < comments.length; i++) {
         if (comments[i].id == objectId) {
-          comments[i].score++;
+          comments[i].score++
         }
       }
     } else {
@@ -119,23 +133,23 @@ export default class Main extends React.Component {
         if (comments[i].id == parentId) {
           for (let j = 0; j < comments[i].replies.length; j++) {
             if (comments[i].replies[j].id == objectId) {
-              comments[i].replies[j].score++;
+              comments[i].replies[j].score++
             }
           }
         }
       }
     }
 
-    this.setState({ comments });
-  };
+    this.setState({ comments })
+  }
 
   decreaseScoreClickHandler = (objectId: Number, parentId: Number = 0) => {
-    const { comments } = this.state;
+    const { comments } = this.state
 
     if (parentId == 0) {
       for (let i = 0; i < comments.length; i++) {
         if (comments[i].id == objectId) {
-          comments[i].score--;
+          comments[i].score--
         }
       }
     } else {
@@ -143,32 +157,32 @@ export default class Main extends React.Component {
         if (comments[i].id == parentId) {
           for (let j = 0; j < comments[i].replies.length; j++) {
             if (comments[i].replies[j].id == objectId) {
-              comments[i].replies[j].score--;
+              comments[i].replies[j].score--
             }
           }
         }
       }
     }
 
-    this.setState({ comments });
-  };
+    this.setState({ comments })
+  }
 
   contentInputHandler = (content: string) => {
-    this.setState({ content });
-  };
+    this.setState({ content })
+  }
 
   modalCancelClickHandler = (event: any) => {
-    this.setState({ showModal: false });
-  };
+    this.setState({ showModal: false })
+  }
 
   modalYesClickHandler = () => {
-    let { comments, toDelete } = this.state;
-    const { id, parentId } = toDelete;
+    let { comments, toDelete } = this.state
+    const { id, parentId } = toDelete
     if (parentId == 0) {
       for (let i = 0; i < comments.length; i++) {
         if (comments[i].id == id) {
-          comments.splice(i, 1);
-          break;
+          comments.splice(i, 1)
+          break
         }
       }
     } else {
@@ -176,11 +190,11 @@ export default class Main extends React.Component {
         if (comments[i].id == parentId) {
           for (let j = 0; j < comments[i].replies.length; j++) {
             if (comments[i].replies[j].id == id) {
-              comments[i].replies.splice(j, 1);
-              break;
+              comments[i].replies.splice(j, 1)
+              break
             }
           }
-          break;
+          break
         }
       }
     }
@@ -188,16 +202,16 @@ export default class Main extends React.Component {
     toDelete = {
       id: 0,
       parentId: 0,
-    };
-    this.setState({ showModal: false, comments, toDelete });
-  };
+    }
+    this.setState({ showModal: false, comments, toDelete })
+  }
 
   render = () => {
-    const { data } = this.props;
-    const { currentUser } = data;
-    const { showModal, comments, content, replyingTo } = this.state;
+    const { data } = this.props
+    const { currentUser } = data
+    const { showModal, comments, content, replyingTo } = this.state
 
-    const commentElements: any[] = [];
+    const commentElements: any[] = []
     comments.forEach((comment, index) => {
       commentElements.push(
         <Comment
@@ -214,8 +228,8 @@ export default class Main extends React.Component {
           contentInputHandler={this.contentInputHandler}
           updateReplyingTo={this.updateReplyingTo}
         />
-      );
-    });
+      )
+    })
 
     return (
       <main className="main-grid | container">
@@ -234,6 +248,6 @@ export default class Main extends React.Component {
           createContentClickHandler={this.createContentClickHandler}
         />
       </main>
-    );
-  };
+    )
+  }
 }
