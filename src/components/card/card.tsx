@@ -133,7 +133,7 @@ export default class Card extends React.Component<AppProps, AppState> {
           increaseScoreClickHandler={increaseScoreClickHandler}
           decreaseScoreClickHandler={decreaseScoreClickHandler}
           toggleReplyClickHandler={this.toggleReplyClickHandler}
-          toggleDeleteClickHandler={toggleDeleteClickHandler}
+          toggleDeleteClickHandler={this.toggleDeleteClickHandler}
           updateContentClickHandler={updateContentClickHandler}
           contentInputHandler={contentInputHandler}
         />
