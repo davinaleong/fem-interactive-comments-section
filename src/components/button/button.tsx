@@ -8,15 +8,15 @@ interface AppProps {
 }
 
 export default class Button extends React.Component<AppProps, {}> {
-  constructor(props: any) {
+  constructor(props: AppProps) {
     super(props)
   }
 
-  clickHandler = (event: any) => {
+  clickHandler = (event: any): void => {
     this.props.clickHandler(event)
   }
 
-  render = () => {
+  render = (): any => {
     const { children, type } = this.props
 
     return (

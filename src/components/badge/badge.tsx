@@ -6,7 +6,7 @@ interface AppProps {
   type: string
 }
 
-const Badge = (props: AppProps) => {
+const Badge = (props: AppProps): any => {
   const { children, type } = props
   return <div className={`badge ${type}`}>{children}</div>
 }

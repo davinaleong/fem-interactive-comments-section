@@ -1,7 +1,7 @@
-import React from "react";
-import SwatchComponent from "../swatch/swatch";
+import React from "react"
+import SwatchComponent from "../swatch/swatch"
 
-const SwatchesComponent = () => {
+const SwatchesComponent = (): any => {
   return (
     <div className="swatches">
       <SwatchComponent classList="bg-primary-300" />
@@ -14,7 +14,7 @@ const SwatchesComponent = () => {
       <SwatchComponent classList="bg-grey-200" />
       <SwatchComponent classList="bg-grey-300" />
     </div>
-  );
-};
+  )
+}
 
-export default SwatchesComponent;
+export default SwatchesComponent

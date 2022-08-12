@@ -5,7 +5,7 @@ interface AppProps {
   children: any
 }
 
-const CreatedAt = (props: AppProps) => {
+const CreatedAt = (props: AppProps): any => {
   const { children } = props
   return <div className="info-created-at">{children}</div>
 }

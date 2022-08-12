@@ -210,19 +210,19 @@ export default class Main extends React.Component<AppProps, AppState> {
     return
   }
 
-  render = () => {
+  render = (): any => {
     const { data } = this.props
     const { currentUser } = data
     const { showModal, comments, content, replyingTo } = this.state
 
-    const commentElements: any[] = []
+    const commentElements: Array<any> = []
     comments.forEach((comment: IComment, index: number) => {
       commentElements.push(
         <Comment
           key={`c${index}`}
           currentUser={currentUser}
           comment={comment}
-          reply={null}
+          reply={{}}
           content={content}
           replyingTo={replyingTo}
           increaseScoreClickHandler={this.increaseScoreClickHandler}
@@ -247,8 +247,8 @@ export default class Main extends React.Component<AppProps, AppState> {
         <Input
           isSend={true}
           currentUser={currentUser}
-          comment={null}
-          reply={null}
+          comment={{}}
+          reply={{}}
           content={content}
           replyingTo=""
           contentInputHandler={this.contentInputHandler}

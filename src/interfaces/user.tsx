@@ -1,7 +1,6 @@
+import IImage from "./image"
+
 export default interface IUser {
-  image: {
-    png: string
-    webp: string
-  }
+  image: Partial<IImage>
   username: string
 }

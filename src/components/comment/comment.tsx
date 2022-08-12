@@ -8,9 +8,9 @@ import IComment from "../../interfaces/comment"
 import IReply from "../../interfaces/reply"
 
 interface AppProps {
-  currentUser: IUser
-  comment: IComment | null
-  reply: IReply | null
+  currentUser: Partial<IUser>
+  comment: Partial<IComment>
+  reply: Partial<IReply>
   content: string
   replyingTo: string
   increaseScoreClickHandler: Function
@@ -22,7 +22,7 @@ interface AppProps {
   updateReplyingTo: Function
 }
 
-const Comment = (props: AppProps) => {
+const Comment = (props: AppProps): any => {
   const {
     currentUser,
     comment,
@@ -38,35 +38,40 @@ const Comment = (props: AppProps) => {
   } = props
 
   const { replies } = comment
+
   const replyElements: any[] = []
-  replies.forEach((reply: IReply, index: number) => {
-    replyElements.push(
-      <Card
-        key={`r${index}`}
-        isReply={true}
-        currentUser={currentUser}
-        comment={comment}
-        reply={reply}
-        replyingTo={replyingTo}
-        content={content}
-        increaseScoreClickHandler={increaseScoreClickHandler}
-        decreaseScoreClickHandler={decreaseScoreClickHandler}
-        toggleDeleteClickHandler={toggleDeleteClickHandler}
-        updateContentClickHandler={updateContentClickHandler}
-        createContentClickHandler={createContentClickHandler}
-        contentInputHandler={contentInputHandler}
-        updateReplyingTo={updateReplyingTo}
-      />
-    )
-  })
+  if (replies) {
+    replies.forEach((reply: Partial<IReply>, index: number) => {
+      replyElements.push(
+        <Card
+          key={`r${index}`}
+          isReply={true}
+          currentUser={currentUser}
+          comment={comment}
+          reply={reply}
+          replyingTo={replyingTo}
+          content={content}
+          increaseScoreClickHandler={increaseScoreClickHandler}
+          decreaseScoreClickHandler={decreaseScoreClickHandler}
+          toggleDeleteClickHandler={toggleDeleteClickHandler}
+          updateContentClickHandler={updateContentClickHandler}
+          createContentClickHandler={createContentClickHandler}
+          contentInputHandler={contentInputHandler}
+          updateReplyingTo={updateReplyingTo}
+        />
+      )
+    })
+  }
 
   return (
     <div className="comment-flex">
       <Card
+        isReply={false}
         currentUser={currentUser}
         comment={comment}
-        reply={null}
+        reply={{}}
         replyingTo={replyingTo}
+        content=""
         increaseScoreClickHandler={increaseScoreClickHandler}
         decreaseScoreClickHandler={decreaseScoreClickHandler}
         toggleDeleteClickHandler={toggleDeleteClickHandler}

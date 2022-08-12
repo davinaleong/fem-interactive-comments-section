@@ -1,13 +1,13 @@
-import React from "react";
-import "./username.css";
+import React from "react"
+import "./username.css"
 
 type AppProps = {
-  children: any;
-};
+  children: any
+}
 
-const Username = (props: any) => {
-  const { children } = props;
-  return <div className="info-username">{children}</div>;
-};
+const Username = (props: AppProps): any => {
+  const { children } = props
+  return <div className="info-username">{children}</div>
+}
 
-export default Username;
+export default Username

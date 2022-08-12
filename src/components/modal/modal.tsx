@@ -14,15 +14,15 @@ export default class Modal extends React.Component<AppProps, {}> {
     super(props)
   }
 
-  modalCancelClickHandler = (event: any) => {
+  modalCancelClickHandler = (event: any): void => {
     this.props.modalCancelClickHandler(event)
   }
 
-  modalYesClickHandler = (event: any) => {
+  modalYesClickHandler = (event: any): void => {
     this.props.modalYesClickHandler(event)
   }
 
-  render = () => {
+  render = (): any => {
     const { showModal } = this.props
 
     if (!showModal) {

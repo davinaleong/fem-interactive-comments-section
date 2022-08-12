@@ -11,12 +11,15 @@ import removeUsername from "../../helpers/removeUsename"
 import IUser from "../../interfaces/user"
 import IComment from "../../interfaces/comment"
 import IReply from "../../interfaces/reply"
+import IIds from "../../interfaces/ids"
 
 interface AppProps {
   isReply: boolean
-  currentUser: IUser
-  comment: IComment
-  reply: IReply
+  currentUser: Partial<IUser>
+  comment: Partial<IComment>
+  reply: Partial<IReply>
+  replyingTo: string
+  content: string
   increaseScoreClickHandler: Function
   decreaseScoreClickHandler: Function
   toggleReplyClickHandler: Function
@@ -31,7 +34,7 @@ interface AppState {
 }
 
 export default class Content extends React.Component<AppProps, AppState> {
-  constructor(props: any) {
+  constructor(props: AppProps) {
     super(props)
 
     const { isReply, comment, reply } = this.props
@@ -39,16 +42,18 @@ export default class Content extends React.Component<AppProps, AppState> {
 
     this.state = {
       toggleEditMode: false,
-      contentEditable: isReply ? `@${replyingTo} ${reply.content}` : `${comment.content}`,
+      contentEditable: isReply
+        ? `@${replyingTo} ${reply.content}`
+        : `${comment.content}`,
     }
   }
 
-  toggleEditClickHandler = (event: any) => {
+  toggleEditClickHandler = (event: any): void => {
     const { toggleEditMode } = this.state
     this.setState({ toggleEditMode: !toggleEditMode })
   }
 
-  contentInputHandler = (event: any) => {
+  contentInputHandler = (event: any): void => {
     const { isReply, reply, contentInputHandler } = this.props
     const { replyingTo } = reply
     const value = removeUsername(event.target.value)
@@ -60,20 +65,33 @@ export default class Content extends React.Component<AppProps, AppState> {
     contentInputHandler(contentEditable)
   }
 
-  updateContentClickHandler = (event: any) => {
+  updateContentClickHandler = (event: any): void => {
     const { comment, reply, updateContentClickHandler } = this.props
     this.setState({ toggleEditMode: false })
 
-    let id: number = comment.id
-    let parentId: number = 0
-    if (reply) {
-      id = reply.id
-      parentId = comment.id
+    let ids: IIds = {
+      id: 0,
+      parentId: 0,
     }
-    updateContentClickHandler(id, parentId)
+
+    if (comment) {
+      ids = {
+        id: comment.id ? comment.id : 0,
+        parentId: 0,
+      }
+    }
+
+    if (comment && reply) {
+      ids = {
+        id: reply.id ? reply.id : 0,
+        parentId: comment.id ? comment.id : 0,
+      }
+    }
+
+    updateContentClickHandler(ids)
   }
 
-  render = () => {
+  render = (): any => {
     const {
       isReply,
       currentUser,
@@ -85,24 +103,40 @@ export default class Content extends React.Component<AppProps, AppState> {
       toggleDeleteClickHandler,
     } = this.props
 
-    let { score, createdAt, content, user } = comment
-    if (isReply) {
-      { score, createdAt, content, user } = reply
-    }
-    const { username } = user
+    let thisScore: number = 0
+    let thisCreatedAt: string = ""
+    let thisContent: string = ""
+    let thisUser: Partial<IUser> = {}
 
-    const isCurrentUser = currentUser.username == username
+    if (comment) {
+      thisScore = comment.score ? comment.score : 0
+      thisCreatedAt = comment.createdAt ? comment.createdAt : ""
+      thisContent = comment.content ? comment.content : ""
+      thisUser = comment.user ? comment.user : {}
+    }
+
+    if (isReply && reply) {
+      thisScore = reply.score ? reply.score : 0
+      thisCreatedAt = reply.createdAt ? reply.createdAt : ""
+      thisContent = reply.content ? reply.content : ""
+      thisUser = reply.user ? reply.user : {}
+    }
+
+    const thisUsername = thisUser && thisUser.username ? thisUser.username : ""
+
+    const isCurrentUser = currentUser.username == thisUsername
 
     const { toggleEditMode, contentEditable } = this.state
     const { replyingTo } = reply
 
-    let contentElement: any = isReply ? (
-      <p>
-        <mark>@{replyingTo}</mark> {content}
-      </p>
-    ) : (
-      <p>{content}</p>
-    )
+    let contentElement: any = <p>{thisContent}</p>
+    if (isReply && reply) {
+      contentElement = (
+        <p>
+          <mark>@{replyingTo}</mark> {thisContent}
+        </p>
+      )
+    }
 
     if (toggleEditMode) {
       contentElement = (
@@ -117,9 +151,9 @@ export default class Content extends React.Component<AppProps, AppState> {
       <div className="content-grid" data-edit={toggleEditMode}>
         <div className="counter-cell">
           <Counter
-            score={score}
-            object={object}
-            parent={parent}
+            score={thisScore}
+            comment={comment}
+            reply={reply}
             increaseScoreClickHandler={increaseScoreClickHandler}
             decreaseScoreClickHandler={decreaseScoreClickHandler}
           />
@@ -127,8 +161,8 @@ export default class Content extends React.Component<AppProps, AppState> {
         <div className="info-cell">
           <Info
             isCurrentUser={isCurrentUser}
-            username={username}
-            createdAt={createdAt}
+            username={thisUsername}
+            createdAt={thisCreatedAt}
           />
         </div>
         <div className="buttons-cell">

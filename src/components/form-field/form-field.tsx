@@ -6,7 +6,7 @@ interface AppProps {
   inputHandler: any
 }
 
-const FormField = (props: AppProps) => {
+const FormField = (props: AppProps): any => {
   const { value, inputHandler } = props
   return (
     <textarea

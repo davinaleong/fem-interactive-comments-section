@@ -1,53 +1,78 @@
-import React from "react";
-import "./counter.css";
+import React from "react"
+import "./counter.css"
 
-import Button from "../button/button";
-import PlusIcon from "../../icons/plus.icon";
-import MinusIcon from "../../icons/minus.icon";
-import IComment from "../../interfaces/comment";
-import IReply from "../../interfaces/reply";
+import Button from "../button/button"
+import PlusIcon from "../../icons/plus.icon"
+import MinusIcon from "../../icons/minus.icon"
+import IComment from "../../interfaces/comment"
+import IReply from "../../interfaces/reply"
+import IIds from "../../interfaces/ids"
 
 interface AppProps {
-  score: number;
-  comment: IComment;
-  reply: IReply;
-  increaseScoreClickHandler: Function;
-  decreaseScoreClickHandler: Function;
-};
+  score: number
+  comment: Partial<IComment>
+  reply: Partial<IReply>
+  increaseScoreClickHandler: Function
+  decreaseScoreClickHandler: Function
+}
 
 export default class Counter extends React.Component<AppProps, {}> {
-  constructor(props: any) {
-    super(props);
+  constructor(props: AppProps) {
+    super(props)
   }
 
-  increaseScoreClickHandler = (event: any) => {
-    const { comment, reply, increaseScoreClickHandler } = this.props;
+  increaseScoreClickHandler = (event: any): void => {
+    const { comment, reply, increaseScoreClickHandler } = this.props
 
-    let id: number = comment.id
-    let parentId: number = 0
-    if (reply) {
-      id = reply.id
-      parentId = comment.id
+    let ids: IIds = {
+      id: 0,
+      parentId: 0,
     }
 
-    increaseScoreClickHandler(id, parentId);
-  };
-
-  decreaseScoreClickHandler = (event: any) => {
-    const { comment, reply, decreaseScoreClickHandler } = this.props;
-
-    let id: number = comment.id
-    let parentId: number = 0
-    if (reply) {
-      id = reply.id
-      parentId = comment.id
+    if (comment) {
+      ids = {
+        id: comment.id ? comment.id : 0,
+        parentId: 0,
+      }
     }
 
-    decreaseScoreClickHandler(id, parentId);
-  };
+    if (comment && reply) {
+      ids = {
+        id: reply.id ? reply.id : 0,
+        parentId: comment.id ? comment.id : 0,
+      }
+    }
 
-  render = () => {
-    const { score } = this.props;
+    increaseScoreClickHandler(ids)
+  }
+
+  decreaseScoreClickHandler = (event: any): void => {
+    const { comment, reply, decreaseScoreClickHandler } = this.props
+
+    let ids: IIds = {
+      id: 0,
+      parentId: 0,
+    }
+
+    if (comment) {
+      ids = {
+        id: comment.id ? comment.id : 0,
+        parentId: 0,
+      }
+    }
+
+    if (comment && reply) {
+      ids = {
+        id: reply.id ? reply.id : 0,
+        parentId: comment.id ? comment.id : 0,
+      }
+    }
+
+    decreaseScoreClickHandler(ids)
+  }
+
+  render = (): any => {
+    const { score } = this.props
 
     return (
       <div className="counter-flex">
@@ -59,6 +84,6 @@ export default class Counter extends React.Component<AppProps, {}> {
           <MinusIcon />
         </Button>
       </div>
-    );
-  };
+    )
+  }
 }

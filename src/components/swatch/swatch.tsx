@@ -4,7 +4,7 @@ interface AppProps {
   classList: string
 }
 
-const SwatchComponent = (props: AppProps) => {
+const SwatchComponent = (props: AppProps): any => {
   const { classList } = props
 
   return <div className={classList}>&nbsp;</div>

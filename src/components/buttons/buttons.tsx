@@ -14,23 +14,23 @@ interface AppProps {
 }
 
 export default class Buttons extends React.Component<AppProps, {}> {
-  constructor(props: any) {
+  constructor(props: AppProps) {
     super(props)
   }
 
-  toggleReplyClickHandler = (event: any) => {
+  toggleReplyClickHandler = (event: any): void => {
     this.props.toggleReplyClickHandler(event)
   }
 
-  toggleDeleteClickHandler = (event: any) => {
+  toggleDeleteClickHandler = (event: any): void => {
     this.props.toggleDeleteClickHandler(event)
   }
 
-  toggleEditClickHandler = (event: any) => {
+  toggleEditClickHandler = (event: any): void => {
     this.props.toggleEditClickHandler(event)
   }
 
-  render = () => {
+  render = (): any => {
     const { isCurrentUser } = this.props
     let buttons: any = (
       <Button

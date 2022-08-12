@@ -6,5 +6,5 @@ export default interface IReply {
   createdAt: string
   score: number
   replyingTo: string
-  user: IUser
+  user: Partial<IUser>
 }

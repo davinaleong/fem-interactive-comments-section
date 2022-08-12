@@ -6,6 +6,6 @@ export default interface IComment {
   content: string
   createdAt: string
   score: number
-  user: IUser
-  replies: Array<IReply>
+  user: Partial<IUser>
+  replies: Array<Partial<IReply>>
 }

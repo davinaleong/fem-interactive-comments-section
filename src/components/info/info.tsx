@@ -12,7 +12,7 @@ interface AppProps {
   createdAt: string
 }
 
-const Info = (props: AppProps) => {
+const Info = (props: AppProps): any => {
   const { isCurrentUser, username, createdAt } = props
 
   const badge: any = isCurrentUser ? (

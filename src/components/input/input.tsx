@@ -12,9 +12,9 @@ import FormField from "../form-field/form-field"
 
 interface AppProps {
   isSend: boolean
-  currentUser: IUser
-  comment: IComment
-  reply: IReply
+  currentUser: Partial<IUser>
+  comment: Partial<IComment>
+  reply: Partial<IReply>
   replyingTo: string
   content: string
   contentInputHandler: Function
@@ -27,7 +27,7 @@ export default class Input extends React.Component<AppProps, {}> {
     super(props)
   }
 
-  componentDidMount = () => {
+  componentDidMount = (): void => {
     const { isSend, replyingTo, content, contentInputHandler } = this.props
     const value: string = removeUsername(content)
     const contentEditable: string = isSend ? `` : `@${replyingTo} ${value}`
@@ -35,7 +35,7 @@ export default class Input extends React.Component<AppProps, {}> {
     contentInputHandler(contentEditable)
   }
 
-  contentInputHandler = (event: any) => {
+  contentInputHandler = (event: any): void => {
     const { isSend, replyingTo, contentInputHandler } = this.props
     const value: string = removeUsername(event.target.value)
     const contentEditable: string = isSend
@@ -45,7 +45,7 @@ export default class Input extends React.Component<AppProps, {}> {
     contentInputHandler(contentEditable)
   }
 
-  createContentClickHandler = (event: any) => {
+  createContentClickHandler = (event: any): void => {
     const {
       comment,
       reply,
@@ -56,18 +56,19 @@ export default class Input extends React.Component<AppProps, {}> {
     hideReplyClickHandler()
 
     if (reply) {
-      createContentClickHandler(reply.id, replyingTo)
+      createContentClickHandler(reply.id)
     } else {
-      createContentClickHandler(comment.id, replyingTo)
+      createContentClickHandler(comment.id)
     }
   }
 
-  render = () => {
+  render = (): any => {
     const { isSend, currentUser, content } = this.props
+    const username: string = (currentUser && currentUser.username) ? currentUser.username : ""
 
     return (
       <div className="input-grid">
-        <Avatar username={currentUser.username} />
+        <Avatar username={username} />
         <FormField value={content} inputHandler={this.contentInputHandler} />
         <div className="input-cell">
           <Button
