@@ -50,7 +50,7 @@ export default class Main extends React.Component<AppProps, AppState> {
     const defaultScore = 0
 
     let { nextId, comments, content, replyingTo } = this.state
-    let comment: IComment = {
+    let comment: Partial<IComment> = {
       id: nextId,
       content,
       createdAt: defaultCreatedAt,
@@ -63,7 +63,7 @@ export default class Main extends React.Component<AppProps, AppState> {
       comments.push(comment)
     } else {
       content = removeUsername(content)
-      const reply: IReply = {
+      const reply: Partial<IReply> = {
         id: nextId,
         content,
         createdAt: defaultCreatedAt,
@@ -71,8 +71,13 @@ export default class Main extends React.Component<AppProps, AppState> {
         replyingTo,
         user: currentUser,
       }
-      comment = comments.filter(comment.id == commentId)
-      comment.replies.push(reply)
+      comment = comments.filter(
+        (comment: Partial<IComment>) => comment.id == commentId
+      )[0]
+
+      if (comment.replies) {
+        comment.replies.push(reply)
+      }
     }
 
     nextId++
@@ -114,7 +119,8 @@ export default class Main extends React.Component<AppProps, AppState> {
       }
     }
 
-    this.setState({ comments })
+    content = ``
+    this.setState({ comments, content })
   }
 
   increaseScoreClickHandler = (ids: IIds): void => {

@@ -71,7 +71,7 @@ const Comment = (props: AppProps): any => {
         comment={comment}
         reply={{}}
         replyingTo={replyingTo}
-        content=""
+        content={content}
         increaseScoreClickHandler={increaseScoreClickHandler}
         decreaseScoreClickHandler={decreaseScoreClickHandler}
         toggleDeleteClickHandler={toggleDeleteClickHandler}

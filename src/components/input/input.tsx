@@ -46,25 +46,21 @@ export default class Input extends React.Component<AppProps, {}> {
   }
 
   createContentClickHandler = (event: any): void => {
-    const {
-      comment,
-      reply,
-      replyingTo,
-      hideReplyClickHandler,
-      createContentClickHandler,
-    } = this.props
+    const { comment, hideReplyClickHandler, createContentClickHandler } =
+      this.props
     hideReplyClickHandler()
 
-    if (reply) {
-      createContentClickHandler(reply.id)
-    } else {
+    if (comment) {
       createContentClickHandler(comment.id)
+    } else {
+      createContentClickHandler()
     }
   }
 
   render = (): any => {
     const { isSend, currentUser, content } = this.props
-    const username: string = (currentUser && currentUser.username) ? currentUser.username : ""
+    const username: string =
+      currentUser && currentUser.username ? currentUser.username : ""
 
     return (
       <div className="input-grid">
