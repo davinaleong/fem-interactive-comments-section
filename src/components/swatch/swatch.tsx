@@ -1,13 +1,13 @@
-import React from "react";
+import React from "react"
 
-type AppProps = {
-  classList: string;
-};
+interface AppProps {
+  classList: string
+}
 
-const SwatchComponent = (props: any) => {
-  const { classList } = props;
+const SwatchComponent = (props: AppProps) => {
+  const { classList } = props
 
-  return <div className={classList}>&nbsp;</div>;
-};
+  return <div className={classList}>&nbsp;</div>
+}
 
-export default SwatchComponent;
+export default SwatchComponent

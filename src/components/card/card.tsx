@@ -1,14 +1,17 @@
 import React from "react"
 import "./card.css"
 
+import IComment from "../../interfaces/comment"
+import IReply from "../../interfaces/reply"
+
 import Content from "../content/content"
 import Input from "../input/input"
 
 interface AppProps {
   isReply: boolean
   currentUser: object
-  object: object
-  parent: object
+  comment: IComment
+  reply: IReply
   replyingTo: string
   content: string
   increaseScoreClickHandler: Function
@@ -34,10 +37,15 @@ export default class Card extends React.Component<AppProps, AppState> {
   }
 
   toggleReplyClickHandler = (event: any) => {
-    const { object, updateReplyingTo } = this.props
+    const { comment, reply, updateReplyingTo } = this.props
     const { showInput } = this.state
+
     this.setState({ showInput: !showInput })
-    updateReplyingTo(object.user.username)
+    if (reply) {
+      updateReplyingTo(reply.user.username)
+    } else {
+      updateReplyingTo(comment.user.username)
+    }
   }
 
   hideReplyClickHandler = (event: any) => {
@@ -45,10 +53,18 @@ export default class Card extends React.Component<AppProps, AppState> {
   }
 
   toggleDeleteClickHandler = () => {
-    const { object, parent, toggleDeleteClickHandler } = this.props
+    const { comment, reply, toggleDeleteClickHandler } = this.props
+
+    let id: number = comment.id
+    let parentId: number = 0
+    if (reply) {
+      id = reply.id
+      parentId = comment.id
+    }
+
     toggleDeleteClickHandler({
-      id: object.id,
-      parentId: parent ? parent.id : 0,
+      id,
+      parentId,
     })
   }
 

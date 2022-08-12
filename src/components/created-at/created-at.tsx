@@ -1,13 +1,13 @@
-import React from "react";
-import "./created-at.css";
+import React from "react"
+import "./created-at.css"
 
-type AppProps = {
-  children: any;
-};
+interface AppProps {
+  children: any
+}
 
-const CreatedAt = (props: any) => {
-  const { children } = props;
-  return <div className="info-created-at">{children}</div>;
-};
+const CreatedAt = (props: AppProps) => {
+  const { children } = props
+  return <div className="info-created-at">{children}</div>
+}
 
-export default CreatedAt;
+export default CreatedAt

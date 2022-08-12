@@ -3,7 +3,7 @@ import "./main.css"
 
 import IData from "../../interfaces/data"
 import IComment from "../../interfaces/comment"
-import IToDelete from "../../interfaces/to-delete"
+import IIds from "../../interfaces/ids"
 
 import Modal from "../modal/modal"
 import Input from "../input/input"
@@ -21,7 +21,7 @@ interface AppState {
   comments: any
   content: string
   replyingTo: string
-  toDelete: IToDelete
+  toDelete: IIds
 }
 
 export default class Main extends React.Component<AppProps, AppState> {
@@ -88,16 +88,17 @@ export default class Main extends React.Component<AppProps, AppState> {
     this.setState({ replyingTo })
   }
 
-  toggleDeleteClickHandler = (toDelete: IToDelete): void => {
-    this.setState({ showModal: true, toDelete })
+  toggleDeleteClickHandler = (ids: IIds): void => {
+    this.setState({ showModal: true, toDelete: ids })
   }
 
-  updateContentClickHandler = (objectId: Number, parentId: Number = 0): void => {
+  updateContentClickHandler = (ids: IIds): void => {
+    const { id, parentId } = ids
     let { comments, content } = this.state
     content = removeUsername(content)
     if (parentId == 0) {
       for (let i = 0; i < comments.length; i++) {
-        if (comments[i].id == objectId) {
+        if (comments[i].id == id) {
           comments[i].content = content
         }
       }
@@ -105,7 +106,7 @@ export default class Main extends React.Component<AppProps, AppState> {
       for (let i = 0; i < comments.length; i++) {
         if (comments[i].id == parentId) {
           for (let j = 0; j < comments[i].replies.length; j++) {
-            if (comments[i].replies[j].id == objectId) {
+            if (comments[i].replies[j].id == id) {
               comments[i].replies[j].content = content
             }
           }
@@ -116,12 +117,13 @@ export default class Main extends React.Component<AppProps, AppState> {
     this.setState({ comments })
   }
 
-  increaseScoreClickHandler = (objectId: Number, parentId: Number = 0): void => {
+  increaseScoreClickHandler = (ids: IIds): void => {
+    const { id, parentId } = ids
     const { comments } = this.state
 
     if (parentId == 0) {
       for (let i = 0; i < comments.length; i++) {
-        if (comments[i].id == objectId) {
+        if (comments[i].id == id) {
           comments[i].score++
         }
       }
@@ -129,7 +131,7 @@ export default class Main extends React.Component<AppProps, AppState> {
       for (let i = 0; i < comments.length; i++) {
         if (comments[i].id == parentId) {
           for (let j = 0; j < comments[i].replies.length; j++) {
-            if (comments[i].replies[j].id == objectId) {
+            if (comments[i].replies[j].id == id) {
               comments[i].replies[j].score++
             }
           }
@@ -140,12 +142,13 @@ export default class Main extends React.Component<AppProps, AppState> {
     this.setState({ comments })
   }
 
-  decreaseScoreClickHandler = (objectId: Number, parentId: Number = 0): void => {
+  decreaseScoreClickHandler = (ids: IIds): void => {
+    const { id, parentId } = ids
     const { comments } = this.state
 
     if (parentId == 0) {
       for (let i = 0; i < comments.length; i++) {
-        if (comments[i].id == objectId) {
+        if (comments[i].id == id) {
           comments[i].score--
         }
       }
@@ -153,7 +156,7 @@ export default class Main extends React.Component<AppProps, AppState> {
       for (let i = 0; i < comments.length; i++) {
         if (comments[i].id == parentId) {
           for (let j = 0; j < comments[i].replies.length; j++) {
-            if (comments[i].replies[j].id == objectId) {
+            if (comments[i].replies[j].id == id) {
               comments[i].replies[j].score--
             }
           }
@@ -213,12 +216,13 @@ export default class Main extends React.Component<AppProps, AppState> {
     const { showModal, comments, content, replyingTo } = this.state
 
     const commentElements: any[] = []
-    comments.forEach((comment: Comment, index: number) => {
+    comments.forEach((comment: IComment, index: number) => {
       commentElements.push(
         <Comment
           key={`c${index}`}
           currentUser={currentUser}
-          object={comment}
+          comment={comment}
+          reply={null}
           content={content}
           replyingTo={replyingTo}
           increaseScoreClickHandler={this.increaseScoreClickHandler}
@@ -243,8 +247,8 @@ export default class Main extends React.Component<AppProps, AppState> {
         <Input
           isSend={true}
           currentUser={currentUser}
-          objectId={0}
-          parentId={0}
+          comment={null}
+          reply={null}
           content={content}
           replyingTo=""
           contentInputHandler={this.contentInputHandler}

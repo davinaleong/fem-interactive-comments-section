@@ -1,22 +1,22 @@
-import React from "react";
-import "./form-field.css";
+import React from "react"
+import "./form-field.css"
 
-type AppProps = {
-  value: string;
-  inputHandler: Function;
-};
+interface AppProps {
+  value: string
+  inputHandler: any
+}
 
-const FormField = (props: any) => {
-  const { value, inputHandler } = props;
+const FormField = (props: AppProps) => {
+  const { value, inputHandler } = props
   return (
     <textarea
       className="form-field"
       name="text"
-      rows="4"
+      rows={4}
       value={value}
       onInput={inputHandler}
     ></textarea>
-  );
-};
+  )
+}
 
-export default FormField;
+export default FormField

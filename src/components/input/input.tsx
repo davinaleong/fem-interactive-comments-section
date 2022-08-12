@@ -1,17 +1,20 @@
 import React from "react"
 import "./input.css"
 
+import IUser from "../../interfaces/user"
+import IComment from "../../interfaces/comment"
+import IReply from "../../interfaces/reply"
+
 import Avatar from "../avatar/avatar"
 import Button from "../button/button"
 import removeUsername from "../../helpers/removeUsename"
 import FormField from "../form-field/form-field"
-import IUser from "../../interfaces/user"
 
 interface AppProps {
   isSend: boolean
   currentUser: IUser
-  objectId: number
-  parentId: number
+  comment: IComment
+  reply: IReply
   replyingTo: string
   content: string
   contentInputHandler: Function
@@ -44,18 +47,18 @@ export default class Input extends React.Component<AppProps, {}> {
 
   createContentClickHandler = (event: any) => {
     const {
-      objectId,
-      parentId,
+      comment,
+      reply,
       replyingTo,
       hideReplyClickHandler,
       createContentClickHandler,
     } = this.props
     hideReplyClickHandler()
 
-    if (parentId) {
-      createContentClickHandler(parentId, replyingTo)
+    if (reply) {
+      createContentClickHandler(reply.id, replyingTo)
     } else {
-      createContentClickHandler(objectId, replyingTo)
+      createContentClickHandler(comment.id, replyingTo)
     }
   }
 

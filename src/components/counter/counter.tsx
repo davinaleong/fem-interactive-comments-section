@@ -4,28 +4,46 @@ import "./counter.css";
 import Button from "../button/button";
 import PlusIcon from "../../icons/plus.icon";
 import MinusIcon from "../../icons/minus.icon";
+import IComment from "../../interfaces/comment";
+import IReply from "../../interfaces/reply";
 
-type AppProps = {
-  score: Number;
-  object: Object;
-  parent: Object;
+interface AppProps {
+  score: number;
+  comment: IComment;
+  reply: IReply;
   increaseScoreClickHandler: Function;
   decreaseScoreClickHandler: Function;
 };
 
-export default class Counter extends React.Component {
+export default class Counter extends React.Component<AppProps, {}> {
   constructor(props: any) {
     super(props);
   }
 
   increaseScoreClickHandler = (event: any) => {
-    const { object, parent, increaseScoreClickHandler } = this.props;
-    increaseScoreClickHandler(object.id, parent ? parent.id : 0);
+    const { comment, reply, increaseScoreClickHandler } = this.props;
+
+    let id: number = comment.id
+    let parentId: number = 0
+    if (reply) {
+      id = reply.id
+      parentId = comment.id
+    }
+
+    increaseScoreClickHandler(id, parentId);
   };
 
   decreaseScoreClickHandler = (event: any) => {
-    const { object, parent, decreaseScoreClickHandler } = this.props;
-    decreaseScoreClickHandler(object.id, parent ? parent.id : 0);
+    const { comment, reply, decreaseScoreClickHandler } = this.props;
+
+    let id: number = comment.id
+    let parentId: number = 0
+    if (reply) {
+      id = reply.id
+      parentId = comment.id
+    }
+
+    decreaseScoreClickHandler(id, parentId);
   };
 
   render = () => {

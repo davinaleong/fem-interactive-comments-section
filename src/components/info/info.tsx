@@ -1,23 +1,23 @@
-import React from "react";
-import "./info.css";
+import React from "react"
+import "./info.css"
 
-import Avatar from "../avatar/avatar";
-import Badge from "../badge/badge";
-import Username from "../username/username";
-import CreatedAt from "../created-at/created-at";
+import Avatar from "../avatar/avatar"
+import Badge from "../badge/badge"
+import Username from "../username/username"
+import CreatedAt from "../created-at/created-at"
 
-type AppProps = {
-  isCurrentUser: boolean;
-  username: string;
-  createdAt: string;
-};
+interface AppProps {
+  isCurrentUser: boolean
+  username: string
+  createdAt: string
+}
 
-const Info = (props: any) => {
-  const { isCurrentUser, username, createdAt } = props;
+const Info = (props: AppProps) => {
+  const { isCurrentUser, username, createdAt } = props
 
   const badge: any = isCurrentUser ? (
     <Badge type="badge-primary">You</Badge>
-  ) : null;
+  ) : null
 
   return (
     <div className="info-flex">
@@ -26,7 +26,7 @@ const Info = (props: any) => {
       {badge}
       <CreatedAt>{createdAt}</CreatedAt>
     </div>
-  );
-};
+  )
+}
 
-export default Info;
+export default Info
