@@ -4,7 +4,7 @@ Another simple challenge from Frontend Mentor.
 
 The challenge can be found [here](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9).
 
-Demo page coming soon!
+Demo page can be found [here](https://davina-fem-interactive-comments-section.netlify.app/)!
 
 ## Getting Started
 
